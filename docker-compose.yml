@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    tty: true
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    volumes:
+      - .:/app
+    environment:
+      - DB_HOST=database
+      - DB_PASSWORD=postgres
+      - DB_USERNAME=postgres
+  database:
+    image: postgres:17.4
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
