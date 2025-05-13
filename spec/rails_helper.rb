@@ -9,9 +9,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # Uncomment the line below in case you have `--require rails_helper` in the `.rspec` file
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
-require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
+require 'rspec/rails'
+require 'capybara/cuprite'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -39,6 +39,16 @@ end
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by(:rack_test)
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by(:cuprite, screen_size: [ 1200, 800 ], options: {
+                        js_errors: false,
+                        headless: %w[0],
+                        process_timeout: 15,
+                        timeout: 10,
+                        browser_options: { "no-sandbox" => nil }
+            })
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
