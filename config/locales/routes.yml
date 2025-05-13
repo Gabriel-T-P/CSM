@@ -1,0 +1,6 @@
+en:
+  routes:
+    cars: cars
+pt-BR:
+  routes:
+    cars: carros

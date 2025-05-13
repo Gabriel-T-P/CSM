@@ -274,6 +274,9 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    route_translator (14.2.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
     rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.4)
@@ -414,6 +417,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
+  route_translator (~> 14.2)
   rspec-rails (~> 8.0.0)
   rubocop-rails-omakase
   shoulda-matchers (~> 6.5)
