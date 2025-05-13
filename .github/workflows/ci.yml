@@ -64,18 +64,19 @@ jobs:
             bundle install
             apt update -y
             apt install chromium -y
-            
 
       - name: Setup Rails DB
         run: bin/rails db:setup
         env:
+          RAILS_ENV: test
           DB_HOST: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
 
       - name: RSpec
-        run: bin/bundle exec rake spec
+        run: bundle exec rspec
         env:
+          RAILS_ENV: test
           DB_HOST: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
