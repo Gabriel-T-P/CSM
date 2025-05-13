@@ -22,6 +22,7 @@ This project is built with a focus on maintainability and scalability, leveragin
 
 * **Ruby on Rails:** The web application framework.
 * **Docker:** Containerization for easy setup and deployment.
+* **CI Workflow:** Github CI workflow integrated.
 * **Test-Driven Development (TDD):** Ensuring code quality and reliability through comprehensive testing.
 * **PostgreSQL:** The relational database system.
 * **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
