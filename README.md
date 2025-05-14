@@ -1,9 +1,7 @@
 # CSM (Content System Management)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/your-username/csm/main.yml?branch=main)](https://github.com/your-username/csm/actions)
-[![Coverage Status](https://img.shields.io/coveralls/github/your-username/csm/main.svg)](https://coveralls.io/github/your-username/csm?branch=main)
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](https://www.docker.com/)
-[![Ruby on Rails](https://img.shields.io/badge/Rails-7.x-red)](https://rubyonrails.org/)
+[![Ruby on Rails](https://img.shields.io/badge/Rails-8.x-red)](https://rubyonrails.org/)
 [![RSpec](https://img.shields.io/badge/tested%20with-RSpec-blue)](https://rspec.info/)
 
 ## Project Description
