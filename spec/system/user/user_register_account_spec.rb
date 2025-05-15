@@ -17,8 +17,8 @@ describe 'User creates account', type: :system do
     fill_in 'Last Name',	with: 'Test Last Name'
     fill_in 'Username',	with: 'Test Username'
     fill_in 'Email',	with: 'email@test.com'
-    fill_in 'Password',	with: '123test'
-    fill_in 'Password Confirmation', with: '123test'
+    fill_in 'Password',	with: '12345test'
+    fill_in 'Password Confirmation', with: '12345test'
     click_on 'Register'
 
     expect(current_path).to eq root_path
