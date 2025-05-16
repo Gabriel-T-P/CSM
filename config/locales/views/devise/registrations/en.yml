@@ -1,0 +1,7 @@
+en:
+  devise:
+    registrations:
+      new:  
+        title: Sign up
+        min_characters: "Minimum number of characters: %{number}"
+        save: Register
