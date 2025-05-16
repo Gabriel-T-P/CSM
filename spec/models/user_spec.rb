@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'format' do
-      subject { create(:user) } 
+      subject { create(:user) }
       it { should allow_value('user@example.com').for(:email) }
       it { should_not allow_value('userexample').for(:email) }
     end

@@ -9,7 +9,7 @@ describe 'Visit home test', type: :system do
 end
 
 describe 'Visit home teste js', type: :system, js: true do
-  xit 'successfully' do
+  it 'successfully' do
     visit root_path
 
     expect(page).to have_content 'Hello World!'

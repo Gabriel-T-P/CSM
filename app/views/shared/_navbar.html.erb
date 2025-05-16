@@ -1,47 +1,29 @@
-<!-- Component: Navbar with CTA -->
-<header class="relative z-20 w-full border-b shadow-lg  border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
-  <div class="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
-    <nav aria-label="main navigation" class="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700" role="navigation">
-      <!-- Brand logo -->
-      <%= link_to root_path, id: "WindUI", aria: { label: "WindUI logo", current: "page" }, class: "flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none lg:flex-1" do %>
-        CSM
-      <% end %>
-
-      <!-- Mobile trigger -->
-      <button class="relative self-center order-10 visible block w-10 h-10 opacity-100 lg:hidden" aria-expanded="false" aria-label="Toggle navigation">
-        <div class="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-          <span aria-hidden="true" class="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"></span>
-          <span aria-hidden="true" class="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"></span>
-          <span aria-hidden="true" class="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"></span>
-        </div>
-      </button>
-      <!-- Navigation links -->
-      <ul role="menubar" aria-label="Select page" class="invisible absolute top-0 left-0 z-[-1] ml-auto h-screen w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-28 font-medium opacity-0 transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100">
-        <li role="none" class="flex items-stretch">
-          <a role="menuitem" aria-haspopup="false" class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-blue-500 focus:text-blue-600 focus:outline-none focus-visible:outline-none lg:px-8" href="javascript:void(0)"> <span>Features</span></a>
-        </li>
-        <li role="none" class="flex items-stretch">
-          <a role="menuitem" aria-current="page" aria-haspopup="false" class="flex items-center gap-2 py-4 transition-colors duration-300 text-blue-500 hover:text-blue-600 focus:text-blue-600 focus:outline-none focus-visible:outline-none lg:px-8" href="javascript:void(0)"> <span>Pricing</span> </a>
-        </li>
-        <li role="none" class="flex items-stretch">
-          <a role="menuitem" aria-haspopup="false" class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-blue-500 focus:text-blue-600 focus:outline-none focus-visible:outline-none lg:px-8" href="javascript:void(0)"> <span>About</span> </a>
-        </li>
-      </ul>
-      <!-- Authenticated only -->
-      <% if user_signed_in? %>
-        <div class="flex items-center mr-6 px-6 ml-auto lg:ml-0 lg:p-0">
-          <span class="px-2 py-2 border"> <%= current_user.username%> </span>
-        </div>
-        <div class="flex items-center px-6 ml-auto lg:ml-0 lg:p-0">
-          <%= button_to t('.log_out'), destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded shadow-md whitespace-nowrap bg-red-500 shadow-red-200 hover:bg-red-600 hover:shadow-sm hover:shadow-red-200 focus:bg-red-700 focus:shadow-sm focus:shadow-red-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-red-300 disabled:bg-red-300 disabled:shadow-none" %>
-        </div>
-      <!-- Not authenticated -->
-      <% else %>
-        <div class="flex items-center px-6 ml-auto lg:ml-0 lg:p-0">
-          <%= link_to t('.sign_up'), new_user_registration_path, class: "inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded shadow-md whitespace-nowrap bg-blue-500 shadow-blue-200 hover:bg-blue-600 hover:shadow-sm hover:shadow-blue-200 focus:bg-blue-700 focus:shadow-sm focus:shadow-blue-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 disabled:shadow-none" %>
-        </div>
-      <% end %>
-    </nav>
+<nav class="w-full bg-gray-100 text-white border-b-2 border-gray-700 px-4 py-3 flex items-center justify-between">
+  <!-- Logo / App Name -->
+  <div class="text-xl text-gray-800 font-semibold tracking-wide">
+    <%= link_to 'CSM', root_path, class: "mx-10" %>
   </div>
-</header>
-<!-- End Navbar with CTA -->
+
+  <!-- Right side buttons -->
+  <div class="flex items-center gap-4">
+    
+    <!-- Authenticated User -->
+    <% if user_signed_in? %>
+      <span class="px-4 py-1 font-medium text-gray-800 hover:text-gray-400 transition">
+        <%= current_user.username.upcase %>
+      </span>
+
+      <%= button_to t('.log_out').upcase, destroy_user_session_path,method: :delete,
+          class: "px-4 py-2 mr-4 font-medium text-gray-800 border-2 border-red-800 rounded-none hover:border-red-400 hover:text-red-400 transition bg-transparent" %>
+
+      <!-- Not Authenticated User -->
+    <% else %>
+      <span class="px-4 py-1 font-medium text-gray-800 hover:text-gray-400 transition">
+        TEST
+      </span>
+
+      <%= link_to t('.log_in').upcase, new_user_session_path,
+          class: "px-4 py-2 mr-4 font-medium text-gray-800 border-2 border-gray-800 rounded-none hover:border-gray-400 hover:text-gray-400 transition bg-transparent" %>
+    <% end %>
+  </div>
+</nav>
