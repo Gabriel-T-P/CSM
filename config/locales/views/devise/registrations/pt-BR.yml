@@ -1,0 +1,7 @@
+pt-BR:
+  devise:
+    registrations:
+      new:  
+        title: Criar uma conta
+        min_characters: "Número mínimo de caracteres: %{number}"
+        save: Registrar

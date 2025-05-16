@@ -22,12 +22,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="min-h-88 h-auto">
     <%= render 'shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto">
 
       <%= yield %>
     </main>

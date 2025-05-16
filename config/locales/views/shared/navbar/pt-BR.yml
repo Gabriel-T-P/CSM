@@ -1,0 +1,6 @@
+pt-BR:
+  shared:
+    navbar:
+      log_in: Entrar
+      sign_up: Registrar
+      log_out: Sair
