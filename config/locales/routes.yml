@@ -1,6 +1,11 @@
-en:
-  routes:
-    cars: cars
 pt-BR:
   routes:
-    cars: carros
+    users: usuarios
+    password: senha
+    new: novo
+    edit: editar
+    cancel: cancelar
+    sign_in: entrar
+    sign_out: sair
+    sign_up: registrar
+    
