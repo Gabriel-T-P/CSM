@@ -1,0 +1,21 @@
+<% if notice %>
+  <div class="flash-message container mx-auto my-7 px-5 py-3 text-sm border-y-2 border-blue-700 text-blue-800 bg-blue-100 flex justify-between items-center">
+    <span><%= notice %></span>
+    <button type="button" class="text-green-800 hover:text-green-500 px-2" onclick="this.closest('.flash-message').remove()" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="flash-message container mx-auto my-7 px-5 py-3 text-sm border-y-2 border-red-700 text-red-800 bg-red-100 flex justify-between items-center">
+    <span><%= alert %></span>
+    <button type="button" class="text-red-800 hover:text-red-500 px-2" onclick="this.closest('.flash-message').remove()" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+<% end %>

@@ -13,7 +13,7 @@ describe 'User login account', type: :system do
 
   it 'successfully' do
     user = create(:user, username: 'Testing', email: 'email@test.com', password: '12345678', password_confirmation: '12345678')
-    
+
     visit new_user_session_path
     fill_in 'Email', with: 'email@test.com'
     fill_in 'Password', with: '12345678'
@@ -25,5 +25,16 @@ describe 'User login account', type: :system do
       expect(page).to have_button 'LOG OUT'
       expect(page).not_to have_link 'LOG IN'
     end
+  end
+
+  it 'and view errors messages' do
+    user = create(:user, username: 'Testing', email: 'email@test.com', password: '12345678', password_confirmation: '12345678')
+
+    visit new_user_session_path
+    fill_in 'Email', with: ''
+    fill_in 'Password', with: ''
+    click_on 'Log in'
+
+    expect(page).to have_content 'Invalid Email or password'
   end
 end
