@@ -1,0 +1,9 @@
+pt-BR:
+  devise:
+    shared:
+      links:
+        log_in: Entrar
+        sign_up: Registrar-se
+        forgot_password: Esqueceu a senha ?
+        confirmation_instructions: Não recebeu instruções de confirmação ?
+        unlock_instructions: Não recebeu instruções de desbloqueio ?

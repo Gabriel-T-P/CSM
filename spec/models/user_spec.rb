@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
     context 'uniqueness' do
       subject { create(:user) }
       it { should validate_uniqueness_of(:email).case_insensitive }
+      it { should validate_uniqueness_of(:username).case_insensitive }
     end
 
     context 'length' do
