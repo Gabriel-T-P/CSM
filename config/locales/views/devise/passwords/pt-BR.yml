@@ -1,0 +1,6 @@
+pt-BR:
+  devise:
+    passwords:
+      new:  
+        title: Esqueceu a senha?
+        save: Enviar as instruções para resetar senha

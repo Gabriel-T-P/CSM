@@ -1,0 +1,6 @@
+en:
+  devise:
+    passwords:
+      new:  
+        title: Forgot your password?
+        save: Send me reset password instructions
