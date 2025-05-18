@@ -1,0 +1,15 @@
+pt-BR:
+  home:
+    index:
+      welcome: Bem-vindo ao CSM
+      welcome_description: Um espaço moderno e minimalista para armazenar, organizar e, futuramente, compartilhar todo tipo de conteúdo interessante com seus amigos
+      begin_now: COMEÇAR AGORA
+      save: Salve
+      save_description: Capture conteúdos que achar interessantes — textos, ideias, links e mais
+      organize: Organize
+      organize_description: Use categorias, tags e filtros para manter tudo organizado do seu jeito
+      share: Compartilhe
+      share_description: Em breve, compartilhe conteúdos com amigos ou mantenha sua coleção privada
+      ready?: Pronto para começar
+      ready_description: Crie uma conta e comece a construir sua própria biblioteca de conteúdos
+      create_account: CRIAR CONTA

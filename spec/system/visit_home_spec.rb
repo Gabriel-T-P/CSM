@@ -4,7 +4,7 @@ describe 'Visit home test', type: :system do
   it 'successfuly' do
     visit root_path
 
-    expect(page).to have_content 'Testing 123'
+    expect(page).to have_content 'Welcome to CSM'
   end
 end
 

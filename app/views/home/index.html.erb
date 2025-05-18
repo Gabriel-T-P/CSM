@@ -1,5 +1,48 @@
-<h1>Testing 123</h1>
+<div class="max-w-5xl mx-auto px-6 py-16">
+  <!-- Hero Section -->
+  <section class="text-center mb-20">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4 tracking-wide">
+      <%= t '.welcome' %>
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+      <%= t '.welcome_description' %>.
+    </p>
+    <%= link_to t('.begin_now'), new_user_registration_path,
+      class: "inline-block mt-4 px-6 py-3 text-gray-800 border-2 border-gray-800 hover:border-gray-500 hover:text-gray-500 transition font-medium rounded-none" %>
+  </section>
 
+  <!-- How it works -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-20">
+    <div class="p-6 border-2 border-gray-700">
+      <svg class="w-10 h-10 mx-auto text-gray-800 mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16.5V5.25A2.25 2.25 0 016.25 3h11.5A2.25 2.25 0 0120 5.25v11.25M4 16.5l4.75-4.75M4 16.5l4.75 4.75M20 16.5l-4.75-4.75M20 16.5l-4.75 4.75" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2"><%= t '.save' %></h3>
+      <p class="text-sm text-gray-600"><%= t '.save_description' %>.</p>
+    </div>
 
-<div data-controller="hello">
+    <div class="p-6 border-2 border-gray-700">
+      <svg class="w-10 h-10 mx-auto text-gray-800 mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2M4.75 4.75h14.5v14.5H4.75V4.75z" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2"><%= t '.organize' %></h3>
+      <p class="text-sm text-gray-600"><%= t '.organize_description' %>.</p>
+    </div>
+
+    <div class="p-6 border-2 border-gray-700">
+      <svg class="w-10 h-10 mx-auto text-gray-800 mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8s-9-3.582-9-8a9 9 0 1118 0z" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2"><%= t '.share' %></h3>
+      <p class="text-sm text-gray-600"><%= t '.share_description' %>.</p>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="border-t-2 border-gray-700 pt-10 text-center">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4"><%= t '.ready?' %>?</h2>
+    <p class="text-gray-600 mb-6"><%= t '.ready_description' %>.</p> 
+    <%= link_to t('.create_account'), new_user_registration_path,
+      class: "inline-block px-6 py-3 text-gray-800 border-2 border-gray-800 hover:border-gray-500 hover:text-gray-500 transition font-medium rounded-none" %>
+  </section>
 </div>
