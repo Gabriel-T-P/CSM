@@ -16,7 +16,7 @@ describe 'User login account', type: :system do
 
     login_as user
     visit new_user_session_path
-    
+
     expect(current_path).to eq root_path
     expect(page).to have_content 'You are already signed in'
   end
