@@ -11,6 +11,16 @@ describe 'User login account', type: :system do
     expect(page).to have_content 'Log in'
   end
 
+  it 'but its already logged in' do
+    user = create(:user)
+
+    login_as user
+    visit new_user_session_path
+    
+    expect(current_path).to eq root_path
+    expect(page).to have_content 'You are already signed in'
+  end
+
   it 'successfully' do
     user = create(:user, username: 'Testing', email: 'email@test.com', password: '12345678', password_confirmation: '12345678')
 

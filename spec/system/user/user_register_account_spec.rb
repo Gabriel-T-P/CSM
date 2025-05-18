@@ -12,6 +12,16 @@ describe 'User creates account', type: :system do
     expect(page).to have_content 'Sign up'
   end
 
+  it 'but its already logged in' do
+    user = create(:user)
+
+    login_as user
+    visit new_user_registration_path
+    
+    expect(current_path).to eq root_path
+    expect(page).to have_content 'You are already signed in'
+  end
+
   it 'successfully' do
     visit new_user_registration_path
     fill_in 'Name',	with: 'Test Name'
