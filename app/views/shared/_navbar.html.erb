@@ -28,8 +28,7 @@
         <%= current_user.username.upcase %>
       </span>
 
-      <%= button_to t('.log_out').upcase, destroy_user_session_path,method: :delete,
-          class: "px-4 py-2 mr-4 font-medium text-gray-800 border-2 border-red-800 rounded-none hover:border-red-400 hover:text-red-400 transition bg-transparent" %>
+      <%= outline_button_to(t('.log_out').upcase, destroy_user_session_path, color: 'red', method: :delete) %>
 
       <!-- Not Authenticated User -->
     <% else %>
@@ -37,8 +36,7 @@
         TEST
       </span>
 
-      <%= link_to t('.log_in').upcase, new_user_session_path,
-          class: "px-4 py-2 mr-4 font-medium text-gray-800 border-2 border-gray-800 rounded-none hover:border-gray-400 hover:text-gray-400 transition bg-transparent" %>
+      <%= outline_link_to(t('.log_in').upcase, new_user_session_path) %>
     <% end %>
   </div>
 </nav>
