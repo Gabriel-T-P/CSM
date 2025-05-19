@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   enum :role, { regular: 1, admin: 5 }, default: :regular
 
-  validates :first_name, :last_name, :username, :role, presence: true
+  validates :first_name, :last_name, :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
 end
