@@ -14,3 +14,6 @@ pt-BR:
         password_confirmation: Confirme a Senha
         created_at: Criado em
         remember_me: Mantenha-me conectado
+        role:
+          regular: Comum
+          admin: Admin
