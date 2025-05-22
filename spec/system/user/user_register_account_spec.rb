@@ -35,9 +35,9 @@ describe 'User creates account', type: :system do
     expect(current_path).to eq root_path
     expect(page).to have_content 'Welcome! You have signed up successfully'
     within 'nav' do
-      expect(page).to have_button 'LOG OUT'
       expect(page).not_to have_link 'Sign up'
       expect(page).to have_content 'TEST USERNAME'
+      expect(page).to have_button 'Log out'
     end
   end
 

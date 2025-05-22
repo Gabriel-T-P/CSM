@@ -32,7 +32,7 @@ describe 'User login account', type: :system do
     expect(current_path).to eq root_path
     within 'nav' do
       expect(page).to have_content 'TESTING'
-      expect(page).to have_button 'LOG OUT'
+      expect(page).to have_button 'Log out'
       expect(page).not_to have_link 'LOG IN'
     end
   end

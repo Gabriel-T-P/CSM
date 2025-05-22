@@ -19,7 +19,6 @@
       <% end %>
       <!-- End Admin User -->
       <%= render 'shared/user_button' %>
-      <%= outline_button_to(t('.log_out').upcase, destroy_user_session_path, color: 'red', method: :delete) %>
 
     <!-- Not Authenticated User -->
     <% else %>

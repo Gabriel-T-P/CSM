@@ -14,14 +14,14 @@
       <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
       </svg> 
-      Perfil
+      <span> <%= t('.profile') %> </span>
     <% end %>
 
-    <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center gap-2 w-full text-left px-4 py-2 text-sm hover:bg-gray-200 hover:text-gray-600 transition" do %>
-      <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center gap-2 w-full text-left px-4 py-2 text-sm hover:bg-red-200 hover:text-red-600 transition" do %>
+      <svg class="w-4 h-4 mr-2 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1"/>
       </svg> 
-      Sair
+      <span class="text-red-500"> <%= t('.log_out') %> </span>
     <% end %>
   </div>
 </div>
