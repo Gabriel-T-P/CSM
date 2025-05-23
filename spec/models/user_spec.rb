@@ -39,6 +39,10 @@ RSpec.describe User, type: :model do
       subject { create(:user) }
       it { should allow_value('user@example.com').for(:email) }
       it { should_not allow_value('userexample').for(:email) }
+      it { should allow_value('test_user').for(:username) }
+      it { should_not allow_value('$test_user').for(:username) }
+      it { should_not allow_value('%test_user').for(:username) }
+      it { should_not allow_value('&test_user').for(:username) }
       it { should define_enum_for(:role).with_values(regular: 1, admin: 5) }
       it { should define_enum_for(:gender).with_values(masculine: 1, feminine: 3) }
     end

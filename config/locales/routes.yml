@@ -1,6 +1,7 @@
 pt-BR:
   routes:
     users: usuarios
+    profile: perfil
     password: senha
     new: novo
     edit: editar

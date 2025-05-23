@@ -12,4 +12,5 @@ class User < ApplicationRecord
   validates :birth_date, comparison: { greater_than_or_equal_to: 100.years.ago.to_date }, allow_blank: true
   validates :birth_date, comparison: { less_than_or_equal_to: Date.current }, allow_blank: true
   validates :username, uniqueness: { case_sensitive: false }
+  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/, message: I18n.t('error_messages.username_format_validation') }
 end

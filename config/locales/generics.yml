@@ -1,0 +1,8 @@
+pt-BR:
+  error_messages:
+    username_format_validation: só pode conter letras, números e _
+
+en:
+  error_messages:
+    username_format_validation: only permits letters, numbers and _
+    
