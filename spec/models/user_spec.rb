@@ -25,8 +25,14 @@ RSpec.describe User, type: :model do
       it { should validate_uniqueness_of(:username).case_insensitive }
     end
 
+    context 'comparison' do
+      it { should validate_comparison_of(:birth_date).is_less_than_or_equal_to(Date.current) }
+      it { should validate_comparison_of(:birth_date).is_greater_than_or_equal_to(100.years.ago.to_date) }
+    end
+
     context 'length' do
       it { should validate_length_of(:password).is_at_least(8) }
+      it { should validate_length_of(:biography).is_at_most(200) }
     end
 
     context 'format' do
@@ -34,6 +40,7 @@ RSpec.describe User, type: :model do
       it { should allow_value('user@example.com').for(:email) }
       it { should_not allow_value('userexample').for(:email) }
       it { should define_enum_for(:role).with_values(regular: 1, admin: 5) }
+      it { should define_enum_for(:gender).with_values(masculine: 1, feminine: 3) }
     end
   end
 end
