@@ -1,0 +1,5 @@
+pt-BR:
+  shared:
+    user_button:
+      profile: Perfil
+      log_out: Sair
