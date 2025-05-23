@@ -1,0 +1,44 @@
+<div class="max-w-4xl mx-auto px-4 py-10">
+  <div class="w-full border-2 border-gray-700 bg-white px-6 py-6 mb-8 shadow-md">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-2xl font-semibold text-gray-800">
+          <%= @user.username %>
+        </h1>
+        <% if @user.respond_to?(:biography) && @user.biography.present? %>
+          <p class="mt-1 text-gray-600 text-sm max-w-xl">
+            <%= @user.biography %>
+          </p>
+        <% end %>
+        <p class="mt-1 text-gray-600 text-sm max-w-xl">
+          <%= t('.member_since', date: @user.created_at.year) %>
+        </p>
+      </div>
+      
+      <% if user_signed_in? && current_user == @user %>
+        <%= link_to "Editar Perfil", root_path, class: "mt-4 sm:mt-0 inline-block px-4 py-2 border-2 border-gray-700 text-sm text-gray-700 hover:bg-gray-200 transition" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 text-center mb-10">
+    <div class="border-2 border-gray-700 bg-white py-4">
+      <p class="text-xl font-semibold text-gray-800">0</p>
+      <p class="text-sm text-gray-600">Conteúdos</p>
+    </div>
+    <div class="border-2 border-gray-700 bg-white py-4">
+      <p class="text-xl font-semibold text-gray-800">0</p>
+      <p class="text-sm text-gray-600">Seguidores</p>
+    </div>
+    <div class="border-2 border-gray-700 bg-white py-4">
+      <p class="text-xl font-semibold text-gray-800">0</p>
+      <p class="text-sm text-gray-600">Seguindo</p>
+    </div>
+  </div>
+
+  <%= render 'shared/profile/personal_informations'%>
+
+  <div class="border-2 border-gray-700 bg-white mt-8 px-6 py-8 text-center text-gray-500 shadow-sm">
+    <p><%= t('.no_content_found') %>.</p>
+  </div>
+</div>

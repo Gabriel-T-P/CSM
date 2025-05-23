@@ -10,6 +10,10 @@ en:
         first_name: Name
         last_name: Last Name
         username: Username
+        gender: Pronoun
+        birth_date: Birth Date
+        biography: Biography
+        location: Location
         password: Password
         password_confirmation: Password Confirmation
         created_at: Created at
@@ -17,3 +21,4 @@ en:
         role:
           regular: Regular
           admin: Admin
+

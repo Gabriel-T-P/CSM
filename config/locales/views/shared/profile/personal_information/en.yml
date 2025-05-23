@@ -1,0 +1,9 @@
+en:
+  shared:
+    profile:
+      personal_informations:
+        title: Personal Informations
+        full_name: Full Name
+        age: Age
+        years: years
+        not_informed: Not informed

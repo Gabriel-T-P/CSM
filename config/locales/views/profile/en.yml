@@ -1,0 +1,5 @@
+en:
+  profiles:
+    show:
+      no_content_found: No content found yet
+      member_since: Member since %{date}

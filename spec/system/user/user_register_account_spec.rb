@@ -26,7 +26,7 @@ describe 'User creates account', type: :system do
     visit new_user_registration_path
     fill_in 'Name',	with: 'Test Name'
     fill_in 'Last Name',	with: 'Test Last Name'
-    fill_in 'Username',	with: 'Test Username'
+    fill_in 'Username',	with: 'Test_Username'
     fill_in 'Email',	with: 'email@test.com'
     fill_in 'Password',	with: '12345test'
     fill_in 'Password Confirmation', with: '12345test'
@@ -36,7 +36,7 @@ describe 'User creates account', type: :system do
     expect(page).to have_content 'Welcome! You have signed up successfully'
     within 'nav' do
       expect(page).not_to have_link 'Sign up'
-      expect(page).to have_content 'TEST USERNAME'
+      expect(page).to have_content 'TEST_USERNAME'
       expect(page).to have_button 'Log out'
     end
   end
@@ -51,12 +51,13 @@ describe 'User creates account', type: :system do
     fill_in 'Password Confirmation', with: ' '
     click_on 'Register'
 
-    expect(page).to have_content '5 errors prohibited this user from being saved'
+    expect(page).to have_content '6 errors prohibited this user from being saved'
     expect(page).to have_content "Email can't be blank"
     expect(page).to have_content "Password can't be blank"
     expect(page).to have_content "Name can't be blank"
     expect(page).to have_content "Last Name can't be blank"
     expect(page).to have_content "Username can't be blank"
+    expect(page).to have_content "Username only permits letters, numbers and _"
   end
 
   it 'and view uniqueness email error message' do
@@ -65,7 +66,7 @@ describe 'User creates account', type: :system do
     visit new_user_registration_path
     fill_in 'Name',	with: 'Test Name'
     fill_in 'Last Name',	with: 'Test Last Name'
-    fill_in 'Username',	with: 'Test Username'
+    fill_in 'Username',	with: 'Test_Username'
     fill_in 'Email',	with: 'email@test.com'
     fill_in 'Password',	with: '12345test'
     fill_in 'Password Confirmation', with: '12345test'

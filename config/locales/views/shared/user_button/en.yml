@@ -1,5 +1,6 @@
 en:
   shared:
-    user_button:
-      profile: Profile
-      log_out: Log out
+    navbar:
+      user_button:
+        profile: Profile
+        log_out: Log out

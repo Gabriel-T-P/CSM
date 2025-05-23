@@ -10,6 +10,10 @@ pt-BR:
         first_name: Nome
         last_name: Sobrenome
         username: Nome de Usuário
+        gender: Pronome
+        birth_date: Data de Nascimento
+        biography: Biografia
+        location: Localidade
         password: Senha
         password_confirmation: Confirme a Senha
         created_at: Criado em

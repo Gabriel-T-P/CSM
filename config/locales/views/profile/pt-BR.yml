@@ -1,0 +1,5 @@
+pt-BR:
+  profiles:
+    show:
+      no_content_found: Nenhum conteúdo cadastrado ainda
+      member_since: Membro desde %{date}

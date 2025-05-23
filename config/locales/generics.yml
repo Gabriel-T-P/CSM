@@ -1,0 +1,18 @@
+pt-BR:
+  error_messages:
+    username_format_validation: só pode conter letras, números e _
+  user:
+    pronoun:
+      male: ele/dele
+      female: ela/dela
+      neutral: elu/delu
+
+
+en:
+  error_messages:
+    username_format_validation: only permits letters, numbers and _
+  user:
+    pronoun:
+      male: he/him
+      female: she/her
+      neutral: they/them

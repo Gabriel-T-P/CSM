@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe 'User logout from account', type: :system do
   it 'by navbar button' do
-    user = create(:user, username: 'my name')
+    user = create(:user, username: 'my_name')
 
     login_as user
     visit root_path
     within 'nav' do
-      click_on 'MY NAME'
+      click_on 'MY_NAME'
     end
 
     expect(page).to have_button 'Log out'
