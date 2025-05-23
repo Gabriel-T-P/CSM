@@ -1,6 +1,4 @@
-<!-- app/views/profiles/show.html.erb -->
 <div class="max-w-4xl mx-auto px-4 py-10">
-  <!-- Cabeçalho do perfil -->
   <div class="w-full border-2 border-gray-700 bg-white px-6 py-6 mb-8 shadow-md">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
       <div>
@@ -20,7 +18,6 @@
     </div>
   </div>
 
-  <!-- Informações estatísticas -->
   <div class="grid grid-cols-3 gap-4 text-center mb-10">
     <div class="border-2 border-gray-700 bg-white py-4">
       <p class="text-xl font-semibold text-gray-800">0</p>
@@ -38,8 +35,7 @@
 
   <%= render 'shared/profile/personal_informations'%>
 
-  <!-- Conteúdos (vazio por enquanto) -->
   <div class="border-2 border-gray-700 bg-white mt-8 px-6 py-8 text-center text-gray-500 shadow-sm">
-    <p>Este usuário ainda não adicionou nenhum conteúdo.</p>
+    <p><%= t('.no_content_found') %>.</p>
   </div>
 </div>

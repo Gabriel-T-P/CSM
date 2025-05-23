@@ -83,4 +83,22 @@ RSpec.describe User, type: :model do
       expect(result).to eq nil
     end
   end
+
+  describe '.pronoun_label' do
+    it 'returns pronoun according to gender of user' do
+      user = create(:user, gender: :male)
+
+      result = user.pronoun_label
+
+      expect(result).to eq 'he/him'
+    end
+
+    it 'returns age only if birth date is present' do
+      user = create(:user, first_name: 'Test', last_name: 'Last')
+
+      result = user.pronoun_label
+
+      expect(result).to eq nil
+    end
+  end
 end

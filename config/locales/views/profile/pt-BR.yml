@@ -1,4 +1,4 @@
 pt-BR:
   profiles:
     show:
-      title: Perfil de %{name}
+      no_content_found: Nenhum conteúdo cadastrado ainda

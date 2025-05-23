@@ -1,4 +1,4 @@
 en:
   profiles:
     show:
-      title: "%{name}'s Profile"
+      no_content_found: No content found yet

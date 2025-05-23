@@ -26,4 +26,10 @@ class User < ApplicationRecord
     age -= 1 if today < birth_date + age.years
     age
   end
+
+  def pronoun_label
+    return unless gender
+
+    I18n.t("user.pronoun.#{gender}")
+  end
 end

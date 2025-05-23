@@ -1,36 +1,36 @@
-<div class="mt-6 p-4 border-2 border-gray-700 bg-gray-100 text-gray-800 shadow-md w-full max-w-xl">
-  <h2 class="text-lg font-semibold mb-4 border-b border-gray-300 pb-2">Informações Pessoais</h2>
+<div class="mt-4 p-4 border-2 border-gray-700 bg-white text-gray-800 shadow-md w-full max-w-xl">
+  <%= title_h2(t('.title')) %>
 
   <div class="space-y-2 text-sm">
     <div class="flex justify-between">
-      <span class="font-medium">Nome completo:</span>
+      <span class="font-medium"><%= t('.full_name') %>:</span>
       <span><%= @user.full_name %></span>
     </div>
 
     <div class="flex justify-between">
-      <span class="font-medium">Email:</span>
+      <span class="font-medium"><%= User.human_attribute_name(:email) %>:</span>
       <span><%= @user.email %></span>
     </div>
 
     <div class="flex justify-between">
-      <span class="font-medium">Localidade:</span>
-      <span><%= @user.location.presence || "Não informada" %></span>
+      <span class="font-medium"><%= User.human_attribute_name(:location) %>:</span>
+      <span><%= @user.location.presence || t('.not_informed') %></span>
     </div>
 
     <div class="flex justify-between">
-      <span class="font-medium">Idade:</span>
+      <span class="font-medium"><%= t('.age') %>:</span>
       <span>
         <% if @user.birth_date.present? %>
-          <%= @user.age %> anos
+          <%= @user.age %> <%= t('.years') %>
         <% else %>
-          Não informada
+          <%= t('.not_informed') %>
         <% end %>
       </span>
     </div>
 
     <div class="flex justify-between">
-      <span class="font-medium">Pronomes:</span>
-      <span><%= @user.gender.presence || "Não informados" %></span>
+      <span class="font-medium"><%= User.human_attribute_name(:gender) %>:</span>
+      <span><%= @user.pronoun_label.presence || t('.not_informed') %></span>
     </div>
   </div>
 </div>
