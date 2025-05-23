@@ -10,6 +10,9 @@
             <%= @user.biography %>
           </p>
         <% end %>
+        <p class="mt-1 text-gray-600 text-sm max-w-xl">
+          <%= t('.member_since', date: @user.created_at.year) %>
+        </p>
       </div>
       
       <% if user_signed_in? && current_user == @user %>
