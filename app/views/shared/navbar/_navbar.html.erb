@@ -6,7 +6,7 @@
 
   <!-- Right side buttons -->
   <div class="flex items-center gap-4">
-    <%= render 'shared/language_button' %>
+    <%= render 'shared/navbar/language_button' %>
 
     <!-- Authenticated User -->
     <% if user_signed_in? %>
@@ -18,7 +18,7 @@
         </span>
       <% end %>
       <!-- End Admin User -->
-      <%= render 'shared/user_button' %>
+      <%= render 'shared/navbar/user_button' %>
 
     <!-- Not Authenticated User -->
     <% else %>

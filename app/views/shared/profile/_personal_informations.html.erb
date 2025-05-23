@@ -1,0 +1,36 @@
+<div class="mt-6 p-4 border-2 border-gray-700 bg-gray-100 text-gray-800 shadow-md w-full max-w-xl">
+  <h2 class="text-lg font-semibold mb-4 border-b border-gray-300 pb-2">Informações Pessoais</h2>
+
+  <div class="space-y-2 text-sm">
+    <div class="flex justify-between">
+      <span class="font-medium">Nome completo:</span>
+      <span><%= @user.full_name %></span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="font-medium">Email:</span>
+      <span><%= @user.email %></span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="font-medium">Localidade:</span>
+      <span><%= @user.location.presence || "Não informada" %></span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="font-medium">Idade:</span>
+      <span>
+        <% if @user.birth_date.present? %>
+          <%= @user.age %> anos
+        <% else %>
+          Não informada
+        <% end %>
+      </span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="font-medium">Pronomes:</span>
+      <span><%= @user.gender.presence || "Não informados" %></span>
+    </div>
+  </div>
+</div>

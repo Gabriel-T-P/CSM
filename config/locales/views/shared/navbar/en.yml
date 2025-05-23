@@ -1,4 +1,5 @@
 en:
   shared:
     navbar:
-      log_in: Log in
+      navbar:
+        log_in: Log in

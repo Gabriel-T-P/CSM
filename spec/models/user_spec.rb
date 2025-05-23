@@ -44,7 +44,43 @@ RSpec.describe User, type: :model do
       it { should_not allow_value('%test_user').for(:username) }
       it { should_not allow_value('&test_user').for(:username) }
       it { should define_enum_for(:role).with_values(regular: 1, admin: 5) }
-      it { should define_enum_for(:gender).with_values(masculine: 1, feminine: 3) }
+      it { should define_enum_for(:gender).with_values(male: 1, female: 3, neutral: 5) }
+    end
+  end
+
+  describe '.full_name' do
+    it 'returns first name and last name' do
+      user = create(:user, first_name: 'Test', last_name: 'Last')
+
+      result = user.full_name
+
+      expect(result).to eq 'Test Last'
+    end
+
+    it 'return full name capitalized' do
+      user = create(:user, first_name: 'test', last_name: 'last')
+
+      result = user.full_name
+
+      expect(result).to eq 'Test Last'
+    end
+  end
+
+  describe '.age' do
+    it 'returns user age based on birth date' do
+      user = create(:user, first_name: 'Test', last_name: 'Last', birth_date: 10.years.ago)
+
+      result = user.age
+
+      expect(result).to eq 10
+    end
+
+    it 'returns age only if birth date is present' do
+      user = create(:user, first_name: 'Test', last_name: 'Last')
+
+      result = user.age
+
+      expect(result).to eq nil
     end
   end
 end

@@ -11,7 +11,7 @@ describe 'User views own profile page', type: :system do
     end
 
     expect(current_path).to eq profile_path(username: user.username)
-    expect(page).to have_content "Test1's Profile"
+    expect(page).to have_content "Test1"
   end
 
   it 'and have profile informations' do
