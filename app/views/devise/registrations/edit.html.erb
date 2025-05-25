@@ -70,7 +70,7 @@
 
       <!-- Save Button -->
       <div class="pt-4">
-        <%= form_submit_button(t('.save')) %>
+        <%= form_submit_button(t('.save').upcase) %>
       </div>
     <% end %>
 
@@ -84,7 +84,7 @@
         </div>
 
         <div>
-          <%= button_to t('.delete'), registration_path(resource_name),
+          <%= button_to t('.delete').upcase, registration_path(resource_name),
                 data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
                 method: :delete,
                 class: "w-full py-2 px-4 border border-red-300 rounded-none bg-white text-red-600 text-sm font-semibold hover:bg-red-500 transition-colors" %>

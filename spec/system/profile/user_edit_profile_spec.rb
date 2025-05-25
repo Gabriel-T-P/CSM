@@ -36,7 +36,6 @@ describe 'User edits profile', type: :system do
     fill_in 'Last Name', with: 'Last Surname'
     fill_in 'Password', with: '12345678'
     fill_in 'Password Confirmation', with: '12345678'
-    fill_in 'Username', with: 'Test'
     fill_in 'Location', with: 'United Estates'
     fill_in 'Biography', with: 'Another test bio'
     fill_in 'Username', with: 'Test_Username'
@@ -53,5 +52,59 @@ describe 'User edits profile', type: :system do
     expect(page).to have_content 'Age: 25 years'
     expect(page).to have_content 'Pronouns: she/her'
     expect(page).to have_content 'Another test bio'
+  end
+
+  it 'with wrong fields entries' do
+    user = create(:user, first_name: 'User', last_name: 'God', email: 'user_1@email.com',
+                  location: 'Brazil', gender: :male, birth_date: 20.years.ago, username: 'Test_God',
+                  biography: 'This is a test bio', password: 'password123')
+
+    login_as user
+    visit edit_user_registration_path
+    fill_in 'Name', with: ' '
+    fill_in 'Last Name', with: ' '
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password Confirmation', with: '87654321'
+    fill_in 'Username', with: 'Test Abra'
+    fill_in 'Birth Date', with: 25.years.from_now
+    fill_in 'Current Password', with: 'password123'
+    click_on 'Save Profile'
+
+    expect(page).to have_content '5 errors prohibited this user from being saved'
+    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "Last Name can't be blank"
+    expect(page).to have_content 'Birth Date must be less than or equal to 2025-05-25'
+    expect(page).to have_content 'Username only permits letters, numbers and _'
+    expect(page).to have_content "Password Confirmation doesn't match Password"
+  end
+
+  it 'without putting the current password' do
+    user = create(:user, first_name: 'User', last_name: 'God', email: 'user_1@email.com',
+                  location: 'Brazil', gender: :male, birth_date: 20.years.ago, username: 'Test_God',
+                  biography: 'This is a test bio', password: 'password123')
+
+    login_as user
+    visit edit_user_registration_path
+    fill_in 'Username', with: 'Test_Abra'
+    fill_in 'Current Password', with: ' '
+    click_on 'Save Profile'
+
+    expect(page).to have_content '1 error prohibited this user from being saved'
+    expect(page).to have_content "Current Password can't be blank"
+  end
+
+  it 'with wrong current password' do
+    user = create(:user, first_name: 'User', last_name: 'God', email: 'user_1@email.com',
+                  location: 'Brazil', gender: :male, birth_date: 20.years.ago, username: 'Test_God',
+                  biography: 'This is a test bio', password: 'password123')
+
+    login_as user
+    visit edit_user_registration_path
+    fill_in 'Username', with: 'Test_Abra'
+    fill_in 'Current Password', with: '12345678'
+    click_on 'Save Profile'
+
+    expect(page).to have_content '1 error prohibited this user from being saved'
+    expect(page).to have_content 'Current Password is invalid'
   end
 end
