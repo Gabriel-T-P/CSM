@@ -1,0 +1,34 @@
+<div class="min-h-screen flex items-center justify-center py-10 bg-gray-100">
+  <div class="w-full max-w-md p-8 bg-white shadow-md">
+    <%= title_h2(t('.title')) %>
+
+    <%= form_with model: @user do |f| %>
+      <div class="space-y-4">
+        <div>
+          <%= form_text_field(f, :first_name, autofocus: true) %>
+        </div>
+
+        <div>
+          <%= form_text_field(f, :last_name) %>
+        </div>
+
+        <div>
+          <%= form_text_field(f, :username) %>
+        </div>
+
+        <div>
+          <%= form_email_field(f, :email, autocomplete: "email") %>
+        </div>
+
+        <div>
+          <%= form_text_field(f, :location) %>
+        </div>
+
+        <div class="actions pt-1">
+          <%= form_submit_button(t('.save')) %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

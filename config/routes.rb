@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   localized do
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'registrations' }
     get '/profile/:username', to: 'profiles#show', as: :profile
   end
 end
