@@ -1,43 +1,100 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="min-h-screen flex items-center justify-center py-10 bg-gray-100">
+  <div class="w-full max-w-2xl p-8 bg-white shadow-md space-y-8">
+    <%= title_h2(t('.title')) %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <!-- Private Informations -->
+      <div class="border border-gray-300 p-6 mb-8 space-y-4">
+        <h3 class="text-lg font-semibold text-gray-700 mb-2"><%= t('.private_infos') %></h3>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <div>
+          <%= form_text_field(f, :first_name) %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+        <div>
+          <%= form_text_field(f, :last_name) %>
+        </div>
+
+        <div>
+          <%= form_email_field(f, :email) %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="text-sm text-gray-500">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+        </div>
+
+        <div>
+          <p class="text-xs text-gray-400 italic"><%= t('.leave_in_blank') %></p>
+          <%= form_password_field(f, :password) %>
+        </div>
+
+        <div>
+          <%= form_password_field(f, :password_confirmation) %>
+        </div>
+      </div>
+
+      <!-- Public Informations -->
+      <div class="border border-gray-300 p-6 mb-8 space-y-4">
+        <h3 class="text-lg font-semibold text-gray-700 mb-2"><%= t('.public_infos') %></h3>
+
+        <div>
+          <%= form_text_field(f, :username) %>
+        </div>
+
+        <div>
+          <%= form_text_field(f, :location) %>
+        </div>
+
+        <div>
+          <%= form_date_field(f, :birth_date) %>
+        </div>
+
+        <div>
+          <%= form_text_area_field(f, :biography) %>
+        </div>
+
+        <div>
+          <%= form_select_field(f, :gender, 
+          [[I18n.t("user.pronoun.male"), :male], [I18n.t("user.pronoun.female"), :female], [I18n.t("user.pronoun.neutral"), :neutral]]) %>
+        </div>
+      </div>
+
+      <!-- Current Password -->
+      <div class="w-full border border-gray-300 mb-4 p-4">
+        <p class="text-sm text-gray-500 italic mb-1">
+          <%= t('.need_current_password') %>
+        </p>
+        <%= form_password_field(f, :current_password, class: "w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-600 focus:border-gray-600") %>
+      </div>
+
+      <!-- Save Button -->
+      <div class="pt-4">
+        <%= form_submit_button(t('.save')) %>
+      </div>
     <% end %>
+
+    <!-- Danger Zone -->
+    <div class="border border-red-300 bg-red-100 p-6 rounded-none">
+      <%= title_h2(t('.warning')) %>
+      <div class="flex items-center justify-between bg-red-100">
+        <div>
+          <p class="text-m font-semibold text-gray-700"><%= t('.delete_my_account') %></p>
+          <p class="text-sm text-gray-600"><%= t('.irreversible_action') %>.</p>
+        </div>
+
+        <div>
+          <%= button_to t('.delete'), registration_path(resource_name),
+                data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
+                method: :delete,
+                class: "w-full py-2 px-4 border border-red-300 rounded-none bg-white text-red-600 text-sm font-semibold hover:bg-red-500 transition-colors" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-2">
+      <%= link_to t('.back'), :back, class: "text-sm text-gray-500 hover:underline" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

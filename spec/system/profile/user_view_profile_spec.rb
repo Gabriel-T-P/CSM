@@ -25,7 +25,7 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Email: user_1@email.com'
     expect(page).to have_content 'Location: Brazil'
     expect(page).to have_content 'Age: 20 years'
-    expect(page).to have_content 'Pronoun: he/him'
+    expect(page).to have_content 'Pronouns: he/him'
     expect(page).to have_content 'Member since 2025'
   end
 
@@ -49,6 +49,6 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Email: user_1@email.com'
     expect(page).to have_content 'Location: Brazil'
     expect(page).to have_content 'Age: 20 years'
-    expect(page).to have_content 'Pronoun: he/him'
+    expect(page).to have_content 'Pronouns: he/him'
   end
 end

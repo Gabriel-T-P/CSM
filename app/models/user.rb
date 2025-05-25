@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/, message: I18n.t("error_messages.username_format_validation") }
 
   def full_name
-    first_name.capitalize + " " + last_name.capitalize
+    first_name.titleize + " " + last_name.titleize
   end
 
   def age

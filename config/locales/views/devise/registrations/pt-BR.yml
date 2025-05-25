@@ -5,3 +5,15 @@ pt-BR:
         title: Criar uma conta
         min_characters: "Número mínimo de caracteres: %{number}"
         save: Registrar
+      edit:
+        title: Edite seu perfil
+        save: Salvar Perfil
+        private_infos: Informações Privadas
+        public_infos: Informações Públicas
+        leave_in_blank: Deixe em branco caso não queira alterar a senha
+        need_current_password: Nós precisamos da sua senha atual para confirmar as alterações
+        delete_my_account: Deletar Minha Conta
+        irreversible_action: Essa ação não pode ser desfeita
+        warning: Cuidado
+        delete: Deletar
+        back: Voltar

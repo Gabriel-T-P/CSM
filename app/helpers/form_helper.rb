@@ -31,4 +31,35 @@ module FormHelper
       form.password_field(field, class: input_classes)
     end
   end
+
+  def form_text_area_field(form, field, options = {})
+    wrapper_classes = options[:wrapper_class] || "mb-4"
+    input_classes = options[:input_class] || "mt-1 block w-full px-3 py-2 border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800"
+    rows = options[:rows] || 4
+
+    content_tag :div, class: wrapper_classes do
+      form.label(field, User.human_attribute_name(field), class: "block text-sm font-medium text-gray-700") +
+      form.text_area(field, rows: rows, class: input_classes)
+    end
+  end
+
+  def form_date_field(form, field, options = {})
+    wrapper_classes = options[:wrapper_class] || "mb-4"
+    input_classes = options[:input_class] || "mt-1 block w-full px-3 py-2 border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800"
+
+    content_tag :div, class: wrapper_classes do
+      form.label(field, User.human_attribute_name(field), class: "block text-sm font-medium text-gray-700") +
+      form.date_field(field, class: input_classes)
+    end
+  end
+
+  def form_select_field(form, field, choices, options = {}, html_options = {})
+    wrapper_classes = options[:wrapper_class] || "mb-4"
+    input_classes = html_options[:class] || "mt-1 block w-full px-3 py-2 border border-gray-800 text-gray-800 rounded-none bg-white focus:outline-none focus:ring-2 focus:ring-gray-800"
+
+    content_tag :div, class: wrapper_classes do
+      form.label(field, User.human_attribute_name(field), class: "block text-sm font-medium text-gray-700") +
+      form.select(field, choices, options, html_options.merge(class: input_classes))
+    end
+  end
 end

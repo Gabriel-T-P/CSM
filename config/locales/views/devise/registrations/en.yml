@@ -5,3 +5,16 @@ en:
         title: Sign up
         min_characters: "Minimum number of characters: %{number}"
         save: Register
+      edit:
+        title: Edit your profile
+        save: Save Profile
+        private_infos: Private Information
+        public_infos: Public Information
+        leave_in_blank: Leave blank if you don't want to change it
+        need_current_password: We need your current password to confirm your changes
+        delete_my_account: Delete My Account
+        irreversible_action: This action is irreversible
+        warning: Danger
+        delete: Delete
+        back: Back
+

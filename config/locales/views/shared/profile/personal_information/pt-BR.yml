@@ -1,9 +1,0 @@
-pt-BR:
-  shared:
-    profile:
-      personal_informations:
-        title: Informações Pessoais
-        full_name: Nome Completo
-        age: Idade
-        years: anos
-        not_informed: Não informado
