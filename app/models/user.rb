@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
+
   enum :role, { regular: 1, admin: 5 }, default: :regular
   enum :gender, { male: 1, female: 3, neutral: 5 }
 

@@ -45,6 +45,7 @@ RSpec.describe User, type: :model do
       it { should_not allow_value('&test_user').for(:username) }
       it { should define_enum_for(:role).with_values(regular: 1, admin: 5) }
       it { should define_enum_for(:gender).with_values(male: 1, female: 3, neutral: 5) }
+      it { should have_one_attached(:avatar) }
     end
   end
 

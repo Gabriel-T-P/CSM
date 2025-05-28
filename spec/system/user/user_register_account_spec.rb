@@ -23,6 +23,9 @@ describe 'User creates account', type: :system do
   end
 
   it 'successfully' do
+    fake_image = Rails.root.join("spec/support/files/test_avatar.png")
+    allow(Faraday).to receive(:get).and_return(fake_image)
+
     visit new_user_registration_path
     fill_in 'Name',	with: 'Test Name'
     fill_in 'Last Name',	with: 'Test Last Name'
@@ -39,6 +42,8 @@ describe 'User creates account', type: :system do
       expect(page).to have_content 'TEST_USERNAME'
       expect(page).to have_button 'Log out'
     end
+    user = User.last
+    expect(user.avatar).to be_attached
   end
 
   it 'and view presence errors messages' do
