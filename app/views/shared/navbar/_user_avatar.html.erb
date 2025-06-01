@@ -1,8 +1,9 @@
-<%= link_to root_path do %>
+<%= link_to profile_path(username: current_user.username) do %>
   <% if current_user.avatar.attached? %>
     <%= image_tag url_for(current_user.avatar),
-          class: "w-11 h-11 mr-1 border-2 border-gray-700 object-cover rounded-none" %>
+          class: "w-11 h-11 mr-1 border-2 border-gray-700 object-cover rounded-none avatar-profile" %>
   <% else %>
-    <div class="w-11 h-11 mr-1 border-2 border-gray-700 bg-gray-300"></div>
+    <%= image_tag "default_avatar.png",
+          class: "w-11 h-11 mr-1 border-2 border-gray-700 object-cover rounded-none avatar-profile" %>
   <% end %>
 <% end %>
