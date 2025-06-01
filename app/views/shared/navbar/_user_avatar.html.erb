@@ -1,0 +1,8 @@
+<%= link_to root_path do %>
+  <% if current_user.avatar.attached? %>
+    <%= image_tag url_for(current_user.avatar),
+          class: "w-11 h-11 mr-1 border-2 border-gray-700 object-cover rounded-none" %>
+  <% else %>
+    <div class="w-11 h-11 mr-1 border-2 border-gray-700 bg-gray-300"></div>
+  <% end %>
+<% end %>

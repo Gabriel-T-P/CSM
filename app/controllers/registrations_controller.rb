@@ -27,27 +27,29 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    def after_update_path_for(resource)
-      profile_path(resource.username)
-    end
+  def after_update_path_for(resource)
+    profile_path(resource.username)
+  end
 
-    def attach_default_avatar(user)
-      name = user.username
-      avatar_url = "https://ui-avatars.com/api/?name=#{name}&background=random&color=fff"
+  def attach_default_avatar(user)
+    name = user.username
+    api_url = "https://ui-avatars.com/api/?name=#{name}&size=128&background=random&color=fff"
+    response = Faraday.get(api_url)
 
-      response = Faraday.get(avatar_url) do |req|
-        req.options.timeout = 5
-        req.options.open_timeout = 3
-        req.headers['Accept'] = 'image/png'
-        req.headers['User-Agent'] = 'MyAppBot/1.0'
-      end
-
+    if response.success?
       user.avatar.attach(
         io: StringIO.new(response.body),
         filename: "avatar.png",
         content_type: response.headers['content-type']
       )
-    rescue Faraday::Error => e
-      Rails.logger.error("Erro ao tentar buscar avatar para user ##{user.id}: #{e.class} - #{e.message}")
+    else
+      Rails.logger.error("Avatar API error: #{response.status} - #{response.body}")
+      default_avatar_path = Rails.root.join("app/assets/images/default_avatar.png")
+      user.avatar.attach(
+        io: File.open(default_avatar_path),
+        filename: "default_avatar.png",
+        content_type: "image/png"
+      )
     end
+  end
 end
