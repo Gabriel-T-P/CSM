@@ -26,57 +26,43 @@ This project is built with a focus on maintainability and scalability, leveragin
 * **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
 * **RSpec:** A testing framework for Ruby.
 * **Cuprite:** A Ruby drive to run Capybara tests on a headless Chrome or Chromium.
+* **Faraday:** A HTTP client library abstraction layer that provides a common interface over many adapters.
+* **FactoryBot:** A fixtures replacement with a straightforward definition syntax.
+* **ShouldaMatchers:** Provides RSpec compatible one-liners to test common Rails functionality.
 * **SimpleCov:** A code coverage analysis tool for Ruby.
 * **Devise:** A flexible authentication solution for Rails based on Warden.
 
 ## Installation
 
-### Using Docker (Recommended)
+## Prerequisites
+
+Make sure you have the following software installed on your machine:
+
+* **Git:** To clone the repository. You can download it from [git-scm.com](https://git-scm.com/).
+* **Docker and Docker Compose:** Essential for running the application. Download and install them via [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/).
+
+### How to Run the Application
 
 To get the CSM application running quickly using Docker, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone <git@github.com:Gabriel-T-P/CSM.git>
+    git clone git@github.com:Gabriel-T-P/CSM.git
     cd CSM
     ```
 
-2.  **Build and run the Docker containers:**
+2.  **Build containers and run seeds:**
     ```bash
-    docker compose up -d --build
+    docker compose build
+    docker compose run --rm app rails db:reset
     ```
 
-3.  **Access the application:**
+3.  **Run and access the application:**
+    ```bash
+    docker compose up
+    ```
     Once the containers are running, the application should be accessible at `http://localhost:3000` in your web browser.
-
-### Without Docker
-
-If you prefer to run the application without Docker, ensure you have Ruby 3.4.2 and Rails 8.0.2 installed on your system. Then, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <git@github.com:Gabriel-T-P/CSM.git>
-    cd CSM
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    bundle install
-    ```
-
-3.  **Set up the database:**
-    Ensure proper connection with postgreSQL
-
-    ```bash
-    rails db:create db:migrate
-    ```
-
-4.  **Start the Rails server:**
-    ```bash
-    bin/dev
-    ```
-
-    The application will be available at `http://localhost:3000`.
+    To stop the application containers, press *Ctrl+C* in the terminal where docker compose up is running.
 
 ## Running Tests
 
@@ -91,7 +77,7 @@ This project follows Test-Driven Development (TDD), and tests are written using 
     Or with docker:
 
     ```bash
-    docker compose run app bundle exec rspec
+    docker compose run --rm app bundle exec rspec
     ```
     Those commands will run all the tests located in the `spec` directory.
 
