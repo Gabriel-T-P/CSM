@@ -1,6 +1,7 @@
 pt-BR:
   routes:
     users: usuarios
+    admin: admin
     profile: perfil
     password: senha
     new: novo
@@ -9,3 +10,4 @@ pt-BR:
     sign_in: entrar
     sign_out: sair
     sign_up: registrar
+    tags: marcadores

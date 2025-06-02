@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
+
+  def check_admin
+    return redirect_to root_path, alert: I18n.t('error_messages.route_negated') unless current_user.admin?
+  end
 end
