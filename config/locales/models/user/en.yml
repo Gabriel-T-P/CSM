@@ -6,6 +6,7 @@ en:
         other: Users
     attributes:
       user:
+        avatar: Profile Picture 
         email: Email
         first_name: Name
         last_name: Last Name

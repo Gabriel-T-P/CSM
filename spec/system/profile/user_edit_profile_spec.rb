@@ -32,6 +32,7 @@ describe 'User edits profile', type: :system do
 
     login_as user
     visit edit_user_registration_path
+    attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
     fill_in 'Name', with: 'First Name'
     fill_in 'Last Name', with: 'Last Surname'
     fill_in 'Password', with: '12345678'
@@ -46,6 +47,7 @@ describe 'User edits profile', type: :system do
 
     expect(current_path).to eq profile_path(username: 'Test_Username')
     expect(page).to have_content 'Your account has been updated successfully'
+    expect(page).to have_css("img[src*='test_avatar.png']")
     expect(page).to have_content 'Test_Username'
     expect(page).to have_content 'Full Name: First Name Last Surname'
     expect(page).to have_content 'Location: United Estates'

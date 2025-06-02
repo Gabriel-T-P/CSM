@@ -21,6 +21,7 @@ describe 'User views profile page', type: :system do
     login_as user
     visit profile_path(username: user.username)
 
+    expect(page).to have_css('.avatar-profile')
     expect(page).to have_content 'Full Name: User Test'
     expect(page).to have_content 'Email: user_1@email.com'
     expect(page).to have_content 'Location: Brazil'

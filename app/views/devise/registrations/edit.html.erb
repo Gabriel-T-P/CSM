@@ -38,6 +38,32 @@
       <div class="border border-gray-300 p-6 mb-8 space-y-4">
         <h3 class="text-lg font-semibold text-gray-700 mb-2"><%= t('.public_infos') %></h3>
 
+        <div class="mb-6">
+          <%= f.label :avatar, class: "block text-sm font-medium text-gray-700 mb-2" %>
+
+          <div class="flex items-center gap-6">
+            <% if resource.avatar.attached? %>
+              <%= image_tag url_for(resource.avatar), class: "w-20 h-20 border border-gray-700 object-cover rounded-none shadow-sm" %>
+            <% else %>
+              <div class="w-20 h-20 border border-gray-700 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
+                N/A
+              </div>
+            <% end %>
+
+            <div class="relative">
+              <label class="inline-flex items-center gap-2 px-4 py-2 border border-gray-700 bg-white rounded-none text-gray-700 text-sm font-medium rounded hover:bg-gray-200 cursor-pointer transition">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                </svg>
+
+                <%= t('.change_profile_picture') %>
+                <%= f.file_field :avatar, class: "absolute left-0 top-0 opacity-0 w-full h-full cursor-pointer" %>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
         <div>
           <%= form_text_field(f, :username) %>
         </div>

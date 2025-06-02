@@ -6,6 +6,7 @@ pt-BR:
         other: Usuários
     attributes:
       user:
+        avatar: Foto de Perfil
         email: E-mail
         first_name: Nome
         last_name: Sobrenome

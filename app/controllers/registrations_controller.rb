@@ -40,7 +40,7 @@ class RegistrationsController < Devise::RegistrationsController
       user.avatar.attach(
         io: StringIO.new(response.body),
         filename: "avatar.png",
-        content_type: response.headers['content-type']
+        content_type: response.headers["content-type"]
       )
     else
       Rails.logger.error("Avatar API error: #{response.status} - #{response.body}")
