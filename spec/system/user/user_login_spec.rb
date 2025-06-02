@@ -34,6 +34,7 @@ describe 'User login account', type: :system do
       expect(page).to have_content 'TESTING'
       expect(page).to have_button 'Log out'
       expect(page).not_to have_link 'LOG IN'
+      expect(page).to have_css('.avatar-profile')
     end
   end
 

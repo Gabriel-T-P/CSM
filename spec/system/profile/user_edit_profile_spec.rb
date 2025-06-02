@@ -32,6 +32,7 @@ describe 'User edits profile', type: :system do
 
     login_as user
     visit edit_user_registration_path
+    attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
     fill_in 'Name', with: 'First Name'
     fill_in 'Last Name', with: 'Last Surname'
     fill_in 'Password', with: '12345678'
@@ -42,10 +43,11 @@ describe 'User edits profile', type: :system do
     fill_in 'Birth Date', with: 25.years.ago
     select 'she/her', from: 'Pronouns'
     fill_in 'Current Password', with: 'password123'
-    click_on 'Save Profile'
+    click_on 'SAVE PROFILE'
 
     expect(current_path).to eq profile_path(username: 'Test_Username')
     expect(page).to have_content 'Your account has been updated successfully'
+    expect(page).to have_css("img[src*='test_avatar.png']")
     expect(page).to have_content 'Test_Username'
     expect(page).to have_content 'Full Name: First Name Last Surname'
     expect(page).to have_content 'Location: United Estates'
@@ -68,12 +70,12 @@ describe 'User edits profile', type: :system do
     fill_in 'Username', with: 'Test Abra'
     fill_in 'Birth Date', with: 25.years.from_now
     fill_in 'Current Password', with: 'password123'
-    click_on 'Save Profile'
+    click_on 'SAVE PROFILE'
 
     expect(page).to have_content '5 errors prohibited this user from being saved'
     expect(page).to have_content "Name can't be blank"
     expect(page).to have_content "Last Name can't be blank"
-    expect(page).to have_content 'Birth Date must be less than or equal to 2025-05-25'
+    expect(page).to have_content "Birth Date must be less than or equal to #{Date.current}"
     expect(page).to have_content 'Username only permits letters, numbers and _'
     expect(page).to have_content "Password Confirmation doesn't match Password"
   end
@@ -87,7 +89,7 @@ describe 'User edits profile', type: :system do
     visit edit_user_registration_path
     fill_in 'Username', with: 'Test_Abra'
     fill_in 'Current Password', with: ' '
-    click_on 'Save Profile'
+    click_on 'SAVE PROFILE'
 
     expect(page).to have_content '1 error prohibited this user from being saved'
     expect(page).to have_content "Current Password can't be blank"
@@ -102,7 +104,7 @@ describe 'User edits profile', type: :system do
     visit edit_user_registration_path
     fill_in 'Username', with: 'Test_Abra'
     fill_in 'Current Password', with: '12345678'
-    click_on 'Save Profile'
+    click_on 'SAVE PROFILE'
 
     expect(page).to have_content '1 error prohibited this user from being saved'
     expect(page).to have_content 'Current Password is invalid'

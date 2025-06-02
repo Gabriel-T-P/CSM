@@ -38,6 +38,35 @@
       <div class="border border-gray-300 p-6 mb-8 space-y-4">
         <h3 class="text-lg font-semibold text-gray-700 mb-2"><%= t('.public_infos') %></h3>
 
+        <div class="flex items-center gap-6" data-controller="avatar-preview">
+          <% if resource.avatar.attached? %>
+            <%= image_tag url_for(resource.avatar),
+              class: "w-20 h-20 border border-gray-700 object-cover rounded-none shadow-sm",
+              data: { avatar_preview_target: "preview" } %>
+          <% else %>
+            <img
+              src="<%= asset_path('default_avatar.png') %>"
+              class="w-20 h-20 border border-gray-700 object-cover rounded-none shadow-sm"
+              data-avatar-preview-target="preview"
+            />
+          <% end %>
+
+          <div class="relative">
+            <label class="inline-flex items-center gap-2 px-4 py-2 border border-gray-700 bg-white rounded-none text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500 group">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="size-5 transition-transform group-hover:rotate-6 text-gray-700">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+
+              <%= t('.change_profile_picture') %>
+              <%= f.file_field :avatar,
+                  class: "absolute left-0 top-0 opacity-0 w-full h-full cursor-pointer",
+                  data: { avatar_preview_target: "input", action: "avatar-preview#previewImage" } %>
+            </label>
+          </div>
+        </div>
+
         <div>
           <%= form_text_field(f, :username) %>
         </div>

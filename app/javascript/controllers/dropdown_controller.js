@@ -1,51 +1,37 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["menu"]
+  static targets = ["container", "menu", "icon"]
 
   connect() {
-    this.boundCloseAll = this.closeIfClickedOutside.bind(this)
-    document.addEventListener("click", this.boundCloseAll)
-
-    window.addEventListener("dropdown:closeAll", (event) => {
-      if (event.detail !== this) {
-        this.close()
-      }
-    })
-  }
-
-  disconnect() {
-    document.removeEventListener("click", this.boundCloseAll)
-    window.removeEventListener("dropdown:closeAll", this.boundCloseAll)
+    this.open = false
   }
 
   toggle(event) {
-    event.stopPropagation()
+    this.open = !this.open
+    this.updateDropdown()
+  }
 
-    const isOpen = this.menuTarget.classList.contains("opacity-100")
+  close() {
+    this.open = false
+    this.updateDropdown()
+  }
 
-    window.dispatchEvent(new CustomEvent("dropdown:closeAll", { detail: this }))
-
-    if (!isOpen) {
-      this.open()
-    } else {
+  closeIfOutside(event) {
+    if (!this.containerTarget.contains(event.target)) {
       this.close()
     }
   }
 
-  open() {
-    this.menuTarget.classList.add("opacity-100", "pointer-events-auto")
-    this.menuTarget.classList.remove("opacity-0", "pointer-events-none")
-  }
-
-  close() {
-    this.menuTarget.classList.remove("opacity-100", "pointer-events-auto")
-    this.menuTarget.classList.add("opacity-0", "pointer-events-none")
-  }
-
-  closeIfClickedOutside(event) {
-    if (!this.element.contains(event.target)) {
-      this.close()
+  updateDropdown() {
+    if (this.open) {
+      this.menuTarget.classList.remove("opacity-0", "pointer-events-none")
+      this.menuTarget.classList.add("opacity-100", "pointer-events-auto")
+      this.iconTarget.classList.add("rotate-180")
+    } else {
+      this.menuTarget.classList.remove("opacity-100", "pointer-events-auto")
+      this.menuTarget.classList.add("opacity-0", "pointer-events-none")
+      this.iconTarget.classList.remove("rotate-180")
     }
   }
 }

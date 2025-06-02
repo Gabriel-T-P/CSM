@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :username, :first_name, :last_name ])
 
     update_attrs = [ :password, :password_confirmation, :current_password, :username, :location, :birth_date,
-                    :biography, :first_name, :last_name, :gender ]
+                    :biography, :first_name, :last_name, :gender, :avatar ]
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
