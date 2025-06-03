@@ -4,3 +4,6 @@ en:
       index:
         new_tag: New Tag
         save: Create Tag
+      create:
+        success: Tag created with success
+        error: Failed to create tag

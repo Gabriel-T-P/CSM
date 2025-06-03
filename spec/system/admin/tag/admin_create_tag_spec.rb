@@ -13,7 +13,7 @@ describe 'Admin creates tags', type: :system do
     expect(current_path).to eq admin_tags_path
     expect(page).to have_content "New Tag"
   end
-  
+
   it 'successfully' do
     admin = create(:user, role: :admin)
 
@@ -21,10 +21,37 @@ describe 'Admin creates tags', type: :system do
     visit admin_tags_path
     fill_in 'Name',	with: 'Test Tag Name'
     click_on 'Create Tag'
-    
+
     expect(current_path).to eq admin_tags_path
     expect(page).to have_content 'Tag created with success'
     expect(page).to have_content 'Test Tag Name'
+  end
+
+  it 'and fails for presence error' do
+    admin = create(:user, role: :admin)
+
+    login_as admin
+    visit admin_tags_path
+    fill_in 'Name',	with: ' '
+    click_on 'Create Tag'
+
+    expect(current_path).to eq admin_tags_path
+    expect(page).to have_content 'Failed to create tag'
+    expect(page).to have_content "Name can't be blank"
+  end
+
+  it 'and fails for uniqueness error' do
+    admin = create(:user, role: :admin)
+    create(:tag, name: 'Teste')
+
+    login_as admin
+    visit admin_tags_path
+    fill_in 'Name',	with: 'Teste'
+    click_on 'Create Tag'
+
+    expect(current_path).to eq admin_tags_path
+    expect(page).to have_content 'Failed to create tag'
+    expect(page).to have_content 'Name has already been taken'
   end
 
   it 'and its not authenticated' do

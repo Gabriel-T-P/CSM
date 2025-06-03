@@ -10,11 +10,12 @@ class Admin::TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      flash[:notice] = "Tag created with success"
-      redirect_to request.referrer
+      flash[:notice] = t(".success")
+      redirect_to admin_tags_path
     else
-      flash[:alert] = "Something went wrong"
-      redirect_to request.referrer
+      flash.now[:alert] = t(".error")
+      @tags = Tag.all
+      render :index
     end
   end
 

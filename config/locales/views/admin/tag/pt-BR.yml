@@ -4,3 +4,6 @@ pt-BR:
       index:
         new_tag: Novo Marcador
         save: Criar Marcador
+      create:
+        success: Marcador criado com sucesso
+        error: Falha ao criar o marcador

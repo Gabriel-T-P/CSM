@@ -30,6 +30,7 @@
 
     <%= form_with model: @tag, url: admin_tags_path do |f| %>
       <%= form_text_field(f, :name) %>
+      <%= form_errors(@tag, :name) %>
 
       <%= form_submit_button(t('.save')) %>
     <% end %>
