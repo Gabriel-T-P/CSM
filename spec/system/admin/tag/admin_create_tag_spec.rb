@@ -1,8 +1,17 @@
 require 'rails_helper'
 
 describe 'Admin creates tags', type: :system do
-  xit 'by navbar' do
-    
+  it 'by navbar' do
+    admin = create(:user, role: :admin)
+
+    login_as admin
+    visit root_path
+    within 'nav' do
+      click_on 'Tags'
+    end
+
+    expect(current_path).to eq admin_tags_path
+    expect(page).to have_content "New Tag"
   end
   
   it 'successfully' do

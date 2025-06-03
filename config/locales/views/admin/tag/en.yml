@@ -1,0 +1,6 @@
+en:
+  admin:
+    tags:
+      index:
+        new_tag: New Tag
+        save: Create Tag

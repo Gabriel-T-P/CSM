@@ -1,0 +1,6 @@
+pt-BR:
+  admin:
+    tags:
+      index:
+        new_tag: Novo Marcador
+        save: Criar Marcador

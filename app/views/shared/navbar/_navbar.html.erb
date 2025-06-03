@@ -13,11 +13,10 @@
       
       <!-- Admin User -->
       <% if current_user.admin? %>
-        <span class="px-4 py-1 font-medium text-gray-800 hover:text-gray-400 transition">
-          ADMIN
-        </span>
+        <%= render 'shared/navbar/admin_button' %>
       <% end %>
       <!-- End Admin User -->
+
       <%= render 'shared/navbar/user_button' %>
       <%= render 'shared/navbar/user_avatar' %>
 
