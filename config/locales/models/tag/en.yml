@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      tag:
+        one: Tag
+        other: Tags
+    attributes:
+      tag:
+        name: Name
+

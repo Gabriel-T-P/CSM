@@ -15,5 +15,9 @@ Rails.application.routes.draw do
   localized do
     devise_for :users, controllers: { registrations: 'registrations' }
     get '/profile/:username', to: 'profiles#show', as: :profile
+
+    namespace :admin do
+      resources :tags, only: [:index, :create]
+    end
   end
 end

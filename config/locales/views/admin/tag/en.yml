@@ -1,0 +1,10 @@
+en:
+  admin:
+    tags:
+      index:
+        new_tag: New Tag
+      form:
+        save: Create Tag
+      create:
+        success: Tag created with success
+        error: Failed to create tag
