@@ -3,6 +3,7 @@ pt-BR:
     tags:
       index:
         new_tag: Novo Marcador
+      form:
         save: Criar Marcador
       create:
         success: Marcador criado com sucesso

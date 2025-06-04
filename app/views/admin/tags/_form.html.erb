@@ -1,0 +1,7 @@
+<%= form_with model: tag, url: admin_tags_path, data: { turbo_frame: "tags_list" }, class: "space-y-4" do |f| %>
+  <%= form_text_field(f, :name) %>
+  <%= form_errors(@tag, :name) %>
+  <%= form_success(@success_message) %>
+
+  <%= form_submit_button(t('.save')) %>
+<% end %>
