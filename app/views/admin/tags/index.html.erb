@@ -1,25 +1,27 @@
 <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-  <div class="md:col-span-2">
-    <div class="mb-6">
-      <%= form_with url: admin_tags_path, method: :get, local: true, class: "flex gap-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('.search_tag'), class: "w-full border border-gray-300 px-3 py-2 rounded-none shadow-sm focus:ring focus:ring-gray-500 focus:border-gray-700" %>
-        <%= f.submit t('.search'), class: "px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-none hover:bg-gray-700 transition" %>
-      <% end %>
-    </div>
-
-    <div class="mt-8">
-      <%= turbo_frame_tag "tags_list" do %>
-        <%= render "tags_list", tags: @tags %>
-      <% end %>
-    </div>
-
-    <% if @tags.empty? %>
-      <div class="mt-6 text-center text-gray-500">
-        <p><%= t('.no_tags_found') %></p>
+  <section>
+    <div class="md:col-span-2">
+      <div class="mb-6">
+        <%= form_with url: admin_tags_path, method: :get, local: true, class: "flex gap-2" do |f| %>
+          <%= f.text_field :q, value: params[:q], placeholder: t('.search_tag'), class: "w-full border border-gray-300 px-3 py-2 rounded-none shadow-sm focus:ring focus:ring-gray-500 focus:border-gray-700" %>
+          <%= f.submit t('.search'), class: "px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-none hover:bg-gray-700 transition" %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+
+      <div class="mt-8">
+        <%= turbo_frame_tag "tags_list" do %>
+          <%= render "tags_list", tags: @tags %>
+        <% end %>
+      </div>
+
+      <% if @tags.empty? %>
+        <div class="mt-6 text-center text-gray-500">
+          <p><%= t('.no_tags_found') %></p>
+        </div>
+      <% end %>
+    </div>
+  </section>
 
   <div class="md:col-span-1 bg-white border-2 border-gray-700 p-6 shadow-sm h-fit">
     <h2 class="text-lg font-semibold text-gray-800 mb-4">

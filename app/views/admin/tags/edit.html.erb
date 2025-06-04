@@ -1,0 +1,7 @@
+<div>
+  <h1>Edit quote</h1>
+</div>
+
+<%= turbo_frame_tag @tag do %>
+  <%= render "form", tag: @tag %>
+<% end %>
