@@ -10,3 +10,5 @@ en:
         error: Failed to create tag
       tags_list:
         confirm_delete: Are you sure ?
+      edit:
+        save: Update

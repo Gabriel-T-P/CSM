@@ -21,7 +21,6 @@ class Admin::TagsController < ApplicationController
     else
       @tags = Tag.all
       respond_to do |format|
-        format.turbo_stream
         format.html do
           flash.now[:alert] = t(".error")
           render :index, status: :unprocessable_entity
@@ -37,7 +36,7 @@ class Admin::TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to admin_tags_path
     else
-      render :edit, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 

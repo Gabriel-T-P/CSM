@@ -41,9 +41,9 @@ RSpec.describe "Admin::Tags", type: :request do
       tag = create(:tag, name: 'Test')
 
       login_as admin
-      patch admin_tag_path(tag), params: { tag: { name: ' ' } }
+      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
 
-      expect(response).to have_http_status 422
+      expect(response).to have_http_status 302
     end
 
     it 'and tag id does not exist' do

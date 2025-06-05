@@ -41,6 +41,7 @@ describe 'Admin edits tags', type: :system do
     visit admin_tags_path
     find('.test-edit-btn').click
     fill_in 'Name',	with: 'Test Tag Name'
+    find('.test-confirm-btn').click
     click_on 'Save'
 
     expect(current_path).to eq admin_tags_path
@@ -55,7 +56,8 @@ describe 'Admin edits tags', type: :system do
     login_as admin
     visit admin_tags_path
     find('.test-edit-btn').click
-    fill_in 'Name',	with: ' '
+    fill_in 'Name',	with: 'First Name'
+    find('.test-confirm-btn').click
     click_on 'Save'
 
     expect(page).to have_content "Name can't be blank"
