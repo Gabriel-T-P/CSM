@@ -8,3 +8,5 @@ en:
       create:
         success: Tag created with success
         error: Failed to create tag
+      tags_list:
+        confirm_delete: Are you sure ?

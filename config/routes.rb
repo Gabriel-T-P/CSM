@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get '/profile/:username', to: 'profiles#show', as: :profile
 
     namespace :admin do
-      resources :tags, only: [:index, :create, :edit, :update]
+      resources :tags, only: [:index, :create, :edit, :update, :destroy]
     end
   end
 end

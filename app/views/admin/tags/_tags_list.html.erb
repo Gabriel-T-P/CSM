@@ -17,7 +17,7 @@
           <% end %>
 
           <!-- Delete -->
-          <%= link_to root_path, data: { turbo_frame: "_top" }, class: "text-red-600 hover:text-red-800 transition" do %>
+          <%= button_to admin_tag_path(tag), method: :delete, data: { confirm: t('.confirm_delete'), turbo_frame: "_top" }, class: "text-red-600 hover:text-red-800 transition test-delete-btn" do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>

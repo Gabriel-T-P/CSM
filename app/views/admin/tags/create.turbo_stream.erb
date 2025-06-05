@@ -1,3 +1,3 @@
 <%= turbo_stream.replace "tag_form", partial: "form", locals: { tag: Tag.new } %>
 
-<%= turbo_stream.replace "tags_list", partial: "tags_list", locals: { tags: @tags } %>
+<%= turbo_stream.update "tags_list", partial: "tags_list", locals: { tags: @tags } %>

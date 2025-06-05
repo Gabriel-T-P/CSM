@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Tags", type: :request do
-  describe 'Admin updates tag' do
+  describe 'Admin deletes tag' do
     it 'and its not authenticated' do
       tag = create(:tag)
 
-      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
+      delete admin_tag_path(tag)
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to new_user_session_path
@@ -17,7 +17,7 @@ RSpec.describe "Admin::Tags", type: :request do
       tag = create(:tag)
 
       login_as user
-      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
+      delete admin_tag_path(tag)
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to root_path(locale: :en)
@@ -29,28 +29,18 @@ RSpec.describe "Admin::Tags", type: :request do
       tag = create(:tag, name: 'Test')
 
       login_as admin
-      patch admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
+      delete admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
 
-      tag.reload
       expect(response).to redirect_to admin_tags_path
-      expect(tag.name).to eq 'Not a test'
-    end
-
-    it 'with wrong parameters' do
-      admin = create(:user, role: :admin)
-      tag = create(:tag, name: 'Test')
-
-      login_as admin
-      patch admin_tag_path(tag), params: { tag: { name: ' ' } }
-
-      expect(response).to have_http_status 422
+      expect(flash[:notice]).to eq 'Tag was successfully destroyed.'
+      expect(Tag.count).to eq 0
     end
 
     it 'and tag id does not exist' do
       admin = create(:user, role: :admin)
 
       login_as admin
-      patch admin_tag_path(id: 88898), params: { tag: { name: 'Test' } }
+      delete admin_tag_path(id: 88898)
 
       expect(response).to have_http_status 404
     end

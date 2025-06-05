@@ -8,3 +8,5 @@ pt-BR:
       create:
         success: Marcador criado com sucesso
         error: Falha ao criar o marcador
+      tags_list:
+        confirm_delete: Você tem certeza ?
