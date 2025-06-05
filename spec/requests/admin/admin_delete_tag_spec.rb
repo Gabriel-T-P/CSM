@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Tags", type: :request do
-  describe 'Admin creates tag' do
+  describe 'Admin deletes tag' do
     it 'and its not authenticated' do
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      tag = create(:tag)
+
+      delete admin_tag_path(tag)
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to new_user_session_path
@@ -12,9 +14,10 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'and its a regular user' do
       user = create(:user)
+      tag = create(:tag)
 
       login_as user
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      delete admin_tag_path(tag)
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to root_path(locale: :en)
@@ -23,22 +26,23 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'successfully' do
       admin = create(:user, role: :admin)
+      tag = create(:tag, name: 'Test')
 
       login_as admin
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      delete admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
 
       expect(response).to redirect_to admin_tags_path
-      expect(flash[:notice]).to eq 'Tag created with success'
+      expect(flash[:notice]).to eq 'Tag was successfully destroyed.'
+      expect(Tag.count).to eq 0
     end
 
-    it 'with wrong parameters' do
+    it 'and tag id does not exist' do
       admin = create(:user, role: :admin)
 
       login_as admin
-      post admin_tags_path, params: { tag: { name: ' ' } }
+      delete admin_tag_path(id: 88898)
 
-      expect(response).to have_http_status 422
-      expect(flash[:alert]).to eq 'Failed to create tag'
+      expect(response).to have_http_status 404
     end
   end
 end

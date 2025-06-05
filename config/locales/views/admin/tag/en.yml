@@ -4,7 +4,11 @@ en:
       index:
         new_tag: New Tag
       form:
-        save: Create Tag
+        save: Save
       create:
         success: Tag created with success
         error: Failed to create tag
+      tags_list:
+        confirm_delete: Are you sure ?
+      edit:
+        save: Update

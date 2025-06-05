@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Tags", type: :request do
-  describe 'Admin creates tag' do
+  describe 'Admin updates tag' do
     it 'and its not authenticated' do
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      tag = create(:tag)
+
+      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to new_user_session_path
@@ -12,9 +14,10 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'and its a regular user' do
       user = create(:user)
+      tag = create(:tag)
 
       login_as user
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
 
       expect(response).to have_http_status 302
       expect(response).to redirect_to root_path(locale: :en)
@@ -23,22 +26,33 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'successfully' do
       admin = create(:user, role: :admin)
+      tag = create(:tag, name: 'Test')
 
       login_as admin
-      post admin_tags_path, params: { tag: { name: 'Test' } }
+      patch admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
 
+      tag.reload
       expect(response).to redirect_to admin_tags_path
-      expect(flash[:notice]).to eq 'Tag created with success'
+      expect(tag.name).to eq 'Not a test'
     end
 
     it 'with wrong parameters' do
       admin = create(:user, role: :admin)
+      tag = create(:tag, name: 'Test')
 
       login_as admin
-      post admin_tags_path, params: { tag: { name: ' ' } }
+      patch admin_tag_path(tag), params: { tag: { name: 'Test' } }
 
-      expect(response).to have_http_status 422
-      expect(flash[:alert]).to eq 'Failed to create tag'
+      expect(response).to have_http_status 302
+    end
+
+    it 'and tag id does not exist' do
+      admin = create(:user, role: :admin)
+
+      login_as admin
+      patch admin_tag_path(id: 88898), params: { tag: { name: 'Test' } }
+
+      expect(response).to have_http_status 404
     end
   end
 end
