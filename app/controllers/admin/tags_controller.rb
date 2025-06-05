@@ -1,7 +1,7 @@
 class Admin::TagsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
-  before_action :set_tag, only: [:edit, :update]
+  before_action :set_tag, only: [ :edit, :update ]
 
   def index
     @tag = Tag.new()
