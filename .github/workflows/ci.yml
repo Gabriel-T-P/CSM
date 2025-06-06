@@ -40,43 +40,43 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  # test:
-  #   runs-on: ubuntu-latest
-  #   container: ruby:3.3.1
-  #   services:
-  #     postgres:
-  #       image: postgres:17.4
-  #       env:
-  #         POSTGRES_USER: postgres
-  #         POSTGRES_PASSWORD: postgres
-  #       options: >-
-  #         --health-cmd pg_isready
-  #         --health-interval 10s
-  #         --health-timeout 5s
-  #         --health-retries 5
+  test:
+    runs-on: ubuntu-latest
+    container: ruby:3.3.1
+    services:
+      postgres:
+        image: postgres:17.4
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  #     - name: Set up gems
-  #       run: |
-  #           bundle install
-  #           apt update -y
-  #           apt install chromium -y
+      - name: Set up gems
+        run: |
+            bundle install
+            apt update -y
+            apt install chromium -y
 
-  #     - name: Setup Rails DB
-  #       run: bin/rails db:setup
-  #       env:
-  #         RAILS_ENV: test
-  #         DB_HOST: postgres
-  #         DB_USERNAME: postgres
-  #         DB_PASSWORD: postgres
+      - name: Setup Rails DB
+        run: bin/rails db:setup
+        env:
+          RAILS_ENV: test
+          DB_HOST: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
 
-  #     - name: RSpec
-  #       run: bundle exec rspec
-  #       env:
-  #         RAILS_ENV: test
-  #         DB_HOST: postgres
-  #         DB_USERNAME: postgres
-  #         DB_PASSWORD: postgres
+      - name: RSpec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
+          DB_HOST: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
