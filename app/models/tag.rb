@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
+  private
+  
   def self.ordered(order)
     case order
     when 'name_asc'
