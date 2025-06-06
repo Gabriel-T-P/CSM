@@ -4,7 +4,11 @@
     <div class="mb-6">
       <%= form_with url: admin_tags_path, method: :get, local: true, class: "flex gap-2" do |f| %>
         <%= f.text_field :q, value: params[:q], placeholder: t('.search_tag'), class: "w-full border border-gray-300 px-3 py-2 rounded-none shadow-sm focus:ring focus:ring-gray-500 focus:border-gray-700" %>
-        <%= f.submit t('.search'), class: "px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-none hover:bg-gray-700 transition" %>
+        <button type="submit" class="p-2 px-5 bg-gray-800 text-white rounded-none hover:bg-gray-700 transition test-search-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+          </svg>
+        </button>
       <% end %>
     </div>
 

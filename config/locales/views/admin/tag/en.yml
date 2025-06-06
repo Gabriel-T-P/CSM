@@ -3,6 +3,7 @@ en:
     tags:
       index:
         new_tag: New Tag
+        search_tag: Search for tag name
       form:
         save: Save
       create:
