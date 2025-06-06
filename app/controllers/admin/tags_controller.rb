@@ -5,7 +5,13 @@ class Admin::TagsController < ApplicationController
 
   def index
     @tag = Tag.new()
-    @tags = Tag.all
+    if params[:q].present?
+      @tags = Tag.where("name LIKE ?", "%#{Tag.sanitize_sql_like(params[:q])}%")
+      @tags = @tags.ordered(params[:order]) if params[:order].present?
+    else
+      @tags = Tag.all
+      @tags = @tags.ordered(params[:order]) if params[:order].present?
+    end
   end
 
   def create

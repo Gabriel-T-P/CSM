@@ -3,6 +3,12 @@ en:
     tags:
       index:
         new_tag: New Tag
+        search_tag: Search for tag name
+        search: Search
+        order_default: Oldest
+        order_name_asc: Name A-Z
+        order_name_desc: Name Z-A
+        order_created_desc: Most recent
       form:
         save: Save
       create:

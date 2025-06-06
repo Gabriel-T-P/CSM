@@ -3,6 +3,12 @@ pt-BR:
     tags:
       index:
         new_tag: Novo Marcador
+        search_tag: Buscar por nome do marcador
+        search: Buscar
+        order_default: Mais antigas
+        order_name_asc: Nome A-Z
+        order_name_desc: Nome Z-A
+        order_created_desc: Mais recentes
       form:
         save: Salvar
       create:
