@@ -24,5 +24,5 @@ user.avatar.attach(
 # Tags
 puts '\n== Creating tags =='
 ['Tag One', 'Tag Two', 'Tag Three', 'Tag Four'].each do |tag|
-  create(:tag, name: tag)
+  Tag.create!(name: tag)
 end
