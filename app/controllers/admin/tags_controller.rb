@@ -7,8 +7,10 @@ class Admin::TagsController < ApplicationController
     @tag = Tag.new()
     if params[:q].present?
       @tags = Tag.where("name LIKE ?", "%#{Tag.sanitize_sql_like(params[:q])}%")
+      @tags = @tags.ordered(params[:order]) if params[:order].present?
     else
       @tags = Tag.all
+      @tags = @tags.ordered(params[:order]) if params[:order].present?
     end
   end
 
