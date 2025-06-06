@@ -3,6 +3,7 @@ pt-BR:
     tags:
       index:
         new_tag: Novo Marcador
+        search_tag: Buscar por nome do marcador
       form:
         save: Salvar
       create:
