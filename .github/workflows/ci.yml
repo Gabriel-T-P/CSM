@@ -66,7 +66,7 @@ jobs:
             apt install chromium -y
 
       - name: Setup Rails DB
-        run: bin/rails db:setup
+        run: bundle exec rails db:prepare
         env:
           RAILS_ENV: test
           DB_HOST: postgres
