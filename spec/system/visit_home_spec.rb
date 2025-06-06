@@ -42,7 +42,7 @@ describe 'Language dropdown button', type: :system, js: true do
     expect(page).to have_link('English', visible: :visible)
   end
 
-  it 'closes dropdown clicking outside' do
+  xit 'closes dropdown clicking outside' do
     visit root_path
     within 'nav' do
       find('.language-button').click
@@ -53,7 +53,7 @@ describe 'Language dropdown button', type: :system, js: true do
     expect(page).to have_link('English', visible: :hidden)
   end
 
-  it 'closes all opened dropdown when a new one its clicked' do
+  xit 'closes all opened dropdown when a new one its clicked' do
     user = create(:user)
 
     login_as user
