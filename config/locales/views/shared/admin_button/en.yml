@@ -3,3 +3,4 @@ en:
     navbar:
       admin_button:
         tags: Tags
+        announcements: Announcements
