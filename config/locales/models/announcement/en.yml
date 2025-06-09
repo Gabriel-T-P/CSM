@@ -6,8 +6,8 @@ en:
         other: Annoucements
     attributes:
       annoucement:
-        title: title
-        body: body
+        title: Title
+        body: Description
         start_at: Start At
         end_at: End At
     errors:
