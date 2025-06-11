@@ -1,11 +1,11 @@
 pt-BR:
   activerecord:
     models:
-      annoucement:
+      announcement:
         one: Anúncio
         other: Anúncios
     attributes:
-      annoucement:
+      announcement:
         title: Título
         body: Corpo
         start_at: Começa Em

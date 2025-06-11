@@ -1,0 +1,18 @@
+en:
+  admin:
+    announcements:
+      index:
+        add_new_announcement: Add New Announcement
+        page_description: Manage visible announcements to users
+      form:
+        save: Save
+        cancel: Cancel
+      announcements_table:
+        actions: Actions
+        edit: Edit
+        delete: Delete
+      create:
+        success: Tag created with success
+        error: Failed to create tag
+      edit:
+        save: Update

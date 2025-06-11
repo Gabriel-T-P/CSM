@@ -1,20 +1,24 @@
 <%= form_with model: announcement, url: [:admin, announcement],
               class: "bg-white border-2 p-4 rounded-none shadow-md space-y-4 mt-4" do |f| %>
 
-  <%= form_text_field(f, :title) %>
+  <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+  <%= f.text_field :title, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+
+  <%= f.label :body, class: "block text-sm font-medium text-gray-700" %>
+  <%= f.text_area :body, class: "block w-full px-3 py-2 border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800" %>
 
   <%= f.label :start_at, class: "block text-sm font-medium text-gray-700" %>
-  <%= f.datetime_local_field :start_at, class: "w-full border border-gray-800 p-2" %>
+  <%= f.datetime_local_field :start_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
 
   <%= f.label :end_at, class: "block text-sm font-medium text-gray-700" %>
-  <%= f.datetime_local_field :end_at, class: "w-full border border-gray-800 p-2" %>
+  <%= f.datetime_local_field :end_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
 
-  <div class="flex justify-between">
-    <%= f.submit "Salvar", class: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md" %>
+  <div class="flex justify-around">
+    <%= form_submit_button(t('.save')) %>
 
-    <%= button_to "Cancelar", 
+    <%= button_to t('.cancel'), 
         admin_announcements_path, 
-        method: :get, 
+        method: :get,
         form: { data: { turbo_frame: "announcement_form" } },
         class: "text-gray-500 hover:underline" %>
   </div>

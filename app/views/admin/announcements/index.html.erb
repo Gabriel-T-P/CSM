@@ -1,13 +1,9 @@
-<h1 class="text-2xl font-bold mb-4">New Announcement</h1>
-
-<div class="max-w-4xl mx-auto mt-8">
+<div class="max-w-4xl mx-auto mt-15">
   <%= turbo_frame_tag "announcement_form" do %>
     <div class="flex justify-between items-center mb-4">
-      <p class="text-gray-600">Gerencie os anúncios visíveis aos usuários do sistema.</p>
+      <p class="mx-3 text-gray-600"><%= t('.page_description') %>.</p>
 
-      <%= link_to "Add New Announcement",
-                  new_admin_announcement_path,
-                  class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md test-add-announcement-btn" %>
+      <%= outline_link_to(t('.add_new_announcement'), new_admin_announcement_path) %>
     </div>
   <% end %>
 

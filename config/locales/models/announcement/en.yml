@@ -1,11 +1,11 @@
 en:
   activerecord:
     models:
-      annoucement:
-        one: Annoucement
-        other: Annoucements
+      announcement:
+        one: Announcement
+        other: Announcements
     attributes:
-      annoucement:
+      announcement:
         title: Title
         body: Description
         start_at: Start At
