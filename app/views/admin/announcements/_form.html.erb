@@ -7,19 +7,23 @@
   <%= f.label :body, class: "block text-sm font-medium text-gray-700" %>
   <%= f.text_area :body, class: "block w-full px-3 py-2 border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800" %>
 
-  <%= f.label :start_at, class: "block text-sm font-medium text-gray-700" %>
-  <%= f.datetime_local_field :start_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="flex flex-col w-full">
+      <%= f.label :start_at, class: "block text-sm font-medium text-gray-700 mb-3" %>
+      <%= f.datetime_local_field :start_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+    </div>
 
-  <%= f.label :end_at, class: "block text-sm font-medium text-gray-700" %>
-  <%= f.datetime_local_field :end_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+    <div class="flex flex-col w-full">
+      <%= f.label :end_at, class: "block text-sm font-medium text-gray-700 mb-3" %>
+      <%= f.datetime_local_field :end_at, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+    </div>
+  </div>
 
   <div class="flex justify-around">
     <%= form_submit_button(t('.save')) %>
 
-    <%= button_to t('.cancel'), 
-        admin_announcements_path, 
-        method: :get,
-        form: { data: { turbo_frame: "announcement_form" } },
-        class: "text-gray-500 hover:underline" %>
+    <%= link_to t('.cancel'), 
+        admin_announcements_path,
+        class: "text-red-500 hover:underline" %>
   </div>
 <% end %>

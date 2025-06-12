@@ -13,9 +13,10 @@ class Admin::AnnouncementsController < ApplicationController
   def create
     @announcement = Announcement.new(announcement_params)
     if @announcement.save
-      redirect_to @announcement
+      flash[:notice] = t (".success")
+      redirect_to admin_announcements_path
     else
-      render 'new'
+      render :index, status: :unprocessable_entity
     end
   end
   

@@ -12,7 +12,6 @@ en:
         edit: Edit
         delete: Delete
       create:
-        success: Tag created with success
-        error: Failed to create tag
+        success: Announcement created with success
       edit:
         save: Update

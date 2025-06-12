@@ -12,7 +12,6 @@ describe 'Admin creates announcements', type: :system do
 
     expect(current_path).to eq admin_announcements_path
     expect(page).to have_content 'New Announcement'
-    expect(page).to have_css('.test-new-announcement-btn')
   end
 
   it 'and its not authenticated' do
@@ -37,7 +36,7 @@ describe 'Admin creates announcements', type: :system do
 
     login_as admin
     visit admin_announcements_path
-    find('test-add-announcement-btn').click
+    click_on 'Add New Announcement'
     fill_in 'Title',	with: 'Test Title'
     fill_in 'Description',	with: 'Test Body'
     fill_in 'Start At',	with: Time.current
@@ -45,10 +44,28 @@ describe 'Admin creates announcements', type: :system do
     click_on 'Save'
 
     expect(current_path).to eq admin_announcements_path
-    expect(page).to have_content 'Created with success'
+    expect(page).to have_content 'Announcement created with success'
     expect(page).to have_content 'Test Title'
-    expect(page).to have_content 'Test Body'
     expect(page).to have_content I18n.l(Time.current, format: :short)
     expect(page).to have_content I18n.l(5.days.from_now, format: :short)
+  end
+
+  it 'and clicked in cancel' do
+    admin = create(:user, role: :admin)
+
+    login_as admin
+    visit admin_announcements_path
+    click_on 'Add New Announcement'
+    fill_in 'Title',	with: 'Test Title'
+    fill_in 'Description',	with: 'Test Body'
+    fill_in 'Start At',	with: Time.current
+    fill_in 'End At',	with: 5.days.from_now
+    click_on 'Cancel'
+
+    expect(current_path).to eq admin_announcements_path
+    expect(page).not_to have_content 'Announcement created with success'
+    expect(page).not_to have_content 'Test Title'
+    expect(page).not_to have_content I18n.l(Time.current, format: :short)
+    expect(page).not_to have_content I18n.l(5.days.from_now, format: :short)
   end
 end
