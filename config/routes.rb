@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :tags, only: [:index, :create, :edit, :update, :destroy]
-      resources :announcements, only: [:index, :new, :create]
+      resources :announcements, only: [:index, :new, :create, :edit, :update]
     end
   end
 end

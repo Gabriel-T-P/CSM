@@ -15,4 +15,7 @@ en:
         success: Announcement created with success
         error: Failed to create announcement
       edit:
-        save: Update
+        title: Edit Announcement
+      update:
+        success: Announcement updated with success
+        error: Error in updating the announcement

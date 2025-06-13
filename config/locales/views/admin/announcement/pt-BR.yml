@@ -12,7 +12,10 @@ pt-BR:
         edit: Editar
         delete: Deletar
       create:
-        success: Anúncio cirado com sucesso
+        success: Anúncio criado com sucesso
         error: Falha ao criar o anúncio
       edit:
-        save: Atualizar
+        title: Editar Anúncio
+      update:
+        success: Anúncio atualizado com sucesso
+        error: Falha ao atualizar o anúncio

@@ -1,6 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
+  before_action :set_announcement, only: [ :edit, :update ]
 
   def index
     @announcements = Announcement.all
@@ -22,10 +23,27 @@ class Admin::AnnouncementsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @announcement.update(announcement_params)
+      flash[:notice] = t (".success")
+      redirect_to admin_announcements_path
+    else
+      flash[:alert] = t (".error")
+      render :edit
+    end
+  end
+
 
   private
 
   def announcement_params
     params.require(:announcement).permit(:title, :body, :start_at, :end_at)
+  end
+
+  def set_announcement
+    @announcement = Announcement.find(params[:id])
   end
 end
