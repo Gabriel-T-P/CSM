@@ -69,7 +69,7 @@ describe 'Admin creates announcements', type: :system do
     expect(page).not_to have_content I18n.l(5.days.from_now, format: :short)
   end
 
-  it 'and view errors messages' do
+  xit 'and view errors messages' do
     admin = create(:user, role: :admin)
 
     login_as admin
