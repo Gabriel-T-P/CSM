@@ -32,7 +32,7 @@ class Admin::AnnouncementsController < ApplicationController
       redirect_to admin_announcements_path
     else
       flash[:alert] = t (".error")
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
