@@ -13,5 +13,6 @@ en:
         delete: Delete
       create:
         success: Announcement created with success
+        error: Failed to create announcement
       edit:
         save: Update

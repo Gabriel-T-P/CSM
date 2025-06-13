@@ -12,7 +12,7 @@ pt-BR:
         edit: Editar
         delete: Deletar
       create:
-        success: Tag created with success
-        error: Failed to create tag
+        success: Anúncio cirado com sucesso
+        error: Falha ao criar o anúncio
       edit:
         save: Atualizar

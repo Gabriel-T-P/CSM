@@ -17,10 +17,11 @@ class Admin::AnnouncementsController < ApplicationController
       redirect_to admin_announcements_path
     else
       @announcements = Announcement.all
+      flash.now[:alert] = t (".error")
       render :index, status: :unprocessable_entity
     end
   end
-  
+
 
   private
 
