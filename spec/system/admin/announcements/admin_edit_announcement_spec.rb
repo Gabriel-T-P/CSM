@@ -48,7 +48,7 @@ describe 'Admin edits announcement', type: :system do
 
     expect(current_path).to eq admin_announcements_path
     expect(page).to have_content 'Announcement updated with success'
-    expect(page).not_to have_content 'Test Announcement'
+    expect(page).not_to have_content 'Test Title'
     expect(page).not_to have_content I18n.l(Time.current, format: :short)
     expect(page).not_to have_content I18n.l(5.days.from_now, format: :short)
     expect(page).to have_content 'Another Title'

@@ -1,7 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
-  before_action :set_announcement, only: [ :edit, :update ]
+  before_action :set_announcement, only: [ :edit, :update, :destroy ]
 
   def index
     @announcements = Announcement.all
@@ -33,6 +33,16 @@ class Admin::AnnouncementsController < ApplicationController
     else
       flash[:alert] = t (".error")
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @announcement.destroy
+      flash[:notice] = 'Announcement deleted with success'
+      redirect_to admin_announcements_path
+    else
+      flash[:alert] = 'Something went wrong'
+      redirect_to admin_announcements_path
     end
   end
 
