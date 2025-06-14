@@ -19,3 +19,6 @@ en:
       update:
         success: Announcement updated with success
         error: Error in updating the announcement
+      destroy:
+        success: Announcement deleted with success
+        error: Failed to delete announcement

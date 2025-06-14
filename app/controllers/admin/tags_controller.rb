@@ -49,12 +49,12 @@ class Admin::TagsController < ApplicationController
   def destroy
     if @tag.destroy
       respond_to do |format|
-        format.html { redirect_to admin_tags_path, notice: "Tag was successfully destroyed." }
+        format.html { redirect_to admin_tags_path, notice: t(".success") }
         format.turbo_stream
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_tags_path, alert: "Something went wrong." }
+        format.html { redirect_to admin_tags_path, alert: t(".error") }
         format.turbo_stream
       end
     end

@@ -32,7 +32,7 @@ RSpec.describe "Admin::Tags", type: :request do
       delete admin_tag_path(tag)
 
       expect(response).to redirect_to admin_tags_path
-      expect(flash[:notice]).to eq 'Tag was successfully destroyed.'
+      expect(flash[:notice]).to eq 'Tag was successfully destroyed'
       expect(Tag.count).to eq 0
     end
 

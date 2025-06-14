@@ -18,3 +18,6 @@ en:
         confirm_delete: Are you sure ?
       edit:
         save: Update
+      destroy:
+        success: Tag was successfully destroyed
+        error: Failed to delete tag

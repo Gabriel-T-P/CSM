@@ -19,3 +19,6 @@ pt-BR:
       update:
         success: Anúncio atualizado com sucesso
         error: Falha ao atualizar o anúncio
+      destroy:
+        success: Anúncio deletado com sucesso
+        error: Falha ao deletar o anúncio

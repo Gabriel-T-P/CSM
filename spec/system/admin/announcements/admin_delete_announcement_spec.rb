@@ -33,7 +33,7 @@ describe 'Admin deletes tag', type: :system do
     expect(current_path).to eq root_path
     expect(page).to have_content 'You can not access this page'
   end
-  
+
   it 'successfully' do
     admin = create(:user, role: :admin)
     announcement = create(:announcement, title: 'Test Title', start_at: Time.current, end_at: 5.days.from_now)

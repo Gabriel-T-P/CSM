@@ -38,10 +38,10 @@ class Admin::AnnouncementsController < ApplicationController
 
   def destroy
     if @announcement.destroy
-      flash[:notice] = 'Announcement deleted with success'
+      flash[:notice] = t (".success")
       redirect_to admin_announcements_path
     else
-      flash[:alert] = 'Failed to delete announcement'
+      flash[:alert] = t (".error")
       redirect_to admin_announcements_path
     end
   end
