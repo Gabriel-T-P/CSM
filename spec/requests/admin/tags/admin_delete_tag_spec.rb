@@ -26,10 +26,10 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'successfully' do
       admin = create(:user, role: :admin)
-      tag = create(:tag, name: 'Test')
+      tag = create(:tag)
 
       login_as admin
-      delete admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
+      delete admin_tag_path(tag)
 
       expect(response).to redirect_to admin_tags_path
       expect(flash[:notice]).to eq 'Tag was successfully destroyed.'
