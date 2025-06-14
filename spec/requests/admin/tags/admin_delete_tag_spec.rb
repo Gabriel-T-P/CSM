@@ -36,6 +36,20 @@ RSpec.describe "Admin::Tags", type: :request do
       expect(Tag.count).to eq 0
     end
 
+    it 'and fails' do
+      admin = create(:user, role: :admin)
+      tag = create(:tag)
+      allow(Tag).to receive(:find).and_return(tag)
+      allow(tag).to receive(:destroy).and_return(false)
+
+      login_as admin
+      delete admin_tag_path(tag)
+
+      expect(response).to redirect_to admin_tags_path
+      expect(flash[:alert]).to eq 'Failed to delete tag'
+      expect(Tag.count).to eq 1
+    end
+
     it 'and tag id does not exist' do
       admin = create(:user, role: :admin)
 

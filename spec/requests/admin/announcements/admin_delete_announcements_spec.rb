@@ -36,6 +36,20 @@ RSpec.describe "Admin::Announcements", type: :request do
       expect(Announcement.count).to eq 0
     end
 
+    it 'and fails' do
+      admin = create(:user, role: :admin)
+      announcement = create(:announcement)
+      allow(Announcement).to receive(:find).and_return(announcement)
+      allow(announcement).to receive(:destroy).and_return(false)
+
+      login_as admin
+      delete admin_announcement_path(announcement)
+
+      expect(response).to redirect_to admin_announcements_path
+      expect(flash[:alert]).to eq 'Failed to delete announcement'
+      expect(Announcement.count).to eq 1
+    end
+
     it 'and announcement id does not exist' do
       admin = create(:user, role: :admin)
 

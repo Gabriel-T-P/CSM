@@ -41,7 +41,7 @@ class Admin::AnnouncementsController < ApplicationController
       flash[:notice] = 'Announcement deleted with success'
       redirect_to admin_announcements_path
     else
-      flash[:alert] = 'Something went wrong'
+      flash[:alert] = 'Failed to delete announcement'
       redirect_to admin_announcements_path
     end
   end

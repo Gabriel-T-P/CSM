@@ -11,7 +11,7 @@ describe 'Admin deletes tag', type: :system do
     find('.test-dropdown-table-btn').click
 
     expect(page).to have_content 'Test Announcement'
-    expect(page).to have_link 'Delete'
+    expect(page).to have_button 'Delete'
   end
 
   it 'and its not authenticated' do
@@ -36,7 +36,7 @@ describe 'Admin deletes tag', type: :system do
   
   it 'successfully' do
     admin = create(:user, role: :admin)
-    announcement = create(:announcement, title: 'Test Title', body: 'Test Body', start_at: Time.current, end_at: 5.days.from_now)
+    announcement = create(:announcement, title: 'Test Title', start_at: Time.current, end_at: 5.days.from_now)
 
     login_as admin
     visit admin_announcements_path
