@@ -26,14 +26,28 @@ RSpec.describe "Admin::Tags", type: :request do
 
     it 'successfully' do
       admin = create(:user, role: :admin)
-      tag = create(:tag, name: 'Test')
+      tag = create(:tag)
 
       login_as admin
-      delete admin_tag_path(tag), params: { tag: { name: 'Not a test' } }
+      delete admin_tag_path(tag)
 
       expect(response).to redirect_to admin_tags_path
-      expect(flash[:notice]).to eq 'Tag was successfully destroyed.'
+      expect(flash[:notice]).to eq 'Tag was successfully destroyed'
       expect(Tag.count).to eq 0
+    end
+
+    it 'and fails' do
+      admin = create(:user, role: :admin)
+      tag = create(:tag)
+      allow(Tag).to receive(:find).and_return(tag)
+      allow(tag).to receive(:destroy).and_return(false)
+
+      login_as admin
+      delete admin_tag_path(tag)
+
+      expect(response).to redirect_to admin_tags_path
+      expect(flash[:alert]).to eq 'Failed to delete tag'
+      expect(Tag.count).to eq 1
     end
 
     it 'and tag id does not exist' do

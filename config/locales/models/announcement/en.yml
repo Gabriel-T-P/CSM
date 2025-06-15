@@ -1,0 +1,17 @@
+en:
+  activerecord:
+    models:
+      announcement:
+        one: Announcement
+        other: Announcements
+    attributes:
+      announcement:
+        title: Title
+        body: Description
+        start_at: Start At
+        end_at: End At
+    errors:
+      models:
+        announcement:
+          date_present_or_absent: Start and End dates must both be present or both be absent
+          invalid_date_range: Start date can't be after End date

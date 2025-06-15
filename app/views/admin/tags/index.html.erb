@@ -1,9 +1,9 @@
 <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
 
   <div class="md:col-span-2">
-    <div class="mb-6 border border-gray-200 rounded-none bg-white p-4 shadow-sm">
+    <div class="mb-6 border-2 border-gray-800 rounded-none bg-gray-100 p-4 shadow-sm">
       <%= form_with url: admin_tags_path, method: :get, data: { turbo_frame: "tags_list" }, local: true, class: "flex gap-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('.search_tag'), class: "w-full border border-gray-700 px-3 py-2 rounded-none shadow-sm focus:ring focus:ring-gray-500 focus:border-gray-700" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('.search_tag'), class: "w-full border-b-2 border-gray-700 px-3 py-2 rounded-none focus:outline-none" %>
         <%= f.select :order, options_for_select([
           [t('.order_default'), 'default'],
           [t('.order_name_asc'), 'name_asc'],

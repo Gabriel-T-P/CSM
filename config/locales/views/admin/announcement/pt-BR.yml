@@ -1,0 +1,24 @@
+pt-BR:
+  admin:
+    announcements:
+      index:
+        add_new_announcement: Criar Novo Anúncio
+        page_description: Gerencie os anúncios visíveis aos usuários do sistema
+      form:
+        save: Salvar
+        cancel: Cancelar
+      announcements_table:
+        actions: Ações
+        edit: Editar
+        delete: Deletar
+      create:
+        success: Anúncio criado com sucesso
+        error: Falha ao criar o anúncio
+      edit:
+        title: Editar Anúncio
+      update:
+        success: Anúncio atualizado com sucesso
+        error: Falha ao atualizar o anúncio
+      destroy:
+        success: Anúncio deletado com sucesso
+        error: Falha ao deletar o anúncio

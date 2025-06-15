@@ -18,3 +18,6 @@ pt-BR:
         confirm_delete: Você tem certeza ?
       edit:
         save: Atualizar
+      destroy:
+        success: Marcador foi deletado com sucesso
+        error: Falha ao deletar o marcador

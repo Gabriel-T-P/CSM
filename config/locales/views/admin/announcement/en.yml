@@ -1,0 +1,24 @@
+en:
+  admin:
+    announcements:
+      index:
+        add_new_announcement: Add New Announcement
+        page_description: Manage visible announcements to users
+      form:
+        save: Save
+        cancel: Cancel
+      announcements_table:
+        actions: Actions
+        edit: Edit
+        delete: Delete
+      create:
+        success: Announcement created with success
+        error: Failed to create announcement
+      edit:
+        title: Edit Announcement
+      update:
+        success: Announcement updated with success
+        error: Error in updating the announcement
+      destroy:
+        success: Announcement deleted with success
+        error: Failed to delete announcement

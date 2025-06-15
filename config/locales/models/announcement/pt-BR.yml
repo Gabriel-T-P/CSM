@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      announcement:
+        one: Anúncio
+        other: Anúncios
+    attributes:
+      announcement:
+        title: Título
+        body: Descrição
+        start_at: Começa Em
+        end_at: Termina Em
+    errors:
+      models:
+        announcement:
+          date_present_or_absent: Ambas as datas devem ser preenchidas ou deixadas em branco
+          invalid_date_range: Data de início não pode ser posterior à Data de término

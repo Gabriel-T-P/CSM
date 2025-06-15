@@ -1,0 +1,13 @@
+<div class="max-w-4xl mx-auto mt-15">
+  <%= turbo_frame_tag "announcement_form" do %>
+    <div class="flex justify-between items-center mb-4">
+      <p class="mx-3 text-gray-600"><%= t('.page_description') %>.</p>
+
+      <%= outline_link_to(t('.add_new_announcement'), new_admin_announcement_path) %>
+    </div>
+  <% end %>
+
+  <%= turbo_frame_tag "announcements_table" do %>
+    <%= render 'announcements_table', announcements: @announcements %>
+  <% end %>
+</div>
