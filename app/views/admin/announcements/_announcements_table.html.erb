@@ -32,7 +32,7 @@
               class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-none shadow-xl transition-all duration-200 ease-out opacity-0 pointer-events-none z-50">
 
             <!-- Edit -->
-            <%= link_to edit_admin_announcement_path(announcement), data: { turbo_frame: "_top" },
+            <%= link_to edit_admin_announcement_path(announcement), data: { turbo_frame: "announcement_form" },
                         class: "flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150" do %>
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h6M5 13l4 4L19 7l-4-4L5 13z" />

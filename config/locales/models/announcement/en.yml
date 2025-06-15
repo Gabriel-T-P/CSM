@@ -13,5 +13,5 @@ en:
     errors:
       models:
         announcement:
-          date_present_or_absent: Start and end dates must both be present or both be absent
-          invalid_date_range: Start date can't be after end date
+          date_present_or_absent: Start and End dates must both be present or both be absent
+          invalid_date_range: Start date can't be after End date

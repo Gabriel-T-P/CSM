@@ -19,7 +19,7 @@ class Admin::AnnouncementsController < ApplicationController
     else
       @announcements = Announcement.all
       flash.now[:alert] = t (".error")
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

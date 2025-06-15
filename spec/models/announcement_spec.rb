@@ -40,7 +40,7 @@ RSpec.describe Announcement, type: :model do
         )
 
         expect(announcement).to be_invalid
-        expect(announcement.errors[:base]).to include("Start date can't be after end date")
+        expect(announcement.errors[:base]).to include("Start date can't be after End date")
       end
 
       it 'is invalid with start_at equal end_at' do
@@ -48,7 +48,7 @@ RSpec.describe Announcement, type: :model do
         announcement = build(:announcement, start_at: time, end_at: time)
 
         expect(announcement).to be_invalid
-        expect(announcement.errors[:base]).to include("Start date can't be after end date")
+        expect(announcement.errors[:base]).to include("Start date can't be after End date")
       end
     end
 
@@ -60,7 +60,7 @@ RSpec.describe Announcement, type: :model do
         )
 
         expect(announcement).to be_invalid
-        expect(announcement.errors[:base]).to include("Start and end dates must both be present or both be absent")
+        expect(announcement.errors[:base]).to include("Start and End dates must both be present or both be absent")
       end
     end
 
@@ -72,7 +72,7 @@ RSpec.describe Announcement, type: :model do
         )
 
         expect(announcement).to be_invalid
-        expect(announcement.errors[:base]).to include("Start and end dates must both be present or both be absent")
+        expect(announcement.errors[:base]).to include("Start and End dates must both be present or both be absent")
       end
     end
   end

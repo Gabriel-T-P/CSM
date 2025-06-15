@@ -69,13 +69,13 @@ describe 'Admin creates announcements', type: :system do
     expect(page).not_to have_content I18n.l(5.days.from_now, format: :short)
   end
 
-  xit 'and view errors messages' do
+  it 'and view errors messages' do
     admin = create(:user, role: :admin)
 
     login_as admin
     visit admin_announcements_path
     click_on 'Add New Announcement'
-    fill_in 'Title',	with: 'n'
+    fill_in 'Title',	with: ' '
     fill_in 'Description',	with: ' '
     fill_in 'Start At',	with: Time.current
     click_on 'Save'
@@ -83,6 +83,6 @@ describe 'Admin creates announcements', type: :system do
     expect(current_path).to eq admin_announcements_path
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Description can't be blank"
-    expect(page).to have_content "awd can't be blank"
+    expect(page).to have_content "Start and End dates must both be present or both be absent"
   end
 end
