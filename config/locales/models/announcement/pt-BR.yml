@@ -7,7 +7,7 @@ pt-BR:
     attributes:
       announcement:
         title: Título
-        body: Corpo
+        body: Descrição
         start_at: Começa Em
         end_at: Termina Em
     errors:
