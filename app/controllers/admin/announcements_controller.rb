@@ -14,8 +14,10 @@ class Admin::AnnouncementsController < ApplicationController
   def create
     @announcement = Announcement.new(announcement_params)
     if @announcement.save
-      flash[:notice] = t (".success")
-      redirect_to admin_announcements_path
+      respond_to do |format|
+        format.html { redirect_to admin_announcements_path, notice: t(".success") }
+        format.turbo_stream
+      end
     else
       @announcements = Announcement.all
       flash.now[:alert] = t (".error")
@@ -38,11 +40,15 @@ class Admin::AnnouncementsController < ApplicationController
 
   def destroy
     if @announcement.destroy
-      flash[:notice] = t (".success")
-      redirect_to admin_announcements_path
+      respond_to do |format|
+        format.html { redirect_to admin_announcements_path, notice: t(".success") }
+        format.turbo_stream
+      end
     else
-      flash[:alert] = t (".error")
-      redirect_to admin_announcements_path
+      respond_to do |format|
+        format.html { redirect_to admin_announcements_path, alert: t(".error") }
+        format.turbo_stream
+      end
     end
   end
 

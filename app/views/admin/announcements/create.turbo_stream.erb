@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "announcements_table", partial: "announcements_table", locals: { announcements: Announcement.all } %>
+
+<%= turbo_stream.replace "announcement_form", partial: "new_button" %>
