@@ -1,0 +1,9 @@
+pt-BR:
+  dashboards:
+    show: 
+      new_content: Novo conteúdo
+      new_collection: Nova coleção
+      create: Criar
+      recent_content: Uploads Recentes
+      my_collections: Minha Coleção
+      my_friends: Meus Amigos

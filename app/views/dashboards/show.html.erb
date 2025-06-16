@@ -1,25 +1,12 @@
-<!-- app/views/dashboard/index.html.erb -->
-
 <div class="max-w-5xl mx-auto px-6 py-16">
 
-  <!-- Header -->
-  <section class="text-center mb-20">
-    <h1 class="text-3xl font-bold text-gray-800 mb-4 tracking-wide">
-      Olá, <%= current_user.username %>!
-    </h1>
-    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-      Aqui está um resumo da sua conta e suas atividades mais recentes.
-    </p>
-  </section>
-
-  <!-- Ações rápidas -->
   <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center mb-20">
     <div class="p-6 border-2 border-gray-700 hover:border-gray-500 transition">
       <svg class="w-10 h-10 mx-auto text-gray-800 mb-4" fill="none" stroke="currentColor" stroke-width="1.5"
         viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L8 8m4-4l4 4M4 20h16" />
       </svg>
-      <h3 class="text-lg font-semibold text-gray-800 mb-2">Novo conteúdo</h3>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2"><%= t('.new_content') %></h3>
       <%= link_to 'Upload', root_path, class: "inline-block mt-2 px-6 py-2 text-gray-800 border-2 border-gray-800 hover:border-gray-500 hover:text-gray-500 transition font-medium rounded-none" %>
     </div>
 
@@ -28,28 +15,25 @@
         viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
       </svg>
-      <h3 class="text-lg font-semibold text-gray-800 mb-2">Nova coleção</h3>
-      <%= link_to 'Criar', root_path, class: "inline-block mt-2 px-6 py-2 text-gray-800 border-2 border-gray-800 hover:border-gray-500 hover:text-gray-500 transition font-medium rounded-none" %>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2"><%= t('.new_collection') %></h3>
+      <%= link_to t('.create'), root_path, class: "inline-block mt-2 px-6 py-2 text-gray-800 border-2 border-gray-800 hover:border-gray-500 hover:text-gray-500 transition font-medium rounded-none" %>
     </div>
   </section>
 
-  <!-- Últimos uploads -->
   <section class="mb-20">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2">Recent Uploads</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2"><%= t('.recent_content') %></h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     </div>
   </section>
 
-  <!-- Minhas coleções -->
   <section class="mb-20">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2">My Collections</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2"><%= t('.my_collections') %></h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     </div>
   </section>
 
-  <!-- Meus amigos -->
   <section class="mb-20">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2">My Friends</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-700 pb-2"><%= t('.my_friends') %></h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     </div>
   </section>
