@@ -6,7 +6,7 @@ describe 'User view own dashboard', type: :system do
 
     login_as user
     visit root_path
-    
+
     within 'nav' do
       expect(page).to have_css '.test-dashboard-btn'
     end
