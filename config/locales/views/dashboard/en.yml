@@ -1,0 +1,9 @@
+en:
+  dashboards:
+    show: 
+      new_content: New Content
+      new_collection: New Collection
+      create: Create
+      recent_content: Recent Uploads
+      my_collections: My Collections
+      my_friends: My Friends

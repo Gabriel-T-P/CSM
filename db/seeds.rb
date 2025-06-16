@@ -26,3 +26,8 @@ puts '\n== Creating tags =='
 ['Tag One', 'Tag Two', 'Tag Three', 'Tag Four'].each do |tag|
   Tag.create!(name: tag)
 end
+
+# Announcements
+puts '\n== Creating announcements =='
+Announcement.create!(title: 'Announcement 1', body: 'Description test', start_at: 1.day.ago, end_at: 5.days.from_now)
+Announcement.create!(title: 'Announcement 2', body: 'Description test', start_at: 1.day.ago, end_at: 5.months.from_now)
