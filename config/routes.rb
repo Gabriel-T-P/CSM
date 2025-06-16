@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'registrations' }
     get '/profile/:username', to: 'profiles#show', as: :profile
 
+    resources :user do
+      resource :dashboard, only: [:show]
+    end
+
     namespace :admin do
       resources :tags, only: [:index, :create, :edit, :update, :destroy]
       resources :announcements, only: [:index, :new, :create, :edit, :update, :destroy]

@@ -1,7 +1,8 @@
 pt-BR:
   routes:
     users: usuarios
-    admin: admin
+    admin: 
+    dashboard: principal
     profile: perfil
     password: senha
     new: novo
