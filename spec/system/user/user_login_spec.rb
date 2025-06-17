@@ -17,7 +17,7 @@ describe 'User login account', type: :system do
     login_as user
     visit new_user_session_path
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(user)
     expect(page).to have_content 'You are already signed in'
   end
 
@@ -29,7 +29,7 @@ describe 'User login account', type: :system do
     fill_in 'Password', with: '12345678'
     click_on 'Log in'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(user)
     within 'nav' do
       expect(page).to have_content 'TESTING'
       expect(page).to have_button 'Log out'

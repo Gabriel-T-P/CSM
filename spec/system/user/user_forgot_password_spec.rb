@@ -20,7 +20,7 @@ describe 'User access forgots password page', type: :system do
     login_as user
     visit new_user_password_path
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(user)
     expect(page).to have_content 'You are already signed in'
   end
 end

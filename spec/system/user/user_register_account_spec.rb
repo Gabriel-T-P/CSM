@@ -18,7 +18,7 @@ describe 'User creates account', type: :system do
     login_as user
     visit new_user_registration_path
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(user)
     expect(page).to have_content 'You are already signed in'
   end
 
@@ -43,7 +43,7 @@ describe 'User creates account', type: :system do
     fill_in 'Password Confirmation', with: '12345test'
     click_on 'Register'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(User.last)
     expect(page).to have_content 'Welcome! You have signed up successfully'
     within 'nav' do
       expect(page).not_to have_link 'Sign up'
@@ -72,7 +72,7 @@ describe 'User creates account', type: :system do
     fill_in 'Password Confirmation', with: '12345test'
     click_on 'Register'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(User.last)
     expect(page).to have_content 'Welcome! You have signed up successfully'
     within 'nav' do
       expect(page).not_to have_link 'Sign up'

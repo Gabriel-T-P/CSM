@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
+  def after_sign_in_path_for(resource)
+    user_dashboard_path(resource)
+  end
+
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
