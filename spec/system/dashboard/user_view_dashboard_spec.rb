@@ -12,6 +12,17 @@ describe 'User view own dashboard', type: :system do
     end
   end
 
+  it 'after successfully login' do
+    user = create(:user, email: 'email@test.com', password: 'password123')
+
+    visit new_user_session_path
+    fill_in 'Email',	with: 'email@test.com'
+    fill_in 'Password', with: 'password123'
+    click_on 'Log in'
+
+    expect(current_path).to eq user_dashboard_path(user)
+  end
+
   it 'successfully' do
     user = create(:user)
 

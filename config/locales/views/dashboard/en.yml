@@ -7,3 +7,4 @@ en:
       recent_content: Recent Uploads
       my_collections: My Collections
       my_friends: My Friends
+      posted_time_ago: Posted %{date} ago
