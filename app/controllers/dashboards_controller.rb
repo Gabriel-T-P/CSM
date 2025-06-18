@@ -3,6 +3,9 @@ class DashboardsController < ApplicationController
   before_action :set_user
 
   def show
+    @announcements = Announcement.where("start_at IS NULL OR start_at <= ?", Time.current)
+                               .where("end_at IS NULL OR end_at >= ?", Time.current)
+                               .order(start_at: :desc)
   end
 
 

@@ -1,5 +1,25 @@
 <div class="max-w-5xl mx-auto px-6 py-16">
 
+  <% if @announcements.any? %>
+    <section class="mb-8 space-y-4">
+      <% @announcements.each do |announcement| %>
+        <div class="border-2 border-gray-800 p-6 bg-white shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2 tracking-wide">
+            <%= announcement.title %>
+          </h3>
+          <p class="text-gray-600 text-sm whitespace-pre-line mb-2">
+            <%= announcement.body %>
+          </p>
+          <% if announcement.start_at.present? %>
+            <p class="text-xs text-gray-500 italic">
+               <%= t('.posted_time_ago', date: time_ago_in_words(announcement.start_at)) %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
   <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-center mb-20">
     <div class="p-6 border-2 border-gray-700 hover:border-gray-500 transition">
       <svg class="w-10 h-10 mx-auto text-gray-800 mb-4" fill="none" stroke="currentColor" stroke-width="1.5"
