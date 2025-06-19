@@ -1,6 +1,7 @@
 pt-BR:
   routes:
     users: usuarios
+    user: usuario
     admin: 
     dashboard: principal
     profile: perfil

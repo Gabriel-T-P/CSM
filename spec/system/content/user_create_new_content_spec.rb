@@ -17,5 +17,7 @@ describe 'User creates new content', type: :system do
     visit user_dashboard_path(user)
     click_on 'Upload'
     fill_in 'Title', with: 'Test Title'
+    find('input#content_body', visible: false).set('Test Text in rich text')
+    select 'Private', from: 'Visibility'
   end
 end
