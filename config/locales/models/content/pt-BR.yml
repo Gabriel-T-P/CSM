@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      content:
+        one: Conteúdo
+        other: Conteúdos
+    attributes:
+      content:
+        title: Título
+        body: Conteúdo
+        visibility: Visibilidade
