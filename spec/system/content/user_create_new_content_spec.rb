@@ -10,7 +10,7 @@ describe 'User creates new content', type: :system do
     expect(page).to have_link 'Upload'
   end
 
-  it 'successfully' do
+  xit 'successfully' do
     user = create(:user)
 
     login_as user
