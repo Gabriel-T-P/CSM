@@ -3,6 +3,7 @@ en:
     new:
       title: Upload your content
       save: Save
+      cancel: Cancel
     tag_selector:
       select_tags_btn: Choose Tags
       select_tags_title: Select available tags

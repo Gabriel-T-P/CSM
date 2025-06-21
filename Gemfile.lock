@@ -396,7 +396,6 @@ GEM
     thruster (0.1.13-aarch64-linux)
     thruster (0.1.13-x86_64-linux)
     timeout (0.4.3)
-    tom-select-rails (2.4.3)
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
@@ -456,7 +455,6 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails
   thruster
-  tom-select-rails (~> 2.4)
   turbo-rails
   tzinfo-data
 

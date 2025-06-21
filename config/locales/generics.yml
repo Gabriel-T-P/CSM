@@ -7,7 +7,11 @@ pt-BR:
       male: ele/dele
       female: ela/dela
       neutral: elu/delu
-
+  content:
+    visibility:
+      visible_to_all: Público
+      only_me: Privado
+      unlisted: Não listado
 
 en:
   error_messages:
@@ -18,3 +22,8 @@ en:
       male: he/him
       female: she/her
       neutral: they/them
+  content:
+    visibility:
+      visible_to_all: Public
+      only_me: Private
+      unlisted: Unlisted

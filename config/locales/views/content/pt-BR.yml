@@ -3,6 +3,7 @@ pt-BR:
     new:
       title: Crie seu conteúdo
       save: Salvar
+      cancel: Cancelar
     tag_selector:
       select_tags_btn: Selecionar Tags
       select_tags_title: Escolha as tags disponíveis
