@@ -55,3 +55,5 @@ group :development, :test do
   gem "shoulda-matchers", "~> 6.5"
   gem "simplecov", "~> 0.22.0", require: false
 end
+
+gem "tom-select-rails", "~> 2.4"

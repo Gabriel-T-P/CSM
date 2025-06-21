@@ -1,0 +1,10 @@
+pt-BR:
+  contents:
+    new:
+      title: Crie seu conteúdo
+      save: Salvar
+    tag_selector:
+      select_tags_btn: Selecionar Tags
+      select_tags_title: Escolha as tags disponíveis
+      save: Confirmar
+      cancel: Cancelar

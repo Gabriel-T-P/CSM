@@ -1,0 +1,53 @@
+<div data-controller="tag-modal">
+  <button type="button"
+          data-action="click->tag-modal#open"
+          class="px-4 py-2 mr-4 font-medium text-gray-800 border-2 border-gray-800 rounded-none hover:border-gray-400 hover:text-gray-400 transition bg-transparent">
+    <%= t('.select_tags_btn') %>
+  </button>
+
+  <div class="mt-2 flex flex-wrap gap-2" data-tag-modal-target="selectedTags">
+    <% @tags.each do |tag| %>
+      <% if @content.tag_ids.include?(tag.id) %>
+        <span class="bg-gray-200 text-gray-700 text-sm px-2 py-1 rounded-none"><%= tag.name %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% @tags.each do |tag| %>
+    <%= hidden_field_tag "content[tag_ids][]", tag.id,
+        id: "tag-hidden-#{tag.id}",
+        data: { tag_modal_target: "hiddenTag", tag_id: tag.id },
+        disabled: !@content.tag_ids.include?(tag.id) %>
+  <% end %>
+
+  <!-- Modal -->
+  <div id="tag-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50"
+       data-tag-modal-target="modal">
+    <div class="bg-white max-w-lg w-full p-6 rounded-none shadow-md overflow-y-auto max-h-[80vh] space-y-4">
+      <h2 class="text-lg font-semibold mb-4"><%= t('.select_tags_title') %></h2>
+
+      <div class="grid grid-cols-4 gap-2">
+        <% @tags.each do |tag| %>
+          <label class="flex items-center gap-2">
+            <input type="checkbox"
+                   value="<%= tag.id %>"
+                   data-action="tag-modal#toggle"
+                   data-tag-id="<%= tag.id %>"
+                   <%= 'checked' if @content.tag_ids.include?(tag.id) %>>
+            <span class="text-sm"><%= tag.name %></span>
+          </label>
+        <% end %>
+      </div>
+
+      <div class="flex justify-around gap-4 mt-6">
+        <button type="button"
+                data-action="click->tag-modal#confirm"
+                class="px-4 py-2 text-gray-800 hover:underline"><%= t('.save') %></button>
+
+        <button type="button"
+                data-action="click->tag-modal#close"
+                class="text-red-600 hover:underline"><%= t('.cancel') %></button>
+      </div>
+    </div>
+  </div>
+</div>

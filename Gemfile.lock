@@ -136,7 +136,12 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (~> 0.7)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
     ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -391,6 +396,7 @@ GEM
     thruster (0.1.13-aarch64-linux)
     thruster (0.1.13-x86_64-linux)
     timeout (0.4.3)
+    tom-select-rails (2.4.3)
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
@@ -450,6 +456,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails
   thruster
+  tom-select-rails (~> 2.4)
   turbo-rails
   tzinfo-data
 
