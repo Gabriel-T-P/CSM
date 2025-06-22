@@ -1,5 +1,6 @@
 class Content < ApplicationRecord
   has_rich_text :body
+  has_one_attached :cover
   belongs_to :user
   has_many :content_tags
   has_many :tags, through: :content_tags

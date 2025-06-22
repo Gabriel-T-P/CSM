@@ -10,14 +10,22 @@ describe 'User creates new content', type: :system do
     expect(page).to have_link 'Upload'
   end
 
-  xit 'successfully' do
+  it 'successfully' do
     user = create(:user)
+    create(:tag, name: 'Test 1')
+    create(:tag, name: 'Test 2')
 
     login_as user
     visit user_dashboard_path(user)
     click_on 'Upload'
     fill_in 'Title', with: 'Test Title'
-    find('input#content_body', visible: false).set('Test Text in rich text')
+    find(:css, "#content_body", visible: false).set('Test Text in rich text')
     select 'Private', from: 'Visibility'
+    click_on 'Choose Tags'
+    click_on 'Test 1'
+    click_on 'Test 2'
+    click_on 'Confirm'
+    attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
+    click_on 'Create Content'
   end
 end

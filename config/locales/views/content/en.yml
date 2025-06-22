@@ -2,7 +2,8 @@ en:
   contents:
     new:
       title: Upload your content
-      save: Save
+      add_cover_picture: Add Cover Picture
+      save: Create Content
       cancel: Cancel
     tag_selector:
       select_tags_btn: Choose Tags

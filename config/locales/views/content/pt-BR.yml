@@ -2,7 +2,8 @@ pt-BR:
   contents:
     new:
       title: Crie seu conteúdo
-      save: Salvar
+      add_cover_picture: Adicionar Imagem da Capa 
+      save: Criar Novo Conteúdo
       cancel: Cancelar
     tag_selector:
       select_tags_btn: Selecionar Tags
