@@ -1,16 +1,17 @@
 <div class="min-h-screen flex items-center justify-center py-10 bg-gray-100">
-  <div class="w-full max-w-3xl">
-    <%= title_h2(t('.title')) %>
-    <%= form_with model: [@user, @content], local: true,
-                  class: "bg-white border-2 p-6 rounded-none shadow-md space-y-6" do |f| %>
+  <div class="w-full max-w-3xl space-y-8">
+    <%= title_h2(t('.title'), class: "text-3xl font-bold text-gray-900") %>
 
-      <div>
+    <%= form_with model: [@user, @content], local: true,
+                  class: "bg-white border-2 border-gray-800 p-8 rounded-none shadow-lg space-y-6" do |f| %>
+
+      <div class="space-y-1">
         <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :title, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+        <%= f.text_field :title, class: "w-full border border-gray-800 text-gray-900 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-3 text-base" %>
         <%= form_errors(@content, :title) %>
       </div>
 
-      <div>
+      <div class="space-y-1">
         <%= f.label :body, class: "block text-sm font-medium text-gray-700" %>
         <div class="border border-gray-800 rounded-none bg-white">
           <%= f.rich_text_area :body, class: "w-full trix-content px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800", style: "min-height: 250px;" %>
@@ -18,35 +19,35 @@
         <%= form_errors(@content, :body) %>
       </div>
 
-      <div>
+      <div class="space-y-1">
         <%= f.label :visibility, class: "block text-sm font-medium text-gray-700" %>
-        <%= f.select :visibility, Content.visibility_options, {}, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-2" %>
+        <%= f.select :visibility, Content.visibility_options, {}, class: "w-full border border-gray-800 text-gray-800 rounded-none bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 p-3 text-base" %>
         <%= form_errors(@content, :visibility) %>
       </div>
 
-      <%= render 'tag_selector', f: f, tags: @tags, content: @content %>
+      <div>
+        <%= render 'tag_selector', f: f, tags: @tags, content: @content %>
+      </div>
 
       <div class="flex items-center gap-6" data-controller="avatar-preview">
         <% if @content.cover.attached? %>
           <%= image_tag url_for(@content.cover),
-            class: "w-20 h-20 border border-gray-700 object-cover rounded-none shadow-sm",
+            class: "w-24 h-24 border border-gray-800 object-cover rounded-none shadow-sm",
             data: { avatar_preview_target: "preview" } %>
         <% else %>
           <img
             src="<%= asset_path('default_avatar.png') %>"
-            class="w-20 h-20 border border-gray-700 object-cover rounded-none shadow-sm"
+            class="w-24 h-24 border border-gray-800 object-cover rounded-none shadow-sm"
             data-avatar-preview-target="preview"
           />
         <% end %>
 
         <div class="relative">
-          <label class="inline-flex items-center gap-2 px-4 py-2 border border-gray-700 bg-white rounded-none text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500 group">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-              class="size-5 transition-transform group-hover:rotate-6 text-gray-700">
+          <label class="inline-flex items-center gap-2 px-4 py-2 border border-gray-800 bg-white rounded-none text-gray-800 text-sm hover:bg-gray-100 transition-colors duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-800 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-5 transition-transform group-hover:rotate-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
             </svg>
-
             <%= t('.add_cover_picture') %>
             <%= f.file_field :cover,
                 class: "absolute left-0 top-0 opacity-0 w-full h-full cursor-pointer",
@@ -55,10 +56,9 @@
         </div>
       </div>
 
-      <div class="flex justify-around items-center">
-        <%= f.submit t('.save'), class: "px-6 py-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-none shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-800" %>
-
-        <%= link_to t('.cancel'), user_dashboard_path(current_user), class: "text-red-500 hover:underline" %>
+      <div class="flex justify-between items-center pt-6 border-t border-gray-300">
+        <%= f.submit t('.save'), class: "px-6 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-none shadow focus:outline-none focus:ring-2 focus:ring-gray-800" %>
+        <%= link_to t('.cancel'), user_dashboard_path(current_user), class: "text-red-500 hover:underline text-sm" %>
       </div>
 
     <% end %>
