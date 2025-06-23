@@ -17,20 +17,36 @@ export default class extends Controller {
 
   toggle(event) {
     const tagId = event.target.dataset.tagId
-    const hiddenInput = this.hiddenTagTargets.find(el => el.dataset.tagId == tagId)
-    if (hiddenInput) {
-      hiddenInput.disabled = !event.target.checked
+    const tagName = event.target.nextElementSibling?.textContent?.trim() || `Tag ${tagId}`
+
+    const existingInput = document.getElementById(`tag-hidden-${tagId}`)
+
+    if (event.target.checked) {
+      if (!existingInput) {
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 'content[tag_ids][]'
+        input.value = tagId
+        input.id = `tag-hidden-${tagId}`
+        input.dataset.tagId = tagId
+        input.dataset.tagName = tagName
+        this.hiddenTagTarget.appendChild(input)
+      }
+    } else {
+      if (existingInput) {
+        existingInput.remove()
+      }
     }
   }
 
   updateTagDisplay() {
-    const selected = this.hiddenTagTargets.filter(el => !el.disabled)
+    const hiddenInputs = this.hiddenTagTarget.querySelectorAll("input[name='content[tag_ids][]']")
     this.selectedTagsTarget.innerHTML = ""
 
-    selected.forEach(input => {
+    hiddenInputs.forEach(input => {
       const span = document.createElement("span")
-      span.textContent = input.value
-      span.className = "bg-gray-200 text-gray-700 text-sm px-2 py-1 rounded"
+      span.textContent = input.dataset.tagName || `Tag ${input.value}`
+      span.className = "px-2 py-1 border-b border-gray-800 text-sm text-gray-800 rounded-none"
       this.selectedTagsTarget.appendChild(span)
     })
   }

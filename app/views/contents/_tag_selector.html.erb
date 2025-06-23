@@ -8,19 +8,23 @@
   <div class="flex flex-wrap gap-2" data-tag-modal-target="selectedTags">
     <% @tags.each do |tag| %>
       <% if @content.tag_ids.include?(tag.id) %>
-        <span class="px-2 py-1 border border-gray-800 bg-gray-100 text-sm text-gray-800 rounded-none">
+        <span class="px-2 py-1 border-b border-gray-800 text-sm text-gray-800 rounded-none">
           <%= tag.name %>
         </span>
       <% end %>
     <% end %>
   </div>
 
-  <% @tags.each do |tag| %>
-    <%= hidden_field_tag "content[tag_ids][]", tag.id,
-        id: "tag-hidden-#{tag.id}",
-        data: { tag_modal_target: "hiddenTag", tag_id: tag.id },
-        disabled: !@content.tag_ids.include?(tag.id) %>
-  <% end %>
+  <div data-tag-modal-target="hiddenTag">
+    <% content.tag_ids.each do |tag_id| %>
+      <%= f.hidden_field :tag_ids,
+          value: tag_id,
+          id: "tag-hidden-#{tag_id}",
+          multiple: true,
+          data: { tag_id: tag_id } %>
+    <% end %>
+  </div>
+
 
   <div id="tag-modal"
        class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
@@ -44,17 +48,11 @@
         <% end %>
       </div>
 
-      <div class="flex justify-end gap-4 pt-4 border-t border-gray-300">
-        <button type="button"
-                data-action="click->tag-modal#confirm"
-                class="px-4 py-2 bg-gray-800 text-white font-semibold rounded-none hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 transition">
-          <%= t('.save') %>
-        </button>
-
+      <div class="flex justify-start gap-4 pt-4 border-t border-gray-300">
         <button type="button"
                 data-action="click->tag-modal#close"
-                class="px-4 py-2 text-red-600 hover:underline">
-          <%= t('.cancel') %>
+                class="px-4 py-2 text-gray-600 hover:underline">
+          <%= t('.back') %>
         </button>
       </div>
     </div>

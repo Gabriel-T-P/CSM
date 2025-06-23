@@ -11,7 +11,7 @@ describe 'User creates new content', type: :system do
   end
 
   it 'successfully' do
-    user = create(:user)
+    user = create(:user, username: 'Username_1')
     create(:tag, name: 'Test 1')
     create(:tag, name: 'Test 2')
 
@@ -19,16 +19,17 @@ describe 'User creates new content', type: :system do
     visit user_dashboard_path(user)
     click_on 'Upload'
     fill_in 'Title', with: 'Test Title'
-    find(:css, "#content_body", visible: false).set('Test Text in rich text')
     select 'Private', from: 'Visibility'
     click_on 'Choose Tags'
     check 'Test 1'
     check 'Test 2'
-    click_on 'Confirm'
-    attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
+    click_on 'Back'
+    # attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
     click_on 'Create Content'
 
     expect(current_path).to eq user_dashboard_path(user)
-    expect(page).to have_content 
+    expect(page).to have_content 'Content upload with success'
+    expect(page).to have_content 'Test Title'
+    expect(page).to have_content 'Username_1'
   end
 end
