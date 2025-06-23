@@ -7,14 +7,13 @@ class ContentsController < ApplicationController
 
   def create
     @content = current_user.contents.build(content_params)
-    puts params.inspect
-    p @content
+    @content.tag_ids = content_params[:tag_ids]
     if @content.save
-      flash[:notice] = "Content upload with success"
+      flash[:notice] = t(".success")
       redirect_to user_dashboard_path(current_user)
     else
-      flash[:alert] = "Something went wrong"
-      render 'new'
+      flash[:alert] = t(".success")
+      render :new, status: :unprocessable_entity
     end
   end
 

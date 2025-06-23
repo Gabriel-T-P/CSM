@@ -6,3 +6,6 @@ en:
       save: Create Content
       cancel: Cancel
       select_tags_btn: Show Tags
+    create:
+      success: Content upload with success
+      error: Failed to upload your content

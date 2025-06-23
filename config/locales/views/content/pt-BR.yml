@@ -6,3 +6,6 @@ pt-BR:
       save: Criar Novo Conteúdo
       cancel: Cancelar
       select_tags_btn: Mostrar Tags
+    create:
+      success: Conteúdo criado com sucesso
+      error: Falha ao criar o conteúdo
