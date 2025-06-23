@@ -20,11 +20,11 @@ describe 'User creates new content', type: :system do
     click_on 'Upload'
     fill_in 'Title', with: 'Test Title'
     select 'Private', from: 'Visibility'
-    click_on 'Choose Tags'
+    click_on 'Show Tags'
     check 'Test 1'
     check 'Test 2'
-    click_on 'Back'
-    # attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
+    click_on 'Show Tags'
+    attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
     click_on 'Create Content'
 
     expect(current_path).to eq user_dashboard_path(user)

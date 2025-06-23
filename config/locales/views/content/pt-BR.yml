@@ -5,8 +5,4 @@ pt-BR:
       add_cover_picture: Adicionar Imagem da Capa 
       save: Criar Novo Conteúdo
       cancel: Cancelar
-    tag_selector:
-      select_tags_btn: Selecionar Tags
-      select_tags_title: Escolha as tags disponíveis
-      save: Confirmar
-      back: Voltar
+      select_tags_btn: Mostrar Tags

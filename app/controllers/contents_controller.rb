@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = current_user.contents.build(content_params)
-    p params
+    puts params.inspect
     p @content
     if @content.save
       flash[:notice] = "Content upload with success"
