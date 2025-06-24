@@ -7,6 +7,9 @@ class Content < ApplicationRecord
 
   enum :visibility, { visible_to_all: 1, only_me: 5, unlisted: 9 }, default: :only_me
 
+  validates :title, :body, presence: true
+  validates :title, length: { maximum: 50 }
+
   def self.visibility_options
     {
       only_me: I18n.t("content.visibility.only_me"),

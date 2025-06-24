@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
       flash[:notice] = t(".success")
       redirect_to user_dashboard_path(current_user)
     else
-      flash[:alert] = t(".success")
+      flash[:alert] = t(".error")
       render :new, status: :unprocessable_entity
     end
   end
