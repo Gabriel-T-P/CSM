@@ -6,7 +6,8 @@ en:
       create: Create
       my_collections: My Collections
       my_friends: My Friends
-      posted_time_ago: Posted %{date} ago
     recent_content:
       recent_content: Recent Uploads
       ago: ago
+    announcements_list:
+      posted_time_ago: Posted %{date} ago

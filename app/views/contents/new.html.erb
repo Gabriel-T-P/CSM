@@ -38,36 +38,42 @@
       </div>
 
       <!-- Tags -->
-      <div data-controller="accordion" class="border border-gray-800 rounded-none">
-        <button type="button"
-                data-action="click->accordion#toggle"
-                class="w-full px-4 py-3 flex items-center justify-between text-left text-gray-800 bg-white hover:bg-gray-100 transition">
-          <span><%= t('.select_tags_btn') %></span>
-          <svg data-accordion-target="icon"
-               class="w-5 h-5 transition-transform duration-300 text-gray-600"
-               fill="none" stroke="currentColor" stroke-width="1.5"
-               viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+      <% if @tags.any?%>      
+        <div data-controller="accordion" class="border border-gray-800 rounded-none">
+          <button type="button"
+                  data-action="click->accordion#toggle"
+                  class="w-full px-4 py-3 flex items-center justify-between text-left text-gray-800 bg-white hover:bg-gray-100 transition">
+            <span><%= t('.select_tags_btn') %></span>
+            <svg data-accordion-target="icon"
+                class="w-5 h-5 transition-transform duration-300 text-gray-600"
+                fill="none" stroke="currentColor" stroke-width="1.5"
+                viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
-        <div data-accordion-target="content"
-             class="overflow-hidden max-h-0 transition-all duration-500 ease-in-out"
-             style="max-height: 0;">
-          <div class="p-4 space-y-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <% @tags.each do |tag| %>
-                <label class="flex items-center gap-2 text-sm text-gray-800">
-                  <%= check_box_tag "content[tag_ids][]", tag.id, @content.tag_ids.include?(tag.id),
-                      id: "tag-checkbox-#{tag.id}",
-                      class: "accent-gray-800 w-4 h-4" %>
-                  <%= tag.name %>
-                </label>
-              <% end %>
+          <div data-accordion-target="content"
+              class="overflow-hidden max-h-0 transition-all duration-500 ease-in-out"
+              style="max-height: 0;">
+            <div class="p-4 space-y-4">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <% @tags.each do |tag| %>
+                  <label class="flex items-center gap-2 text-sm text-gray-800">
+                    <%= check_box_tag "content[tag_ids][]", tag.id, @content.tag_ids.include?(tag.id),
+                        id: "tag-checkbox-#{tag.id}",
+                        class: "accent-gray-800 w-4 h-4" %>
+                    <%= tag.name %>
+                  </label>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% else %>
+        <div>
+          <span><%= t('.no_tags_found') %></span>
+        </div>
+      <% end %>
 
       <!-- Cover Image -->
       <div class="flex items-center gap-6" data-controller="avatar-preview">

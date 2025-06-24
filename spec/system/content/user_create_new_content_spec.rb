@@ -31,14 +31,22 @@ describe 'User creates new content', type: :system do
     expect(page).to have_content 'You can not access this page'
   end
 
+  it 'and has no tags created for form' do
+    user = create(:user, username: 'Username_1')
+
+    login_as user
+    visit new_user_content_path(user)
+
+    expect(page).to have_content 'There are no tags registered yet'
+  end
+
   it 'successfully' do
     user = create(:user, username: 'Username_1')
     create(:tag, name: 'Test 1')
     create(:tag, name: 'Test 2')
 
     login_as user
-    visit user_dashboard_path(user)
-    click_on 'Upload'
+    visit new_user_content_path(user)
     fill_in 'Title', with: 'Test Title'
     select 'Private', from: 'Visibility'
     click_on 'Show Tags'

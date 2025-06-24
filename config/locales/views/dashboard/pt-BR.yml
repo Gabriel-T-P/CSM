@@ -6,7 +6,8 @@ pt-BR:
       create: Criar
       my_collections: Minha Coleção
       my_friends: Meus Amigos
-      posted_time_ago: Postado %{date} atrás
     recent_content:
       recent_content: Uploads Recentes
       ago: atrás
+    announcements_list:
+      posted_time_ago: Postado %{date} atrás
