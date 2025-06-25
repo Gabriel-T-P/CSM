@@ -14,6 +14,8 @@ class ContentsController < ApplicationController
       flash[:notice] = t(".success")
       redirect_to user_dashboard_path(current_user)
     else
+      puts params.inspect
+      @tags = Tag.all
       flash[:alert] = t(".error")
       render :new, status: :unprocessable_entity
     end

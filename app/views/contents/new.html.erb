@@ -38,7 +38,7 @@
       </div>
 
       <!-- Tags -->
-      <% if @tags.any?%>      
+      <% if @tags.any?%>
         <div data-controller="accordion" class="border border-gray-800 rounded-none">
           <button type="button"
                   data-action="click->accordion#toggle"
@@ -77,7 +77,7 @@
 
       <!-- Cover Image -->
       <div class="flex items-center gap-6" data-controller="avatar-preview">
-        <% if @content.cover.attached? %>
+        <% if @content.cover.attached? && !@content.new_record? %>
           <%= image_tag url_for(@content.cover),
             class: "w-24 h-24 border border-gray-800 object-cover rounded-none shadow-sm",
             data: { avatar_preview_target: "preview" } %>

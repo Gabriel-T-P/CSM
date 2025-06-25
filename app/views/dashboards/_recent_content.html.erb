@@ -4,7 +4,7 @@
   </h2>
 
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <% current_user.contents.order(created_at: :desc).limit(8).each do |content| %>
+    <% current_user.contents.order(created_at: :desc).limit(4).each do |content| %>
       <div class="group border-2 border-gray-800 hover:border-gray-500 transition duration-200 rounded-none bg-white overflow-hidden">
         <% if content.cover.attached? %>
           <%= image_tag url_for(content.cover),

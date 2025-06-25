@@ -48,6 +48,7 @@ describe 'User creates new content', type: :system do
     login_as user
     visit new_user_content_path(user)
     fill_in 'Title', with: 'Test Title'
+    find(:xpath, "//\*[@id='content_body']", visible: false).set('My awesome text')
     select 'Private', from: 'Visibility'
     click_on 'Show Tags'
     check 'Test 1'
@@ -60,6 +61,22 @@ describe 'User creates new content', type: :system do
     expect(page).to have_content 'Test Title'
     expect(page).to have_content 'Username_1'
     expect(page).to have_content time_ago_in_words(Content.first.created_at)
+  end
+
+  it 'and view errors messages' do
+    user = create(:user, username: 'Username_1')
+    create(:tag, name: 'Test 1')
+    create(:tag, name: 'Test 2')
+
+    login_as user
+    visit new_user_content_path(user)
+    fill_in 'Title', with: ' '
+    find(:xpath, "//\*[@id='content_body']", visible: false).set(' ')
+    click_on 'Create Content'
+
+    expect(page).to have_content 'Failed to upload your content'
+    expect(page).to have_content "Title can't be blank"
+    expect(page).to have_content "Content can't be blank"
   end
 
   it 'and clicks on cancel' do
@@ -82,6 +99,5 @@ describe 'User creates new content', type: :system do
     expect(page).not_to have_content 'Content upload with success'
     expect(page).not_to have_content 'Test Title'
     expect(page).not_to have_content 'Username_1'
-    expect(page).not_to have_content time_ago_in_words(Content.first.created_at)
   end
 end
