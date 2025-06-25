@@ -19,7 +19,7 @@ RSpec.describe "Contents", type: :request do
       user = create(:user)
 
       login_as user
-      post  user_contents_path(user), params: {
+      post user_contents_path(user), params: {
         content: {
           title: 'Test Title',
           body: 'Test Body'
@@ -34,7 +34,7 @@ RSpec.describe "Contents", type: :request do
       user = create(:user)
 
       login_as user
-      post  user_contents_path(user), params: {
+      post user_contents_path(user), params: {
         content: {
           title: ' ',
           body: ' '
@@ -44,13 +44,13 @@ RSpec.describe "Contents", type: :request do
       expect(response).to have_http_status 422
       expect(flash[:alert]).to eq 'Failed to upload your content'
     end
-    
+
     it 'for another user' do
       user = create(:user)
       other_user = create(:user)
-      
+
       login_as other_user
-      post  user_contents_path(user), params: {
+      post user_contents_path(user), params: {
         content: {
           title: 'Test Title',
           body: 'Test Body'

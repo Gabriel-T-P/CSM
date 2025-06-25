@@ -17,7 +17,7 @@ class Content < ApplicationRecord
       only_me: I18n.t("content.visibility.only_me"),
       visible_to_all: I18n.t("content.visibility.visible_to_all"),
       unlisted: I18n.t("content.visibility.unlisted")
-    }.map { |key, label| [label, key] }
+    }.map { |key, label| [ label, key ] }
   end
 
   def to_param

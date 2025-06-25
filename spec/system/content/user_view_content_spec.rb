@@ -22,6 +22,6 @@ describe 'User view detailed content', type: :system do
   end
 
   it 'successfully and its authenticated' do
-    
+
   end
 end
