@@ -5,27 +5,29 @@
 
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <% current_user.contents.order(created_at: :desc).limit(4).each do |content| %>
-      <div class="group border-2 border-gray-800 hover:border-gray-500 transition duration-200 rounded-none bg-white overflow-hidden">
-        <% if content.cover.attached? %>
-          <%= image_tag url_for(content.cover),
-              class: "w-full h-32 object-cover" %>
-        <% else %>
-          <%= image_tag "default_avatar.png",
-              class: "w-full h-32 object-cover" %>
-        <% end %>
+      <%= link_to user_content_path(user, content) do %>
+        <div class="group border-2 border-gray-800 hover:border-gray-500 transition duration-200 rounded-none bg-white overflow-hidden">
+          <% if content.cover.attached? %>
+            <%= image_tag url_for(content.cover),
+                class: "w-full h-32 object-cover" %>
+          <% else %>
+            <%= image_tag "default_avatar.png",
+                class: "w-full h-32 object-cover" %>
+          <% end %>
 
-        <div class="p-3 space-y-1">
-          <p class="text-sm font-semibold text-gray-900 truncate">
-            <%= content.title %>
-          </p>
-          <p class="text-xs text-gray-600 truncate">
-            <%= content.user.username %>
-          </p>
-          <p class="text-xs text-gray-500">
-            <%= time_ago_in_words(content.created_at) %> <%= t('.ago') %>
-          </p>
+          <div class="p-3 space-y-1">
+            <p class="text-sm font-semibold text-gray-900 truncate">
+              <%= content.title %>
+            </p>
+            <p class="text-xs text-gray-600 truncate">
+              <%= content.user.username %>
+            </p>
+            <p class="text-xs text-gray-500">
+              <%= time_ago_in_words(content.created_at) %> <%= t('.ago') %>
+            </p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </section>
