@@ -49,6 +49,7 @@ describe 'User creates new content', type: :system do
     visit new_user_content_path(user)
     fill_in 'Title', with: 'Test Title'
     find(:xpath, "//\*[@id='content_body']", visible: false).set('My awesome text')
+    fill_in 'content_body', with: 'My awesome text'
     select 'Private', from: 'Visibility'
     click_on 'Show Tags'
     check 'Test 1'
