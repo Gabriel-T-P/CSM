@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_user
 
   def new
@@ -22,6 +22,7 @@ class ContentsController < ApplicationController
   end
 
   def show
+    @content = Content.find_by!(code: params[:id])
   end
 
 

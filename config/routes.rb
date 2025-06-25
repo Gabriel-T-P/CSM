@@ -12,9 +12,12 @@ Rails.application.routes.draw do
     # Public profile
     get '/profile/:username', to: 'profiles#show', as: :profile
 
+    # Public content
+    resources :contents, only: [:show]
+
     resources :user do
       resource :dashboard, only: [:show]
-      resources :contents, only: [:new, :create, :show]
+      resources :contents, only: [:new, :create]
     end
 
     namespace :admin do

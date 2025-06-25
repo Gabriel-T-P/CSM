@@ -5,14 +5,12 @@
 
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <% current_user.contents.order(created_at: :desc).limit(4).each do |content| %>
-      <%= link_to user_content_path(user, content) do %>
-        <div class="group border-2 border-gray-800 hover:border-gray-500 transition duration-200 rounded-none bg-white overflow-hidden">
+      <%= link_to content_path(content), class: "block group transition-transform duration-200 ease-in-out hover:scale-[1.015]" do %>
+        <div class="border-2 border-gray-800 hover:border-gray-500 rounded-none bg-white overflow-hidden shadow-sm group-hover:shadow-md transition duration-200">
           <% if content.cover.attached? %>
-            <%= image_tag url_for(content.cover),
-                class: "w-full h-32 object-cover" %>
+            <%= image_tag url_for(content.cover), class: "w-full h-32 object-cover" %>
           <% else %>
-            <%= image_tag "default_avatar.png",
-                class: "w-full h-32 object-cover" %>
+            <%= image_tag "default_avatar.png", class: "w-full h-32 object-cover" %>
           <% end %>
 
           <div class="p-3 space-y-1">

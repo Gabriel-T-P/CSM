@@ -3,25 +3,25 @@ require 'rails_helper'
 describe 'User view detailed content', type: :system do
   it 'by dashboard' do
     user = create(:user, username: 'Test_User')
-    create(:content, title: 'My Content')
+    content = create(:content, title: 'My Content', user: user)
 
     login_as user
     visit user_dashboard_path(user)
 
-    expect(page).to have_link 'My Content'
+    expect(page).to have_selector("a[href='#{content_path(content)}']")
   end
 
-  it 'and its not authenticated' do
+  it 'successfully and its not authenticated' do
     user = create(:user)
     content = create(:content, title: 'My Content')
 
-    visit user_content_path(user, content)
+    visit content_path(content)
 
-    expect(current_path).to eq new_user_session_path
+    expect(current_path).to eq content_path(content)
     expect(page).to have_content 'You need to sign in or sign up before continuing'
   end
 
-  it 'successfully' do
+  it 'successfully and its authenticated' do
     
   end
 end
