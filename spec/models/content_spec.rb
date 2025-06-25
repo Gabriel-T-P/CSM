@@ -36,4 +36,21 @@ RSpec.describe Content, type: :model do
       ])
     end
   end
+
+  describe '.generate_unique_code' do
+    it 'generates a unique alphanumeric code on create' do
+      content = create(:content)
+
+      expect(content.code).to be_present
+      expect(content.code).to match(/\A[a-zA-Z0-9]{12}\z/)
+    end
+
+    it 'generates different codes for different contents' do
+      user = create(:user)
+      content1 = create(:content, title: "Test 1", visibility: "only_me", user: user)
+      content2 = create(:content, title: "Test 2", visibility: "only_me", user: user)
+
+      expect(content1.code).not_to eq(content2.code)
+    end
+  end
 end
