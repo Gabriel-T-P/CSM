@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
-  before_action :set_user
+  before_action :set_user, except: [ :show ]
 
   def new
     @content = Content.new
@@ -14,7 +14,6 @@ class ContentsController < ApplicationController
       flash[:notice] = t(".success")
       redirect_to user_dashboard_path(current_user)
     else
-      puts params.inspect
       @tags = Tag.all
       flash[:alert] = t(".error")
       render :new, status: :unprocessable_entity

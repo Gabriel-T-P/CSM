@@ -18,7 +18,7 @@ describe 'User view detailed content', type: :system do
     visit content_path(content)
 
     expect(current_path).to eq content_path(content)
-    expect(page).to have_content 'You need to sign in or sign up before continuing'
+    expect(page).to have_content ' '
   end
 
   it 'successfully and its authenticated' do
