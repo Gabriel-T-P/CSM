@@ -1,24 +1,27 @@
 <section class="bg-gray-100 min-h-screen py-10 px-4">
   <div class="max-w-4xl mx-auto bg-white border-2 border-gray-800 rounded-none shadow-lg overflow-hidden">
 
-    <!-- Cover -->
+    <!-- Capa -->
     <% if @content.cover.attached? %>
       <%= image_tag url_for(@content.cover), class: "w-full h-64 object-cover border-b-2 border-gray-800" %>
     <% end %>
 
-    <div class="p-8 space-y-8">
-      <!-- Title -->
+    <div class="p-8 space-y-6">
+
+      <!-- Título -->
       <h1 class="text-4xl font-bold text-gray-900 leading-tight">
         <%= @content.title %>
       </h1>
 
-      <div class="flex items-center justify-between pb-4">
-        <!-- Content Owner -->
+      <!-- Linha: autor à esquerda / botões à direita -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4">
+
+        <!-- Autor -->
         <div class="flex items-center gap-4">
           <% if @content.user.avatar.attached? %>
-            <%= image_tag url_for(@content.user.avatar), class: "w-12 h-12 object-cover border border-gray-800 rounded-full shadow-sm" %>
+            <%= image_tag url_for(@content.user.avatar), class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
           <% else %>
-            <%= image_tag 'default_avatar.png', class: "w-12 h-12 object-cover border border-gray-800 rounded-full shadow-sm" %>
+            <%= image_tag 'default_avatar.png', class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
           <% end %>
           <div>
             <p class="text-gray-900 font-semibold text-base"><%= @content.user.username %></p>
@@ -26,54 +29,61 @@
           </div>
         </div>
 
-        <!-- Like -->
-        <div class="flex items-center gap-2">
+        <!-- Botões -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Like -->
           <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M14 9l3 3m0 0l-3 3m3-3H4" />
+            👍 <span class="text-sm font-medium">123</span>
+          </button>
+
+          <!-- Dislike -->
+          <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
+            👎
+          </button>
+
+          <!-- Share -->
+          <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
+            🔗 <span class="text-sm font-medium"><%= t('.share') %></span>
+          </button>
+
+          <!-- Follow -->
+          <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
+            ➕ <span class="text-sm font-medium"><%= t('.follow') %></span>
+          </button>
+
+          <!-- Save in Collection -->
+          <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
             </svg>
-            <span class="text-sm font-medium">123</span>
+            <span class="text-sm font-medium"><%= t('.save') %></span>
           </button>
         </div>
       </div>
 
-      <!-- Body -->
+      <!-- Corpo -->
       <div class="prose prose-gray max-w-none text-gray-800 border-t border-gray-200 pt-6">
         <%= @content.body.to_s %>
       </div>
 
-      <!-- Foot -->
+      <!-- Metadados em linha -->
       <% if @content.tags.any? || @content.created_at.present? || @content.visibility.present? %>
-        <div class="border-t border-gray-200 pt-4 text-sm text-gray-600 space-y-1">
-          
-          <!-- Created At -->
+        <div class="border-t border-gray-200 pt-4 text-sm text-gray-600">
           <p>
-            <strong><%= t('.posted_on') %>:</strong>
-            <%= l(@content.created_at.to_date, format: :long) %>
-          </p>
-
-          <!-- Visibility -->
-          <p>
-            <strong><%= t('.visibility') %>:</strong>
+            <%= l(@content.created_at.to_date, format: :long) %> •
             <%= I18n.t("content.visibility.#{@content.visibility}") %>
+            <% if @content.tags.any? %>
+              • <%= @content.tags.map { |tag| "##{tag.name}" }.join(', ') %>
+            <% end %>
           </p>
-
-          <!-- Tags -->
-          <% if @content.tags.any? %>
-            <p>
-              <strong><%= t('.tags') %>:</strong>
-              <%= @content.tags.map { |tag| "##{tag.name}" }.join(', ') %>
-            </p>
-          <% end %>
         </div>
       <% end %>
-    </div>
 
-    <!-- Future comments section -->
-    <div class="border-t-2 border-gray-800 bg-gray-50 px-8 py-10">
-      <h2 class="text-lg font-semibold text-gray-800 mb-4"><%= t('.comments_placeholder') %></h2>
-      <p class="text-sm text-gray-500 italic"><%= t('.coming_soon') %></p>
+      <!-- Comentários futuros -->
+      <div class="border-t-2 border-gray-800 bg-gray-50 px-4 py-10">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4"><%= t('.comments_placeholder') %></h2>
+        <p class="text-sm text-gray-500 italic"><%= t('.coming_soon') %></p>
+      </div>
     </div>
   </div>
 </section>

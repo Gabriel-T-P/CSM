@@ -10,3 +10,10 @@ pt-BR:
     create:
       success: Conteúdo criado com sucesso
       error: Falha ao criar o conteúdo
+    show:
+      followers_placeholder: 123 seguidores
+      share: Compartilhar
+      follow: Seguir
+      save: Salvar
+      comments_placeholder: Comentários
+      coming_soon: Futuros comentários ficarão aqui
