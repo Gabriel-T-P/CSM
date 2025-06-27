@@ -9,5 +9,6 @@ en:
     recent_content:
       recent_content: Recent Uploads
       ago: ago
+      no_content_found_yet: No content found yet
     announcements_list:
       posted_time_ago: Posted %{date} ago

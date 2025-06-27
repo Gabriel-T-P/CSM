@@ -9,5 +9,6 @@ pt-BR:
     recent_content:
       recent_content: Uploads Recentes
       ago: atrás
+      no_content_found_yet: Nenhum conteúdo criado ainda
     announcements_list:
       posted_time_ago: Postado %{date} atrás

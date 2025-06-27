@@ -17,6 +17,8 @@ describe 'User views profile page', type: :system do
 
   it 'and have own profile informations' do
     user = create(:user, first_name: 'User', last_name: 'Test', email: 'user_1@email.com', location: 'Brazil', gender: :male, birth_date: 20.years.ago)
+    create(:content, user: user)
+    create(:content, user: user)
 
     login_as user
     visit profile_path(username: user.username)
@@ -28,6 +30,7 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Age: 20 years'
     expect(page).to have_content 'Pronouns: he/him'
     expect(page).to have_content 'Member since 2025'
+    expect(page).to have_content '2 Contents'
   end
 
   it 'and its not authenticated' do
