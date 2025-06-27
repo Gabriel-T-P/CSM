@@ -1,35 +1,38 @@
 <section class="bg-gray-100 min-h-screen py-10 px-4">
   <div class="max-w-4xl mx-auto bg-white border-2 border-gray-800 rounded-none shadow-lg overflow-hidden">
 
-    <!-- Capa -->
+    <!-- Cover -->
     <% if @content.cover.attached? %>
       <%= image_tag url_for(@content.cover), class: "w-full h-64 object-cover border-b-2 border-gray-800" %>
     <% end %>
 
     <div class="p-8 space-y-6">
 
-      <!-- Título -->
+      <!-- Title -->
       <h1 class="text-4xl font-bold text-gray-900 leading-tight">
         <%= @content.title %>
       </h1>
 
-      <!-- Linha: autor à esquerda / botões à direita -->
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4">
 
-        <!-- Autor -->
+        <!-- Content Owner -->
         <div class="flex items-center gap-4">
           <% if @content.user.avatar.attached? %>
-            <%= image_tag url_for(@content.user.avatar), class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
+            <%= link_to profile_path(@content.user.username) do %>
+              <%= image_tag url_for(@content.user.avatar), class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
+            <% end %>
           <% else %>
-            <%= image_tag 'default_avatar.png', class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
+            <%= link_to profile_path(@content.user.username) do %>
+              <%= image_tag 'default_avatar.png', class: "w-12 h-12 object-cover border border-gray-800 shadow-sm" %>
+            <% end %>
           <% end %>
           <div>
-            <p class="text-gray-900 font-semibold text-base"><%= @content.user.username %></p>
+            <%= link_to @content.user.username, profile_path(@content.user.username), class: 'text-gray-900 font-semibold text-base hover:underline' %>
             <p class="text-sm text-gray-600"><%= t('.followers_placeholder') %></p>
           </div>
         </div>
 
-        <!-- Botões -->
+        <!-- Buttons -->
         <div class="flex flex-wrap items-center gap-3">
           <!-- Like -->
           <button class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
@@ -61,12 +64,12 @@
         </div>
       </div>
 
-      <!-- Corpo -->
+      <!-- Body -->
       <div class="prose prose-gray max-w-none text-gray-800 border-t border-gray-200 pt-6">
         <%= @content.body.to_s %>
       </div>
 
-      <!-- Metadados em linha -->
+      <!-- Metadatas -->
       <% if @content.tags.any? || @content.created_at.present? || @content.visibility.present? %>
         <div class="border-t border-gray-200 pt-4 text-sm text-gray-600">
           <p>
@@ -79,7 +82,7 @@
         </div>
       <% end %>
 
-      <!-- Comentários futuros -->
+      <!-- Comments -->
       <div class="border-t-2 border-gray-800 bg-gray-50 px-4 py-10">
         <h2 class="text-lg font-semibold text-gray-800 mb-4"><%= t('.comments_placeholder') %></h2>
         <p class="text-sm text-gray-500 italic"><%= t('.coming_soon') %></p>

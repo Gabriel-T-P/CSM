@@ -2,6 +2,7 @@ pt-BR:
   error_messages:
     username_format_validation: só pode conter letras, números e _
     route_negated: Você não pode acessar essa página
+    please_login: Por favor, faça login para acessar essa página
   user:
     pronoun:
       male: ele/dele
@@ -17,6 +18,7 @@ en:
   error_messages:
     username_format_validation: only permits letters, numbers and _
     route_negated: You can not access this page
+    please_login: Please login to access this page
   user:
     pronoun:
       male: he/him

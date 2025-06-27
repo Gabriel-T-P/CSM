@@ -25,6 +25,7 @@ describe 'User view own dashboard', type: :system do
 
   it 'successfully' do
     user = create(:user)
+    content = create(:content, title: 'Content Test', user: user)
 
     login_as user
     visit root_path
@@ -32,6 +33,7 @@ describe 'User view own dashboard', type: :system do
 
     expect(current_path).to eq user_dashboard_path(user)
     expect(page).to have_content 'Recent Uploads'
+    expect(page).to have_content 'Content Test'
     expect(page).to have_content 'My Collections'
     expect(page).to have_content 'My Friends'
   end
@@ -54,5 +56,17 @@ describe 'User view own dashboard', type: :system do
 
     expect(current_path).to eq root_path
     expect(page).to have_content 'You can not access this page'
+  end
+
+  it 'and has no content created by the user' do
+    user = create(:user)
+
+    login_as user
+    visit root_path
+    find('.test-dashboard-btn').click
+
+    expect(current_path).to eq user_dashboard_path(user)
+    expect(page).to have_content 'Recent Uploads'
+    expect(page).to have_content 'No content found yet'
   end
 end

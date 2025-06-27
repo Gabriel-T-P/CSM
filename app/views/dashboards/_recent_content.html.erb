@@ -3,29 +3,38 @@
     <%= t('.recent_content') %>
   </h2>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <% current_user.contents.order(created_at: :desc).limit(4).each do |content| %>
-      <%= link_to content_path(content), class: "block group transition-transform duration-200 ease-in-out hover:scale-[1.015]" do %>
-        <div class="border-2 border-gray-800 hover:border-gray-500 rounded-none bg-white overflow-hidden shadow-sm group-hover:shadow-md transition duration-200">
-          <% if content.cover.attached? %>
-            <%= image_tag url_for(content.cover), class: "w-full h-32 object-cover" %>
-          <% else %>
-            <%= image_tag "default_avatar.png", class: "w-full h-32 object-cover" %>
-          <% end %>
+  <% if current_user.contents.any? %>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <% current_user.contents.order(created_at: :desc).limit(4).each do |content| %>
+        <%= link_to content_path(content), class: "block group transition-transform duration-200 ease-in-out hover:scale-[1.015]" do %>
+          <div class="border-2 border-gray-800 hover:border-gray-500 rounded-none bg-white overflow-hidden shadow-sm group-hover:shadow-md transition duration-200">
+            <% if content.cover.attached? %>
+              <%= image_tag url_for(content.cover), class: "w-full h-32 object-cover" %>
+            <% else %>
+              <%= image_tag "default_avatar.png", class: "w-full h-32 object-cover" %>
+            <% end %>
 
-          <div class="p-3 space-y-1">
-            <p class="text-sm font-semibold text-gray-900 truncate">
-              <%= content.title %>
-            </p>
-            <p class="text-xs text-gray-600 truncate">
-              <%= content.user.username %>
-            </p>
-            <p class="text-xs text-gray-500">
-              <%= time_ago_in_words(content.created_at) %> <%= t('.ago') %>
-            </p>
+            <div class="p-3 space-y-1">
+              <p class="text-sm font-semibold text-gray-900 truncate">
+                <%= content.title %>
+              </p>
+              <p class="text-xs text-gray-600 truncate">
+                <%= content.user.username %>
+              </p>
+              <p class="text-xs text-gray-500">
+                <%= time_ago_in_words(content.created_at) %> <%= t('.ago') %>
+              </p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="text-center py-10">
+      <p class="text-gray-600 text-lg">
+        <%= t('.no_content_found_yet') %>
+      </p>
+      <%= link_to t('.create_new_content'), new_user_content_path(current_user), class: "mt-4 inline-block px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+    </div>
+  <% end %>
 </section>

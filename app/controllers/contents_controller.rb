@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, except: [ :show ]
+  before_action :set_content_and_authorize, only: [:show]
 
   def new
     @content = Content.new
@@ -21,7 +22,6 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = Content.find_by!(code: params[:id])
   end
 
 
@@ -34,5 +34,17 @@ class ContentsController < ApplicationController
   def set_user
     @user = User.find(params[:user_id])
     redirect_to root_path, alert: I18n.t("error_messages.route_negated") if @user.id != current_user.id
+  end
+
+  def set_content_and_authorize
+    @content = Content.find_by!(code: params[:id])
+
+    return unless @content.only_me?
+
+    if user_signed_in?
+      redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @content.user != current_user
+    else
+      redirect_to new_user_session_path, alert: I18n.t("error_messages.please_login")
+    end
   end
 end
