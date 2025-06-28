@@ -12,11 +12,12 @@ pt-BR:
       error: Falha ao criar o conteúdo
     show:
       followers_placeholder: 123 seguidores
-      share: Compartilhar
       follow: Seguir
-      save: Salvar
       comments_placeholder: Comentários
       coming_soon: Futuros comentários ficarão aqui
+    buttons_dropdown:
+      share: Compartilhar
+      save: Salvar
     index:
       title: Meus Conteúdos
       no_contents: Ainda não existe nenhum conteúdo criado

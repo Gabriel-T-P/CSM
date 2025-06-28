@@ -12,11 +12,12 @@ en:
       error: Failed to upload your content
     show:
       followers_placeholder: 123 followers
-      share: Share
       follow: Follow
-      save: Save
       comments_placeholder: Comments
       coming_soon: This section will allow users to comment soon.
+    buttons_dropdown:
+      share: Share
+      save: Save
     index:
       title: My Contents
       no_contents: You haven't created any content yet

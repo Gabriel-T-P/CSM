@@ -1,0 +1,29 @@
+<div data-controller="dropdown" class="mx-2 relative" data-dropdown-target="container">
+  <!-- Dropdown Trigger -->
+  <button data-action="click->dropdown#toggle" class="flex items-center gap-1 px-3 py-1 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-dropdown-target="icon">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 12h.01M12 12h.01M18 12h.01" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div data-dropdown-target="menu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 shadow-md rounded-none opacity-0 pointer-events-none transition-opacity duration-200 z-50">
+    <ul class="text-sm text-gray-700">
+
+      <!-- Share -->
+      <li>
+        <button class="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition">
+          🔗 <%= t('.share') %>
+        </button>
+      </li>
+
+      <!-- Save -->
+      <li>
+        <button class="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition">
+          📌 <%= t('.save') %>
+        </button>
+      </li>
+
+    </ul>
+  </div>
+</div>
