@@ -2,5 +2,6 @@ pt-BR:
   shared:
     navbar:
       user_button:
-        profile: Perfil
+        profile: 
+        contents: Conteúdos
         log_out: Sair

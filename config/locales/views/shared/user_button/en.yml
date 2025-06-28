@@ -3,4 +3,5 @@ en:
     navbar:
       user_button:
         profile: Profile
+        contents: Contents
         log_out: Log out

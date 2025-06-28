@@ -1,0 +1,57 @@
+<section class="min-h-screen py-10 px-4 bg-gray-100">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-800 pb-2">
+      <%= t('.title') %>
+    </h1>
+
+    <% if @user.contents.any? %>
+      <div class="space-y-4">
+        <% @user.contents.order(created_at: :desc).each do |content| %>
+          <div class="flex items-center border-2 border-gray-800 bg-white rounded-none shadow-sm hover:border-gray-500 transition duration-150">
+
+            <!-- Cover -->
+            <div class="w-32 h-20 shrink-0">
+              <% if content.cover.attached? %>
+                <%= image_tag url_for(content.cover), class: "w-full h-full object-cover" %>
+              <% else %>
+                <%= image_tag "default_avatar.png", class: "w-full h-full object-cover" %>
+              <% end %>
+            </div>
+
+            <!-- Info -->
+            <div class="flex-1 px-4 py-3 space-y-1">
+              <p class="font-semibold text-gray-900 truncate">
+                <%= link_to content.title, content_path(content), class: "hover:underline" %>
+              </p>
+              <p class="text-sm text-gray-600">
+                <%= I18n.t("content.visibility.#{content.visibility}") %> • <%= time_ago_in_words(content.created_at) %> <%= t('.ago', default: 'ago') %>
+              </p>
+              <% if content.tags.any? %>
+                <p class="text-xs text-gray-500 italic">
+                  <%= content.tags.map { |tag| "##{tag.name}" }.join(', ') %>
+                </p>
+              <% end %>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col items-end justify-center gap-2 px-4">
+              <%= link_to root_path,
+                    class: "text-sm text-yellow-600 hover:underline" do %>
+                Edit
+              <% end %>
+
+              <%= link_to root_path,
+                    class: "text-sm text-red-600 hover:underline" do %>
+                Delete
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-600 mt-8 italic text-center">
+        <%= t('.no_contents') %>
+      </p>
+    <% end %>
+  </div>
+</section>

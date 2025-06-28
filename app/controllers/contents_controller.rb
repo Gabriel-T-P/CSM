@@ -21,6 +21,9 @@ class ContentsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   def show
   end
 

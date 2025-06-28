@@ -31,7 +31,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
     <div class="bg-white p-6 rounded-none border-2 border-gray-700 text-center shadow-sm">
       <p class="text-3xl font-bold text-gray-900 mb-1"><%= @user.contents.size %></p>
-      <p class="text-sm text-gray-600"><%= Content.model_name.human.pluralize %></p>
+      <p class="text-sm text-gray-600"><%= t('.contents_number', count: @user.contents.size) %></p>
     </div>
     <div class="bg-white p-6 rounded-none border-2 border-gray-700 text-center shadow-sm">
       <p class="text-3xl font-bold text-gray-900 mb-1">0</p>

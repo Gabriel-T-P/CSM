@@ -30,7 +30,7 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Age: 20 years'
     expect(page).to have_content 'Pronouns: he/him'
     expect(page).to have_content 'Member since 2025'
-    expect(page).to have_content '2 Contents'
+    expect(page).to have_content 'Contents Created'
   end
 
   it 'and its not authenticated' do

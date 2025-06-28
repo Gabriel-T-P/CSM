@@ -17,3 +17,7 @@ en:
       save: Save
       comments_placeholder: Comments
       coming_soon: This section will allow users to comment soon.
+    index:
+      title: My Contents
+      no_contents: You haven't created any content yet
+      ago: ago

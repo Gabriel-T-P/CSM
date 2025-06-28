@@ -17,3 +17,7 @@ pt-BR:
       save: Salvar
       comments_placeholder: Comentários
       coming_soon: Futuros comentários ficarão aqui
+    index:
+      title: Meus Conteúdos
+      no_contents: Ainda não existe nenhum conteúdo criado
+      ago: atrás
