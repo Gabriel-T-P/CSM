@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, except: [ :show ]
-  before_action :set_content, only: [:edit]
+  before_action :set_content, only: [ :edit ]
 
   def new
     @content = Content.new

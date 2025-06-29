@@ -9,7 +9,7 @@ describe 'User edit own content', type: :system do
       login_as user
       visit content_path(content)
 
-      expect(page).to have_link 'Edit Content', :href => edit_user_content_path(user, content)
+      expect(page).to have_link 'Edit Content', href: edit_user_content_path(user, content)
       expect(page).not_to have_link 'Follow'
     end
 
@@ -20,7 +20,7 @@ describe 'User edit own content', type: :system do
       login_as user
       visit content_path(content)
 
-      expect(page).not_to have_link 'Edit Content', :href => edit_user_content_path(user, content)
+      expect(page).not_to have_link 'Edit Content', href: edit_user_content_path(user, content)
       expect(page).to have_link 'Follow'
     end
 
@@ -31,7 +31,7 @@ describe 'User edit own content', type: :system do
       login_as user
       visit user_contents_path(user)
 
-      expect(page).to have_link 'Edit', :href => edit_user_content_path(user, content)
+      expect(page).to have_link 'Edit', href: edit_user_content_path(user, content)
     end
   end
 
@@ -69,7 +69,7 @@ describe 'User edit own content', type: :system do
   it 'sucessfully' do
     user = create(:user)
     tag = create(:tag, name: 'Tag 1')
-    content = create(:content, title: 'Test Title', body: 'Test Body', visibility: :only_me, tags: [tag], user: user)
+    content = create(:content, title: 'Test Title', body: 'Test Body', visibility: :only_me, tags: [ tag ], user: user)
 
     login_as user
     visit edit_user_content_path(user, content)
@@ -97,7 +97,7 @@ describe 'User edit own content', type: :system do
   it 'and clicks on cancel' do
     user = create(:user)
     tag = create(:tag, name: 'Tag 1')
-    content = create(:content, title: 'Test Title', body: 'Test Body', visibility: :only_me, tags: [tag], user: user)
+    content = create(:content, title: 'Test Title', body: 'Test Body', visibility: :only_me, tags: [ tag ], user: user)
 
     login_as user
     visit content_path(content)
