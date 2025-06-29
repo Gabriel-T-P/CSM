@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, except: [ :show ]
-  before_action :set_content_and_authorize, only: [:show]
+  before_action :set_content, only: [:edit]
 
   def new
     @content = Content.new
@@ -21,10 +21,23 @@ class ContentsController < ApplicationController
     end
   end
 
+  def edit
+    @tags = Tag.all
+  end
+
   def index
   end
 
   def show
+    @content = Content.find_by!(code: params[:id])
+
+    return unless @content.only_me?
+
+    if user_signed_in?
+      redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @content.user != current_user
+    else
+      redirect_to new_user_session_path, alert: I18n.t("error_messages.please_login")
+    end
   end
 
 
@@ -39,15 +52,8 @@ class ContentsController < ApplicationController
     redirect_to root_path, alert: I18n.t("error_messages.route_negated") if @user.id != current_user.id
   end
 
-  def set_content_and_authorize
+  def set_content
     @content = Content.find_by!(code: params[:id])
-
-    return unless @content.only_me?
-
-    if user_signed_in?
-      redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @content.user != current_user
-    else
-      redirect_to new_user_session_path, alert: I18n.t("error_messages.please_login")
-    end
+    redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @content.user != current_user
   end
 end

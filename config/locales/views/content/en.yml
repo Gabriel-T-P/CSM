@@ -2,17 +2,22 @@ en:
   contents:
     new:
       title: Upload your content
-      add_cover_picture: Add Cover Picture
       save: Create Content
+    edit:
+      title: Edit your content
+      save: Update Content
+    form:
       cancel: Cancel
       select_tags_btn: Show Tags
       no_tags_found: There are no tags registered yet
+      add_cover_picture: Add Cover Picture
     create:
       success: Content upload with success
       error: Failed to upload your content
     show:
       followers_placeholder: 123 followers
       follow: Follow
+      edit_content: Edit Content
       comments_placeholder: Comments
       coming_soon: This section will allow users to comment soon.
     buttons_dropdown:

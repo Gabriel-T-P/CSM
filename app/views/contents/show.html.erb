@@ -32,9 +32,11 @@
             </div>
             <p class="text-sm text-gray-600"><%= t('.followers_placeholder') %></p>
           </div>
-          <button class="text-sm mx-2 px-3 py-2 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition">
-            <%= t('.follow') %>
-          </button>
+          <% if current_user == @content.user %>
+            <%= link_to t('.edit_content'), edit_user_content_path(current_user, @content), class: 'text-sm mx-2 px-3 py-2 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition' %>
+          <% else %>
+            <%= link_to t('.follow'), root_path, class: 'text-sm mx-2 px-3 py-2 border border-gray-800 text-gray-800 rounded-none hover:bg-gray-100 transition' %>
+          <% end %>
         </div>
 
         <!-- Buttons -->

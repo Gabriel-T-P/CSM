@@ -2,8 +2,12 @@ pt-BR:
   contents:
     new:
       title: Crie seu conteúdo
-      add_cover_picture: Adicionar Imagem da Capa 
       save: Criar Novo Conteúdo
+    edit:
+      title: Edite seu conteúdo
+      save: Editar Conteúdo
+    form:
+      add_cover_picture: Adicionar Imagem da Capa 
       cancel: Cancelar
       select_tags_btn: Mostrar Tags
       no_tags_found: Ainda não foram registrados nenhum marcador
@@ -13,6 +17,7 @@ pt-BR:
     show:
       followers_placeholder: 123 seguidores
       follow: Seguir
+      edit_content: Editar Conteúdo
       comments_placeholder: Comentários
       coming_soon: Futuros comentários ficarão aqui
     buttons_dropdown:
