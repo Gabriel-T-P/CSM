@@ -52,13 +52,9 @@ class ContentsController < ApplicationController
   end
 
   def destroy
-    if @content.destroy
-      flash[:notice] = 'Content was successfully deleted'
-      redirect_to user_contents_path(@user)
-    else
-      flash[:alert] = 'Something went wrong'
-      redirect_to @content
-    end
+    @content.destroy
+    flash[:notice] = t(".success")
+    redirect_to user_contents_path(@user)
   end
 
 
@@ -70,7 +66,7 @@ class ContentsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
-    redirect_to root_path, alert: I18n.t("error_messages.route_negated") if @user.id != current_user.id
+    redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @user.id != current_user.id
   end
 
   def set_content

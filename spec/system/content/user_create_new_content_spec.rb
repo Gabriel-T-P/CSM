@@ -27,7 +27,7 @@ describe 'User creates new content', type: :system do
     login_as other_user
     visit new_user_content_path(user)
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_dashboard_path(other_user)
     expect(page).to have_content 'You can not access this page'
   end
 

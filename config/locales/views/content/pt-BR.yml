@@ -21,6 +21,8 @@ pt-BR:
     create:
       success: Conteúdo atualizado com sucesso
       error: Falha ao atualizar o conteúdo
+    destroy:
+      success: Conteúdo deletado com sucesso
     show:
       followers_placeholder: 123 seguidores
       follow: Seguir

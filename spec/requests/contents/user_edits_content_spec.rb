@@ -72,7 +72,7 @@ RSpec.describe "Contents", type: :request do
       }
 
       expect(response).to have_http_status 302
-      expect(response).to redirect_to root_path(locale: :en)
+      expect(response).to redirect_to user_dashboard_path(other_user)
       expect(flash[:alert]).to eq 'You can not access this page'
     end
   end

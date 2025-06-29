@@ -21,6 +21,8 @@ en:
     update:
       success: Content updated with success
       error: Failed to update your content
+    destroy:
+      success: Content was successfully deleted
     show:
       followers_placeholder: 123 followers
       follow: Follow
