@@ -30,11 +30,11 @@ class ContentsController < ApplicationController
       flash[:notice] = t(".success")
       redirect_to @content
     else
-      flash[:alert] = t(".error")
+      @tags = Tag.all
+      flash.now[:alert] = t(".error")
       render :edit, status: :unprocessable_entity
     end
   end
-  
 
   def index
   end

@@ -88,8 +88,8 @@ describe 'User edit own content', type: :system do
     expect(page).to have_content 'Content updated with success'
     expect(page).to have_content 'Another Title'
     expect(page).not_to have_content 'Test Title'
-    #expect(page).to have_content 'Another Body'
-    #expect(page).not_to have_content 'Test Body'
+    # expect(page).to have_content 'Another Body'
+    # expect(page).not_to have_content 'Test Body'
     expect(page).to have_content 'Public'
     expect(page).not_to have_content 'Private'
     expect(page).not_to have_content '#Tag 1'
@@ -114,6 +114,22 @@ describe 'User edit own content', type: :system do
     expect(page).to have_content 'Content updated with success'
     expect(page).not_to have_content '#Tag 1'
     expect(page).not_to have_content '#Tag 2'
+  end
+
+  it 'and view errors messages' do
+    user = create(:user)
+    content = create(:content, title: 'Test Title', body: 'Test Body', user: user)
+
+    login_as user
+    visit edit_user_content_path(user, content)
+    fill_in 'Title', with: ' '
+    find_css_path = "trix-editor[input]"
+    find(find_css_path).click.set(' ')
+    click_on 'Update Content'
+
+    expect(page).to have_content 'Failed to update your content'
+    expect(page).to have_content "Title can't be blank"
+    # expect(page).to have_content "Content can't be blank"
   end
 
   it 'and clicks on cancel' do
