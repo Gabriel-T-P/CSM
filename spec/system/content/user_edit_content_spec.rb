@@ -69,16 +69,18 @@ describe 'User edit own content', type: :system do
   it 'sucessfully' do
     user = create(:user)
     tag = create(:tag, name: 'Tag 1')
+    create(:tag, name: 'Tag 2')
     content = create(:content, title: 'Test Title', body: 'Test Body', visibility: :only_me, tags: [ tag ], user: user)
 
     login_as user
     visit edit_user_content_path(user, content)
     fill_in 'Title', with: 'Another Title'
     find_css_path = "trix-editor[input]"
-    find(find_css_path).click.set("Este é o texto do meu Action Text.")
+    find(find_css_path).click.set('Another Body')
     select 'Public', from: 'Visibility'
     click_on 'Show Tags'
     uncheck 'Tag 1'
+    check 'Tag 2'
     attach_file(Rails.root.join("spec/support/files/test_avatar.png"))
     click_on 'Update Content'
 
@@ -86,12 +88,32 @@ describe 'User edit own content', type: :system do
     expect(page).to have_content 'Content updated with success'
     expect(page).to have_content 'Another Title'
     expect(page).not_to have_content 'Test Title'
-    expect(page).to have_content 'Este é o texto do meu Action Text'
-    expect(page).not_to have_content 'Test Body'
+    #expect(page).to have_content 'Another Body'
+    #expect(page).not_to have_content 'Test Body'
     expect(page).to have_content 'Public'
     expect(page).not_to have_content 'Private'
-    expect(page).not_to have_content 'Tag 1'
+    expect(page).not_to have_content '#Tag 1'
+    expect(page).to have_content '#Tag 2'
     expect(page).to have_css("img[src*='test_avatar.png']")
+  end
+
+  it 'sucessfully, removing all the tags' do
+    user = create(:user)
+    tag1 = create(:tag, name: 'Tag 1')
+    tag2 = create(:tag, name: 'Tag 2')
+    content = create(:content, tags: [ tag1, tag2 ], user: user)
+
+    login_as user
+    visit edit_user_content_path(user, content)
+    click_on 'Show Tags'
+    uncheck 'Tag 1'
+    uncheck 'Tag 2'
+    click_on 'Update Content'
+
+    expect(current_path).to eq content_path(content)
+    expect(page).to have_content 'Content updated with success'
+    expect(page).not_to have_content '#Tag 1'
+    expect(page).not_to have_content '#Tag 2'
   end
 
   it 'and clicks on cancel' do

@@ -14,6 +14,9 @@ pt-BR:
     create:
       success: Conteúdo criado com sucesso
       error: Falha ao criar o conteúdo
+    create:
+      success: Conteúdo atualizado com sucesso
+      error: Falha ao atualizar o conteúdo
     show:
       followers_placeholder: 123 seguidores
       follow: Seguir

@@ -14,6 +14,9 @@ en:
     create:
       success: Content upload with success
       error: Failed to upload your content
+    update:
+      success: Content updated with success
+      error: Failed to update your content
     show:
       followers_placeholder: 123 followers
       follow: Follow

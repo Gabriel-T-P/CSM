@@ -49,6 +49,8 @@
           style="max-height: 0;">
         <div class="p-4 space-y-4">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+            <%= hidden_field_tag "content[tag_ids][]", "" %> <!-- Hidden field for empty checkboxes -->
             <% tags.each do |tag| %>
               <label class="flex items-center gap-2 text-sm text-gray-800">
                 <%= check_box_tag "content[tag_ids][]", tag.id, content.tag_ids.include?(tag.id),
@@ -95,7 +97,7 @@
   </div>
 
   <div class="flex justify-between items-center pt-6 border-t border-gray-300">
-    <%= f.submit t('.save'), class: "px-6 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-none shadow focus:outline-none focus:ring-2 focus:ring-gray-800" %>
+    <%= f.submit save_button_text, class: "px-6 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-none shadow focus:outline-none focus:ring-2 focus:ring-gray-800" %>
     <%= link_to t('.cancel'), :back, class: "text-red-500 hover:underline text-sm" %>
   </div>
 <% end %>

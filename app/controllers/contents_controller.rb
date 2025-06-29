@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, except: [ :show ]
-  before_action :set_content, only: [ :edit ]
+  before_action :set_content, only: [ :edit, :update ]
 
   def new
     @content = Content.new
@@ -24,6 +24,17 @@ class ContentsController < ApplicationController
   def edit
     @tags = Tag.all
   end
+
+  def update
+    if @content.update(content_params)
+      flash[:notice] = t(".success")
+      redirect_to @content
+    else
+      flash[:alert] = t(".error")
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
 
   def index
   end
