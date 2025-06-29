@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   before_action :set_user, except: [ :show ]
-  before_action :set_content, only: [ :edit, :update ]
+  before_action :set_content, only: [ :edit, :update, :destroy ]
 
   def new
     @content = Content.new
@@ -48,6 +48,16 @@ class ContentsController < ApplicationController
       redirect_to user_dashboard_path(current_user), alert: I18n.t("error_messages.route_negated") if @content.user != current_user
     else
       redirect_to new_user_session_path, alert: I18n.t("error_messages.please_login")
+    end
+  end
+
+  def destroy
+    if @content.destroy
+      flash[:notice] = 'Content was successfully deleted'
+      redirect_to user_contents_path(@user)
+    else
+      flash[:alert] = 'Something went wrong'
+      redirect_to @content
     end
   end
 

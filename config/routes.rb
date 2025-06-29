@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     resources :user do
       resource :dashboard, only: [:show]
-      resources :contents, only: [:index, :new, :create, :edit, :update]
+      resources :contents, only: [:index, :new, :create, :edit, :update, :destroy]
     end
 
     namespace :admin do

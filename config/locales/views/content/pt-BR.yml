@@ -6,6 +6,10 @@ pt-BR:
     edit:
       title: Edite seu conteúdo
       save: Editar Conteúdo
+      delete: Deletar
+      warning: Cuidado
+      delete_my_content: Deletar meu conteúdo
+      irreversible_action: essa ação é irreversível
     form:
       add_cover_picture: Adicionar Imagem da Capa 
       cancel: Cancelar

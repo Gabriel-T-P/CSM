@@ -6,6 +6,10 @@ en:
     edit:
       title: Edit your content
       save: Update Content
+      delete: Delete
+      warning: Warning
+      delete_my_content: Delete my content
+      irreversible_action: this action is irreversible
     form:
       cancel: Cancel
       select_tags_btn: Show Tags
