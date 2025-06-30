@@ -1,11 +1,13 @@
 puts "\n== Creating admin account =="
 
+default_password = '12345678'
+
 admin = User.find_or_create_by!(email: 'master@email.com') do |user|
   user.first_name = 'Master'
   user.last_name  = 'Admin'
   user.username   = 'Master'
-  user.password   = '12345678'
-  user.password_confirmation = '12345678'
+  user.password   = default_password
+  user.password_confirmation = default_password
   user.role       = :admin
   user.biography  = 'This account has the privileges of an Admin'
   user.birth_date = 30.years.ago
@@ -26,8 +28,8 @@ user = User.find_or_create_by!(email: 'user1@email.com') do |u|
   u.first_name = 'Alice'
   u.last_name  = 'Smith'
   u.username   = 'User_1'
-  u.password   = '12345678'
-  u.password_confirmation = '12345678'
+  u.password   = default_password
+  u.password_confirmation = default_password
   u.role       = :regular
   u.biography  = 'Just a regular user exploring the platform!'
   u.birth_date = 25.years.ago
@@ -76,7 +78,22 @@ default_cover_path = Rails.root.join("app/assets/images/sample_cover.jpg")
   { user: user, title: "Designing a Better Web App" }
 ].each do |data|
   content = Content.find_or_create_by!(title: data[:title], user: data[:user]) do |c|
-    c.body       = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet."
+    c.body       = <<~HTML
+                    <h1>Bem-vindo ao Mundo do Rails!</h1>
+                    <p>Este é um <strong>exemplo de conteúdo</strong> gerado via <em>seeds</em> para demonstrar as capacidades do <strong>Action Text</strong>. Você notará que podemos incluir diferentes elementos HTML para enriquecer a experiência de leitura.</p>
+
+                    <p>No Rails, a criação de aplicações web robustas é facilitada por seus princípios e convenções. Com o Action Text, adicionar um editor de texto rico aos seus modelos se tornou incrivelmente simples, permitindo que usuários criem e editem conteúdo com formatação avançada.</p>
+
+                    <h2>Recursos Impressionantes:</h2>
+                    <ul>
+                      <li>Edição de texto rica e intuitiva.</li>
+                      <li>Upload e incorporação de imagens e outros anexos.</li>
+                      <li>Integração perfeita com o Active Storage.</li>
+                      <li>Experiência de usuário aprimorada para criação de conteúdo.</li>
+                    </ul>
+
+                    <p>Explore as possibilidades e liberte sua criatividade!</p>
+                  HTML
     c.visibility = visibilities.sample
     c.tag_ids    = tags.sample(rand(1..3)).map(&:id)
   end
