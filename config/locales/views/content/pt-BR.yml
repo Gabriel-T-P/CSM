@@ -34,5 +34,10 @@ pt-BR:
       save: Salvar
     index:
       title: Meus Conteúdos
+      new_content: Novo Conteúdo
       no_contents: Ainda não existe nenhum conteúdo criado
-      ago: atrás
+      date: Data
+      actions: Ações
+      edit: Editar
+      delete: Deletar
+      confirm_delete: Você tem certeza ?

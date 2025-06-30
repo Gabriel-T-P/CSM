@@ -1,51 +1,80 @@
 <section class="min-h-screen py-10 px-4 bg-gray-100">
   <div class="max-w-6xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-800 pb-2">
-      <%= t('.title') %>
-    </h1>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 border-b-2 border-gray-700 pb-2">
+      <h1 class="text-3xl font-semibold text-gray-900">
+        <%= t('.title') %>
+      </h1>
+
+      <%= link_to new_user_content_path(current_user),
+                  class: "flex items-center gap-2 text-sm border-2 border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 px-3 py-1 transition rounded-none" do %>
+        <span><%= t('.new_content') %></span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      <% end %>
+    </div>
 
     <% if @user.contents.any? %>
-      <div class="space-y-4">
-        <% @user.contents.order(created_at: :desc).each do |content| %>
-          <div class="flex items-center border-2 border-gray-800 bg-white rounded-none shadow-sm hover:border-gray-500 transition duration-150">
+      <div class="overflow-x-auto border border-gray-300 rounded-none shadow-sm">
+        <table class="min-w-full text-sm text-left text-gray-700 bg-white">
+          <thead class="bg-gray-100 uppercase text-gray-600 text-xs border-b">
+            <tr>
+              <th scope="col" class="px-4 py-3"><%= Content.model_name.human %></th>
+              <th scope="col" class="px-4 py-3"><%= Content.human_attribute_name :visibility %></th>
+              <th scope="col" class="px-4 py-3"><%= t('.date') %></th>
+              <th scope="col" class="px-4 py-3">Views</th>
+              <th scope="col" class="px-4 py-3">Comments</th>
+              <th scope="col" class="px-4 py-3 text-right"><%= t('.actions') %></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @user.contents.order(created_at: :desc).each do |content| %>
+              <tr class="hover:bg-gray-50 transition">
+                <!-- Cover + Title -->
+                <td class="px-4 py-3 flex items-center gap-4">
+                  <div class="w-24 h-16 shrink-0 border">
+                    <% if content.cover.attached? %>
+                      <%= image_tag url_for(content.cover), class: "w-full h-full object-cover" %>
+                    <% else %>
+                      <%= image_tag "default_avatar.png", class: "w-full h-full object-cover" %>
+                    <% end %>
+                  </div>
+                  <%= link_to content.title, content_path(content), class: "font-medium text-gray-900 hover:underline truncate" %>
+                </td>
 
-            <!-- Cover -->
-            <div class="w-32 h-20 shrink-0">
-              <% if content.cover.attached? %>
-                <%= image_tag url_for(content.cover), class: "w-full h-full object-cover" %>
-              <% else %>
-                <%= image_tag "default_avatar.png", class: "w-full h-full object-cover" %>
-              <% end %>
-            </div>
+                <!-- Visibility -->
+                <td class="px-4 py-3">
+                  <%= I18n.t("content.visibility.#{content.visibility}") %>
+                </td>
 
-            <!-- Info -->
-            <div class="flex-1 px-4 py-3 space-y-1">
-              <p class="font-semibold text-gray-900 truncate">
-                <%= link_to content.title, content_path(content), class: "hover:underline" %>
-              </p>
-              <p class="text-sm text-gray-600">
-                <%= I18n.t("content.visibility.#{content.visibility}") %> • <%= time_ago_in_words(content.created_at) %> <%= t('.ago', default: 'ago') %>
-              </p>
-              <% if content.tags.any? %>
-                <p class="text-xs text-gray-500 italic">
-                  <%= content.tags.map { |tag| "##{tag.name}" }.join(', ') %>
-                </p>
-              <% end %>
-            </div>
+                <!-- Date -->
+                <td class="px-4 py-3">
+                  <%= l(content.created_at.to_date, format: :long) %>
+                </td>
 
-            <!-- Actions -->
-            <div class="flex flex-col items-end justify-center gap-2 px-4">
-              <%= link_to edit_user_content_path(@user, content),
-                    class: "text-sm text-yellow-600 hover:underline" do %>
-                Edit
-              <% end %>
+                <!-- Views (fake placeholder) -->
+                <td class="px-2 py-2 text-center">
+                  <%= rand(10..30) %>
+                </td>
 
-              <%= button_to 'Delete', user_content_path(@user, content),
-                    method: :delete,
-                    class: "text-sm text-red-600 hover:underline" %>
-            </div>
-          </div>
-        <% end %>
+                <!-- Comments (fake placeholder) -->
+                <td class="px-4 py-3 text-center">
+                  <%= rand(0..10) %>
+                </td>
+
+                <!-- Actions -->
+                <td class="px-4 py-3 text-right space-x-3">
+                  <%= link_to edit_user_content_path(@user, content), class: "text-yellow-600 hover:text-yellow-800" do %>
+                    <%=t('.edit')%>
+                  <% end %>
+                  <%= button_to user_content_path(@user, content), method: :delete, class: "text-red-600 hover:text-red-800", data: { confirm: t('.confirm_delete') } do %>
+                    <%=t('.delete')%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     <% else %>
       <p class="text-gray-600 mt-8 italic text-center">

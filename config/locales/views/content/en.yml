@@ -34,5 +34,10 @@ en:
       save: Save
     index:
       title: My Contents
+      new_content: New Content
       no_contents: You haven't created any content yet
-      ago: ago
+      date: Date
+      actions: Actions
+      edit: Edit
+      delete: Delete
+      confirm_delete: Are you sure ?
