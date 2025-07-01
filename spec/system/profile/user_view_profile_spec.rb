@@ -55,4 +55,35 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Age: 20 years'
     expect(page).to have_content 'Pronouns: he/him'
   end
+
+  it 'and views recent contents section' do
+    user = create(:user)
+    create(:content, user: user, title: 'Title Test 1')
+    create(:content, user: user, title: 'Title Test 2')
+    create(:content, title: 'Title Test 3')
+
+    login_as user
+    visit profile_path(username: user.username)
+
+    expect(page).to have_content 'Title Test 1'
+    expect(page).to have_content 'Title Test 2'
+    expect(page).not_to have_content 'Title Test 3'
+    expect(page).to have_link 'See All', href: user_contents_path(user)
+  end
+
+  it 'and another user view recent contents section' do
+    user = create(:user)
+    other_user = create(:user)
+    create(:content, user: user, title: 'Title Test 1')
+    create(:content, user: user, title: 'Title Test 2')
+    create(:content, title: 'Title Test 3')
+
+    login_as other_user
+    visit profile_path(username: user.username)
+
+    expect(page).to have_content 'Title Test 1'
+    expect(page).to have_content 'Title Test 2'
+    expect(page).not_to have_content 'Title Test 3'
+    expect(page).not_to have_link 'See All', href: user_contents_path(user)
+  end
 end

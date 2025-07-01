@@ -7,6 +7,8 @@ en:
       no_content_found: No content found yet
       member_since: Member since %{date}
       edit_profile: Edit Profile
+      recent_content: Recent Content
+      see_all: See All
     personal_informations:
       title: Personal Informations
       full_name: Full Name

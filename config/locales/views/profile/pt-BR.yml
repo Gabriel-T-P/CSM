@@ -7,6 +7,8 @@ pt-BR:
       no_content_found: Nenhum conteúdo cadastrado ainda
       member_since: Membro desde %{date}
       edit_profile: Editar
+      recent_content: Conteúdos Mais Recentes
+      see_all: Ver Todos
     personal_informations:
       title: Informações Pessoais
       full_name: Nome Completo

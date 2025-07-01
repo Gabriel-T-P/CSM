@@ -43,9 +43,39 @@
     </div>
   </div>
 
-  <%= render 'personal_informations'%>
-
-  <div class="bg-white mt-12 p-8 text-center text-gray-500 rounded-none border-2 border-gray-700 shadow-sm">
-    <p class="text-lg font-medium"><%= t('.no_content_found') %>.</p>
+  <div>
+    <%= render 'personal_informations'%>
   </div>
+
+  <section class="my-10">
+    <div class="flex items-center justify-between mb-6 border-b-2 border-gray-700 pb-2">
+      <h2 class="text-2xl font-semibold text-gray-800">
+        <%= t('.recent_content') %>
+      </h2>
+
+      <% if @user == current_user %>
+        <%= link_to user_contents_path(@user),
+                    class: "flex items-center gap-2 text-sm border-2 border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 px-4 py-1 transition rounded-none" do %>
+          <span><%= t('.see_all') %></span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5l7 7-7 7" />
+          </svg>
+        <% end %>
+      <% end %>      
+    </div>
+
+    <% if @user.contents.any? %>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <%= render @user.contents.order(created_at: :desc).limit(4) %>
+      </div>
+    <% else %>
+      <div class="text-center py-10">
+        <p class="text-gray-600 text-lg">
+          <%= t('.no_content_found_yet') %>
+        </p>
+      </div>
+    <% end %>
+  </section>
 </div>
