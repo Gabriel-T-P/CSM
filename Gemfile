@@ -39,7 +39,7 @@ gem "bootsnap", require: false
 # gem "bcrypt", "~> 3.1.7"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]

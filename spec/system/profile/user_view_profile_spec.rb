@@ -17,6 +17,8 @@ describe 'User views profile page', type: :system do
 
   it 'and have own profile informations' do
     user = create(:user, first_name: 'User', last_name: 'Test', email: 'user_1@email.com', location: 'Brazil', gender: :male, birth_date: 20.years.ago)
+    create(:content, user: user)
+    create(:content, user: user)
 
     login_as user
     visit profile_path(username: user.username)
@@ -28,6 +30,7 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Age: 20 years'
     expect(page).to have_content 'Pronouns: he/him'
     expect(page).to have_content 'Member since 2025'
+    expect(page).to have_content 'Contents Created'
   end
 
   it 'and its not authenticated' do
@@ -51,5 +54,36 @@ describe 'User views profile page', type: :system do
     expect(page).to have_content 'Location: Brazil'
     expect(page).to have_content 'Age: 20 years'
     expect(page).to have_content 'Pronouns: he/him'
+  end
+
+  it 'and views recent contents section' do
+    user = create(:user)
+    create(:content, user: user, title: 'Title Test 1')
+    create(:content, user: user, title: 'Title Test 2')
+    create(:content, title: 'Title Test 3')
+
+    login_as user
+    visit profile_path(username: user.username)
+
+    expect(page).to have_content 'Title Test 1'
+    expect(page).to have_content 'Title Test 2'
+    expect(page).not_to have_content 'Title Test 3'
+    expect(page).to have_link 'See All', href: user_contents_path(user)
+  end
+
+  it 'and another user view recent contents section' do
+    user = create(:user)
+    other_user = create(:user)
+    create(:content, user: user, title: 'Title Test 1')
+    create(:content, user: user, title: 'Title Test 2')
+    create(:content, title: 'Title Test 3')
+
+    login_as other_user
+    visit profile_path(username: user.username)
+
+    expect(page).to have_content 'Title Test 1'
+    expect(page).to have_content 'Title Test 2'
+    expect(page).not_to have_content 'Title Test 3'
+    expect(page).not_to have_link 'See All', href: user_contents_path(user)
   end
 end

@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      content:
+        one: Content
+        other: Contents
+    attributes:
+      content:
+        title: Title
+        body: Content
+        visibility: Visibility

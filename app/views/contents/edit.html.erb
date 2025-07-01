@@ -1,0 +1,23 @@
+<div class="min-h-screen flex items-center justify-center py-10 bg-gray-100">
+  <div class="w-full max-w-3xl space-y-8">
+    <%= title_h2(t('.title'), class: "text-3xl font-bold text-gray-900") %>
+
+    <%= render 'form', content: @content, user: @user, tags: @tags, save_button_text: t('.save') %>
+
+    <div class="border border-red-300 bg-red-100 p-6 rounded-none">
+      <%= title_h2(t('.warning')) %>
+      <div class="flex items-center justify-between bg-red-100">
+        <div>
+          <p class="text-m font-semibold text-gray-700"><%= t('.delete_my_content') %></p>
+          <p class="text-sm text-gray-600"><%= t('.irreversible_action') %>.</p>
+        </div>
+
+        <div>
+          <%= button_to t('.delete').upcase, user_content_path(@user, @content),
+                method: :delete,
+                class: "w-full py-2 px-4 border border-red-300 rounded-none bg-white text-red-600 text-sm font-semibold hover:bg-red-500 transition-colors" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

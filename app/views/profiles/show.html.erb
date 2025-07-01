@@ -1,54 +1,81 @@
-<div class="max-w-4xl mx-auto px-4 py-10">
-  <div class="flex justify-center mb-10">
+<div class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+  <div class="flex flex-col items-center mb-10">
     <% if @user.avatar.attached? %>
       <%= image_tag url_for(@user.avatar),
-          class: "w-32 h-32 border-2 border-gray-700 object-cover rounded-none avatar-profile" %>
+          class: "w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gray-800 object-cover shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105" %>
     <% else %>
       <%= image_tag "default_avatar.png",
-          class: "w-32 h-32 border-2 border-gray-700 object-cover rounded-none avatar-profile" %>
+          class: "w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gray-800 object-cover shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105" %>
+    <% end %>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-6 tracking-tight">
+      <%= @user.username %>
+    </h1>
+
+    <% if @user.respond_to?(:biography) && @user.biography.present? %>
+      <p class="mt-2 text-gray-700 text-base md:text-lg text-center max-w-xl leading-relaxed">
+        <%= @user.biography %>
+      </p>
+    <% end %>
+
+    <p class="mt-3 text-gray-500 text-sm md:text-base">
+      <%= t('.member_since', date: @user.created_at.year) %>
+    </p>
+
+    <% if user_signed_in? && current_user == @user %>
+      <%= link_to t('.edit_profile'), edit_user_registration_path,
+          class: "mt-6 inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 text-sm font-semibold rounded-full hover:bg-gray-100 transition duration-200 ease-in-out" %>
     <% end %>
   </div>
 
-  <div class="w-full border-2 border-gray-700 bg-white px-6 py-6 mb-8 shadow-md">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-      <div>
-        <h1 class="text-2xl font-semibold text-gray-800">
-          <%= @user.username %>
-        </h1>
-        <% if @user.respond_to?(:biography) && @user.biography.present? %>
-          <p class="mt-1 text-gray-600 text-sm max-w-xl">
-            <%= @user.biography %>
-          </p>
-        <% end %>
-        <p class="mt-1 text-gray-600 text-sm max-w-xl">
-          <%= t('.member_since', date: @user.created_at.year) %>
-        </p>
-      </div>
-
-      <% if user_signed_in? && current_user == @user %>
-        <%= link_to t('.edit_profile'), edit_user_registration_path, class: "mt-4 sm:mt-0 inline-block px-4 py-2 border-2 border-gray-700 text-sm text-gray-700 hover:bg-gray-200 transition" %>
-      <% end %>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+    <div class="bg-white p-6 rounded-none border-2 border-gray-700 text-center shadow-sm">
+      <p class="text-3xl font-bold text-gray-900 mb-1"><%= @user.contents.size %></p>
+      <p class="text-sm text-gray-600"><%= t('.contents_number', count: @user.contents.size) %></p>
     </div>
-  </div>
-
-  <div class="grid grid-cols-3 gap-4 text-center mb-10">
-    <div class="border-2 border-gray-700 bg-white py-4">
-      <p class="text-xl font-semibold text-gray-800">0</p>
-      <p class="text-sm text-gray-600">Conteúdos</p>
-    </div>
-    <div class="border-2 border-gray-700 bg-white py-4">
-      <p class="text-xl font-semibold text-gray-800">0</p>
+    <div class="bg-white p-6 rounded-none border-2 border-gray-700 text-center shadow-sm">
+      <p class="text-3xl font-bold text-gray-900 mb-1">0</p>
       <p class="text-sm text-gray-600">Seguidores</p>
     </div>
-    <div class="border-2 border-gray-700 bg-white py-4">
-      <p class="text-xl font-semibold text-gray-800">0</p>
+    <div class="bg-white p-6 rounded-none border-2 border-gray-700 text-center shadow-sm">
+      <p class="text-3xl font-bold text-gray-900 mb-1">0</p>
       <p class="text-sm text-gray-600">Seguindo</p>
     </div>
   </div>
 
-  <%= render 'personal_informations'%>
-
-  <div class="border-2 border-gray-700 bg-white mt-8 px-6 py-8 text-center text-gray-500 shadow-sm">
-    <p><%= t('.no_content_found') %>.</p>
+  <div>
+    <%= render 'personal_informations'%>
   </div>
+
+  <section class="my-10">
+    <div class="flex items-center justify-between mb-6 border-b-2 border-gray-700 pb-2">
+      <h2 class="text-2xl font-semibold text-gray-800">
+        <%= t('.recent_content') %>
+      </h2>
+
+      <% if @user == current_user %>
+        <%= link_to user_contents_path(@user),
+                    class: "flex items-center gap-2 text-sm border-2 border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500 px-4 py-1 transition rounded-none" do %>
+          <span><%= t('.see_all') %></span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5l7 7-7 7" />
+          </svg>
+        <% end %>
+      <% end %>      
+    </div>
+
+    <% if @user.contents.any? %>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <%= render @user.contents.order(created_at: :desc).limit(4) %>
+      </div>
+    <% else %>
+      <div class="text-center py-10">
+        <p class="text-gray-600 text-lg">
+          <%= t('.no_content_found_yet') %>
+        </p>
+      </div>
+    <% end %>
+  </section>
 </div>

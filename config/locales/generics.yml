@@ -2,19 +2,30 @@ pt-BR:
   error_messages:
     username_format_validation: só pode conter letras, números e _
     route_negated: Você não pode acessar essa página
+    please_login: Por favor, faça login para acessar essa página
   user:
     pronoun:
       male: ele/dele
       female: ela/dela
       neutral: elu/delu
-
+  content:
+    visibility:
+      visible_to_all: Público
+      only_me: Privado
+      unlisted: Não listado
 
 en:
   error_messages:
     username_format_validation: only permits letters, numbers and _
     route_negated: You can not access this page
+    please_login: Please login to access this page
   user:
     pronoun:
       male: he/him
       female: she/her
       neutral: they/them
+  content:
+    visibility:
+      visible_to_all: Public
+      only_me: Private
+      unlisted: Unlisted

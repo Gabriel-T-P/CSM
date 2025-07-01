@@ -1,6 +1,7 @@
 pt-BR:
   routes:
     users: usuarios
+    user: usuario
     admin: 
     dashboard: principal
     profile: perfil
@@ -13,3 +14,4 @@ pt-BR:
     sign_up: registrar
     tags: marcadores
     announcements: anuncios
+    contents: conteudos

@@ -1,0 +1,7 @@
+<div class="min-h-screen flex items-center justify-center py-10 bg-gray-100">
+  <div class="w-full max-w-3xl space-y-8">
+    <%= title_h2(t('.title'), class: "text-3xl font-bold text-gray-900") %>
+
+    <%= render 'form', content: @content, user: @user, tags: @tags, save_button_text: t('.save') %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<%= link_to content_path(content), class: "block group transition-transform duration-200 ease-in-out hover:scale-[1.015]" do %>
+  <div class="border-2 border-gray-800 hover:border-gray-500 rounded-none bg-white overflow-hidden shadow-sm group-hover:shadow-md transition duration-200">
+    <% if content.cover.attached? %>
+      <%= image_tag url_for(content.cover), class: "w-full h-32 object-cover" %>
+    <% else %>
+      <%= image_tag "default_avatar.png", class: "w-full h-32 object-cover" %>
+    <% end %>
+
+    <div class="p-3 space-y-1">
+      <p class="text-sm font-semibold text-gray-900 truncate">
+        <%= content.title %>
+      </p>
+      <p class="text-xs text-gray-600 truncate">
+        <%= content.user.username %>
+      </p>
+      <p class="text-xs text-gray-500">
+        <%= time_ago_in_words(content.created_at) %> <%= t('.ago', default: 'ago') %>
+      </p>
+    </div>
+  </div>
+<% end %>

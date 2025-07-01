@@ -1,0 +1,43 @@
+pt-BR:
+  contents:
+    new:
+      title: Crie seu conteúdo
+      save: Criar Novo Conteúdo
+    edit:
+      title: Edite seu conteúdo
+      save: Editar Conteúdo
+      delete: Deletar
+      warning: Cuidado
+      delete_my_content: Deletar meu conteúdo
+      irreversible_action: essa ação é irreversível
+    form:
+      add_cover_picture: Adicionar Imagem da Capa 
+      cancel: Cancelar
+      select_tags_btn: Mostrar Tags
+      no_tags_found: Ainda não foram registrados nenhum marcador
+    create:
+      success: Conteúdo criado com sucesso
+      error: Falha ao criar o conteúdo
+    create:
+      success: Conteúdo atualizado com sucesso
+      error: Falha ao atualizar o conteúdo
+    destroy:
+      success: Conteúdo deletado com sucesso
+    show:
+      followers_placeholder: 123 seguidores
+      follow: Seguir
+      edit_content: Editar Conteúdo
+      comments_placeholder: Comentários
+      coming_soon: Futuros comentários ficarão aqui
+    buttons_dropdown:
+      share: Compartilhar
+      save: Salvar
+    index:
+      title: Meus Conteúdos
+      new_content: Novo Conteúdo
+      no_contents: Ainda não existe nenhum conteúdo criado
+      date: Data
+      actions: Ações
+      edit: Editar
+      delete: Deletar
+      confirm_delete: Você tem certeza ?

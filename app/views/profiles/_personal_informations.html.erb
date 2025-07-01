@@ -1,25 +1,27 @@
-<div class="mt-4 p-4 border-2 border-gray-700 bg-white text-gray-800 shadow-md w-full max-w-xl">
-  <%= title_h2(t('.title')) %>
+<div class="bg-white p-6 rounded-none border-2 border-gray-700 shadow-sm w-full">
+  <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b-2 border-gray-100 pb-2">
+    <%= t('.title') %>
+  </h3>
 
-  <div class="space-y-2 text-sm">
-    <div class="flex justify-between">
-      <span class="font-medium"><%= t('.full_name') %>:</span>
-      <span><%= @user.full_name %></span>
+  <div class="space-y-4 text-base">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+      <span class="font-medium text-gray-700 w-full sm:w-1/3 mb-1 sm:mb-0"><%= t('.full_name') %>:</span>
+      <span class="text-gray-900 w-full sm:w-2/3 text-right sm:text-left"><%= @user.full_name %></span>
     </div>
 
-    <div class="flex justify-between">
-      <span class="font-medium"><%= User.human_attribute_name(:email) %>:</span>
-      <span><%= @user.email %></span>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+      <span class="font-medium text-gray-700 w-full sm:w-1/3 mb-1 sm:mb-0"><%= User.human_attribute_name(:email) %>:</span>
+      <span class="text-gray-900 w-full sm:w-2/3 text-right sm:text-left"><%= @user.email %></span>
     </div>
 
-    <div class="flex justify-between">
-      <span class="font-medium"><%= User.human_attribute_name(:location) %>:</span>
-      <span><%= @user.location.presence || t('.not_informed') %></span>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+      <span class="font-medium text-gray-700 w-full sm:w-1/3 mb-1 sm:mb-0"><%= User.human_attribute_name(:location) %>:</span>
+      <span class="text-gray-900 w-full sm:w-2/3 text-right sm:text-left"><%= @user.location.presence || t('.not_informed') %></span>
     </div>
 
-    <div class="flex justify-between">
-      <span class="font-medium"><%= t('.age') %>:</span>
-      <span>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+      <span class="font-medium text-gray-700 w-full sm:w-1/3 mb-1 sm:mb-0"><%= t('.age') %>:</span>
+      <span class="text-gray-900 w-full sm:w-2/3 text-right sm:text-left">
         <% if @user.birth_date.present? %>
           <%= @user.age %> <%= t('.years') %>
         <% else %>
@@ -28,9 +30,9 @@
       </span>
     </div>
 
-    <div class="flex justify-between">
-      <span class="font-medium"><%= User.human_attribute_name(:gender) %>:</span>
-      <span><%= @user.pronoun_label.presence || t('.not_informed') %></span>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+      <span class="font-medium text-gray-700 w-full sm:w-1/3 mb-1 sm:mb-0"><%= User.human_attribute_name(:gender) %>:</span>
+      <span class="text-gray-900 w-full sm:w-2/3 text-right sm:text-left"><%= @user.pronoun_label.presence || t('.not_informed') %></span>
     </div>
   </div>
 </div>

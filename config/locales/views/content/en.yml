@@ -1,0 +1,43 @@
+en:
+  contents:
+    new:
+      title: Upload your content
+      save: Create Content
+    edit:
+      title: Edit your content
+      save: Update Content
+      delete: Delete
+      warning: Warning
+      delete_my_content: Delete my content
+      irreversible_action: this action is irreversible
+    form:
+      cancel: Cancel
+      select_tags_btn: Show Tags
+      no_tags_found: There are no tags registered yet
+      add_cover_picture: Add Cover Picture
+    create:
+      success: Content upload with success
+      error: Failed to upload your content
+    update:
+      success: Content updated with success
+      error: Failed to update your content
+    destroy:
+      success: Content was successfully deleted
+    show:
+      followers_placeholder: 123 followers
+      follow: Follow
+      edit_content: Edit Content
+      comments_placeholder: Comments
+      coming_soon: This section will allow users to comment soon.
+    buttons_dropdown:
+      share: Share
+      save: Save
+    index:
+      title: My Contents
+      new_content: New Content
+      no_contents: You haven't created any content yet
+      date: Date
+      actions: Actions
+      edit: Edit
+      delete: Delete
+      confirm_delete: Are you sure ?

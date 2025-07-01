@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  has_many :contents
 
   enum :role, { regular: 1, admin: 5 }, default: :regular
   enum :gender, { male: 1, female: 3, neutral: 5 }
