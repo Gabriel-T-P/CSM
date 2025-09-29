@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "devise", "~> 4.9"
-gem "faraday", "~> 2.13"
+gem "faraday", "~> 2.14"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
