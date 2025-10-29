@@ -15,7 +15,7 @@ gem "pg", "~> 1.6"
 gem "propshaft"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-gem "rails", "~> 8.0.2"
+gem "rails", "~> 8.1.1"
 gem "route_translator", "~> 15.2"
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
